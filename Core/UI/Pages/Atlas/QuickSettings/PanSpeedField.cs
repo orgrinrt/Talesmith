@@ -68,6 +68,6 @@ public class PanSpeedField : HBoxContainer
 
     private AtlasPage GetAtlasPage()
     {
-        return GetNode<AtlasPage>("../../..");
+        return GetNode<AtlasPage>("../..");
     }
 }

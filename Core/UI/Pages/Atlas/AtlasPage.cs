@@ -2,7 +2,7 @@ using Godot;
 using System;
 using Taleteller.Core.Viewports.Cameras;
 
-public class AtlasPage : Node
+public class AtlasPage : Control
 {
     public override void _Ready()
     {
@@ -11,6 +11,6 @@ public class AtlasPage : Node
 
     public FreeCamera GetFreeCamera()
     {
-        return GetNode<FreeCamera>("./2D/FreeCam");
+        return GetNode<FreeCamera>("../../Atlas2D/FreeCam");
     }
 }

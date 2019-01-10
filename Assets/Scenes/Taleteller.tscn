@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Core/Base/App.cs" type="Script" id=1]
-[ext_resource path="res://Core/UI/Pages/Atlas/AtlasPage.cs" type="Script" id=2]
-[ext_resource path="res://Core/UI/Pages/Atlas/QuickSettings/PanSpeedField.cs" type="Script" id=3]
-[ext_resource path="res://Assets/Scenes/Cameras/FreeCam.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets/Graphics/Maps/vilirin_test1.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Resources/Themes/Default.tres" type="Theme" id=2]
+[ext_resource path="res://Assets/Scenes/Cameras/FreeCam.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Graphics/Maps/vilirin_test1.png" type="Texture" id=4]
+[ext_resource path="res://Core/UI/Pages/Atlas/AtlasPage.cs" type="Script" id=5]
+[ext_resource path="res://Core/UI/Pages/Atlas/QuickSettings/PanSpeedField.cs" type="Script" id=6]
 
 [node name="Taleteller" type="Node"]
 script = ExtResource( 1 )
@@ -16,7 +17,9 @@ layer = 99
 [node name="Topbar" type="Control" parent="Foremost"]
 editor/display_folded = true
 anchor_right = 1.0
+margin_left = 40.0
 margin_bottom = 20.0
+theme = ExtResource( 2 )
 
 [node name="Panel" type="Panel" parent="Foremost/Topbar"]
 anchor_right = 1.0
@@ -28,118 +31,198 @@ anchor_bottom = 1.0
 
 [node name="File" type="MenuButton" parent="Foremost/Topbar/HBox"]
 margin_right = 35.0
-margin_bottom = 20.0
+margin_bottom = 22.0
 text = "File"
 items = [ "New", null, 0, false, false, -1, 0, null, "", false, "Open", null, 0, false, false, -1, 0, null, "", false, "Open Recent", null, 0, false, false, -1, 0, null, "", false, "", null, 0, false, false, -1, 0, null, "", true, "Save", null, 0, false, false, -1, 0, null, "", false, "Save As", null, 0, false, false, -1, 0, null, "", false, "", null, 0, false, false, -1, 0, null, "", true, "Import", null, 0, false, false, -1, 0, null, "", false, "Export", null, 0, false, false, -1, 0, null, "", false, "", null, 0, false, false, -1, 0, null, "", true, "Exit", null, 0, false, false, -1, 0, null, "", false ]
 
 [node name="Edit" type="MenuButton" parent="Foremost/Topbar/HBox"]
 margin_left = 39.0
 margin_right = 75.0
-margin_bottom = 20.0
+margin_bottom = 22.0
 text = "Edit"
 items = [ "Undo", null, 0, false, false, 0, 0, null, "", false, "Redo", null, 0, false, false, 1, 0, null, "", false, "", null, 0, false, false, 2, 0, null, "", true, "Image Library", null, 0, false, false, -1, 0, null, "", false, "Snapshots", null, 0, false, false, -1, 0, null, "", false, "", null, 0, false, false, -1, 0, null, "", true, "Preferences", null, 0, false, false, -1, 0, null, "", false ]
 
 [node name="View" type="MenuButton" parent="Foremost/Topbar/HBox"]
 margin_left = 79.0
 margin_right = 121.0
-margin_bottom = 20.0
+margin_bottom = 22.0
 text = "View"
 items = [ "Show Inspector", null, 1, true, false, -1, 0, null, "", false, "Big Icons", null, 1, true, false, -1, 0, null, "", false ]
 
 [node name="Help" type="MenuButton" parent="Foremost/Topbar/HBox"]
 margin_left = 125.0
 margin_right = 167.0
-margin_bottom = 20.0
+margin_bottom = 22.0
 text = "Help"
 items = [ "Search", null, 0, false, false, -1, 0, null, "", false, "Manual", null, 0, false, false, -1, 0, null, "", false, "Online Reference", null, 0, false, false, -1, 0, null, "", false, "", null, 0, false, false, -1, 0, null, "", true, "Website", null, 0, false, false, -1, 0, null, "", false, "Credits", null, 0, false, false, -1, 0, null, "", false, "About", null, 0, false, false, -1, 0, null, "", false ]
 
+[node name="Filler" type="Control" parent="Foremost/Topbar/HBox"]
+margin_left = 171.0
+margin_right = 755.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LineEdit" type="LineEdit" parent="Foremost/Topbar/HBox"]
+margin_left = 759.0
+margin_right = 984.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 225, 0 )
+placeholder_text = "Search <ctrl+f>"
+placeholder_alpha = 0.221
+caret_blink = true
+
 [node name="Menus" type="CanvasLayer" parent="."]
-editor/display_folded = true
 layer = 98
 
 [node name="Sidebar" type="Control" parent="Menus"]
 editor/display_folded = true
 anchor_bottom = 1.0
-margin_top = 20.0
-margin_right = 50.0
+margin_right = 40.0
+theme = ExtResource( 2 )
 
 [node name="Panel" type="Panel" parent="Menus/Sidebar"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="VBox" type="VBoxContainer" parent="Menus/Sidebar"]
+editor/display_folded = true
 anchor_bottom = 1.0
-margin_right = 51.0
-rect_min_size = Vector2( 50, 0 )
+margin_right = 40.0
+rect_min_size = Vector2( 40, 0 )
 
 [node name="Home" type="Button" parent="Menus/Sidebar/VBox"]
-margin_right = 51.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
-text = "Home"
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+text = "H"
 
 [node name="Wiki" type="Button" parent="Menus/Sidebar/VBox"]
-margin_top = 54.0
-margin_right = 51.0
-margin_bottom = 104.0
-rect_min_size = Vector2( 50, 50 )
-text = "Wiki"
+margin_top = 44.0
+margin_right = 40.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 40, 40 )
+text = "W"
 
 [node name="Atlas" type="Button" parent="Menus/Sidebar/VBox"]
-margin_top = 108.0
-margin_right = 51.0
-margin_bottom = 158.0
-rect_min_size = Vector2( 50, 50 )
-text = "Atlas"
+margin_top = 88.0
+margin_right = 40.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 40, 40 )
+text = "A"
 
 [node name="Timelines" type="Button" parent="Menus/Sidebar/VBox"]
-margin_top = 162.0
-margin_right = 51.0
-margin_bottom = 212.0
-rect_min_size = Vector2( 50, 50 )
-text = "Time"
+margin_top = 132.0
+margin_right = 40.0
+margin_bottom = 172.0
+rect_min_size = Vector2( 40, 40 )
+text = "T"
 
 [node name="Filler" type="Control" parent="Menus/Sidebar/VBox"]
-margin_top = 216.0
-margin_right = 51.0
-margin_bottom = 526.0
+margin_top = 176.0
+margin_right = 40.0
+margin_bottom = 556.0
+rect_min_size = Vector2( 40, 40 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Config" type="Button" parent="Menus/Sidebar/VBox"]
-margin_top = 530.0
-margin_right = 51.0
-margin_bottom = 580.0
-rect_min_size = Vector2( 50, 50 )
-text = "Config"
+margin_top = 560.0
+margin_right = 40.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 40, 40 )
+text = "C"
 
-[node name="AtlasPage" type="Node" parent="."]
-script = ExtResource( 2 )
+[node name="Inspector" type="Control" parent="Menus"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -225.0
+margin_top = 40.0
+theme = ExtResource( 2 )
 
-[node name="UI" type="CanvasLayer" parent="AtlasPage"]
-layer = 2
+[node name="Panel" type="Panel" parent="Menus/Inspector"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 
-[node name="SubBar" type="HBoxContainer" parent="AtlasPage/UI"]
+[node name="Atlas" type="Control" parent="Menus/Inspector"]
 editor/display_folded = true
 anchor_right = 1.0
-margin_left = 55.0
+anchor_bottom = 1.0
+
+[node name="TabContainer" type="TabContainer" parent="Menus/Inspector/Atlas"]
+editor/display_folded = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+tab_align = 0
+drag_to_rearrange_enabled = true
+
+[node name="Inspector" type="ScrollContainer" parent="Menus/Inspector/Atlas/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+scroll_horizontal_enabled = false
+
+[node name="Layers" type="ScrollContainer" parent="Menus/Inspector/Atlas/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 29.0
+margin_right = -5.0
+margin_bottom = -5.0
+scroll_horizontal_enabled = false
+
+[node name="Dragger" type="Control" parent="Menus/Inspector"]
+anchor_bottom = 1.0
+margin_left = -3.0
+margin_right = 1.0
+mouse_default_cursor_shape = 10
+
+[node name="Atlas2D" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="FreeCam" parent="Atlas2D" instance=ExtResource( 3 )]
+position = Vector2( 498.693, 299.995 )
+current = true
+smoothing_enabled = true
+editor_draw_limits = true
+
+[node name="Map" type="Sprite" parent="Atlas2D"]
+texture = ExtResource( 4 )
+
+[node name="AtlasUI" type="CanvasLayer" parent="."]
+editor/display_folded = true
+layer = 2
+
+[node name="AtlasPage" type="Control" parent="AtlasUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 5 )
+
+[node name="SubBar" type="HBoxContainer" parent="AtlasUI/AtlasPage"]
+editor/display_folded = true
+anchor_right = 1.0
+margin_left = 45.0
 margin_top = 40.0
+margin_right = 223.0
 margin_bottom = 64.0
+theme = ExtResource( 2 )
 
-[node name="PanSpeed" type="HBoxContainer" parent="AtlasPage/UI/SubBar"]
-margin_right = 166.0
+[node name="PanSpeed" type="HBoxContainer" parent="AtlasUI/AtlasPage/SubBar"]
+margin_right = 174.0
 margin_bottom = 24.0
-script = ExtResource( 3 )
+script = ExtResource( 6 )
 
-[node name="Label" type="Label" parent="AtlasPage/UI/SubBar/PanSpeed"]
-margin_top = 5.0
-margin_right = 62.0
-margin_bottom = 19.0
+[node name="Label" type="Label" parent="AtlasUI/AtlasPage/SubBar/PanSpeed"]
+margin_top = 1.0
+margin_right = 70.0
+margin_bottom = 23.0
 text = "PanSpeed"
 
-[node name="HSlider" type="HSlider" parent="AtlasPage/UI/SubBar/PanSpeed"]
-margin_left = 66.0
-margin_right = 166.0
+[node name="HSlider" type="HSlider" parent="AtlasUI/AtlasPage/SubBar/PanSpeed"]
+margin_left = 74.0
+margin_right = 174.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_vertical = 3
@@ -150,48 +233,32 @@ rounded = true
 tick_count = 11
 ticks_on_borders = true
 
-[node name="Filler" type="Control" parent="AtlasPage/UI/SubBar"]
-margin_left = 170.0
-margin_right = 969.0
+[node name="Filler" type="Control" parent="AtlasUI/AtlasPage/SubBar"]
+margin_left = 178.0
+margin_right = 1202.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="InfoBar" type="Control" parent="AtlasPage/UI"]
+[node name="PageBar" type="Control" parent="AtlasUI/AtlasPage"]
+editor/display_folded = true
 anchor_right = 1.0
-margin_left = 50.0
+margin_left = 40.0
 margin_top = 20.0
-margin_bottom = 44.0
+margin_bottom = 40.0
+theme = ExtResource( 2 )
 
-[node name="Panel" type="Panel" parent="AtlasPage/UI/InfoBar"]
+[node name="Panel" type="Panel" parent="AtlasUI/AtlasPage/PageBar"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="MenuItems" type="HBoxContainer" parent="AtlasPage/UI/InfoBar"]
+[node name="MenuItems" type="HBoxContainer" parent="AtlasUI/AtlasPage/PageBar"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Layers" type="MenuButton" parent="AtlasPage/UI/InfoBar/MenuItems"]
-margin_right = 53.0
-margin_bottom = 24.0
-text = "Layers"
-items = [ "Labels", null, 1, true, false, -1, 0, null, "", false, "Capitals", null, 1, true, false, -1, 0, null, "", false, "Towns", null, 0, false, false, 5, 0, null, "", false, "Villages", null, 0, false, false, -1, 0, null, "", false, "People", null, 0, false, false, -1, 0, null, "", false, "Regions", null, 0, false, false, -1, 0, null, "", false, "Politicals", null, 0, false, false, -1, 0, null, "", false, "Rivers", null, 0, false, false, -1, 0, null, "", false, "Lakes", null, 0, false, false, -1, 0, null, "", false, "Seas", null, 0, false, false, -1, 0, null, "", false, "Continents", null, 0, false, false, -1, 0, null, "", false ]
-
-[node name="Open" type="MenuButton" parent="AtlasPage/UI/InfoBar/MenuItems"]
-margin_left = 57.0
-margin_right = 104.0
-margin_bottom = 24.0
-text = "Open"
+[node name="Map" type="MenuButton" parent="AtlasUI/AtlasPage/PageBar/MenuItems"]
+margin_right = 39.0
+margin_bottom = 22.0
+text = "Map"
 items = [ "Open", null, 0, false, false, -1, 0, null, "", false, "Open Recent", null, 0, false, false, -1, 0, null, "", false, "", null, 0, false, false, -1, 0, null, "", true, "Search", null, 0, false, false, -1, 0, null, "", false ]
-
-[node name="2D" type="Node2D" parent="AtlasPage"]
-
-[node name="FreeCam" parent="AtlasPage/2D" instance=ExtResource( 4 )]
-position = Vector2( 498.693, 299.995 )
-current = true
-smoothing_enabled = true
-editor_draw_limits = true
-
-[node name="Map" type="Sprite" parent="AtlasPage/2D"]
-texture = ExtResource( 5 )
 
