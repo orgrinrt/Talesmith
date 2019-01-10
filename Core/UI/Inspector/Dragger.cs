@@ -28,6 +28,12 @@ namespace Taleteller.Core.UI.Inspector
                     Iterator.Coroutine.Run(HandleDragging());
                     break;
                 }
+                if (GetGlobalMousePosition().x < RectGlobalPosition.x ||
+                    GetGlobalMousePosition().x > RectGlobalPosition.x + RectSize.x)
+                {
+                    OnMouseExit();
+                    break;
+                }
                 yield return 0.000001f;
             }
         }
@@ -49,7 +55,7 @@ namespace Taleteller.Core.UI.Inspector
                     inspector.MarginLeft = _inspectorMaxSize;
                 }
                 
-                if (!Input.IsMouseButtonPressed(1))
+                if (!Input.IsMouseButtonPressed(1) || _isHandling == false)
                 {
                     _isHandling = false;
                     break;
@@ -77,6 +83,7 @@ namespace Taleteller.Core.UI.Inspector
 
         private void OnMouseExit()
         {
+            _isHandling = false;
             if (Iterator.Coroutine.IsRunning(MonitorForClick()))
             {
                 Iterator.Coroutine.Stop(MonitorForClick());
