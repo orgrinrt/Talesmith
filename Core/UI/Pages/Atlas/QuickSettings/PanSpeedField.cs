@@ -1,73 +1,75 @@
 using Godot;
-using System;
 using Taleteller.Core.Viewports.Cameras;
 
-public class PanSpeedField : HBoxContainer
+namespace Taleteller.Core.UI.Pages.Atlas.QuickSettings
 {
-    private bool _isSpeedTogglePressed = false;
+    public class PanSpeedField : HBoxContainer
+    {
+        private bool _isSpeedTogglePressed = false;
 
-    public bool IsSpeedTogglePressed => _isSpeedTogglePressed;
+        public bool IsSpeedTogglePressed => _isSpeedTogglePressed;
     
-    public override void _Ready()
-    {
-        GetSlider().Value = GetAtlasPage().GetFreeCamera().PanSpeed;
-
-        GetSlider().Connect("value_changed", this, nameof(OnValueChanged));
-    }
-
-    public override void _UnhandledInput(InputEvent @event)
-    {
-        base._UnhandledInput(@event);
-
-        if (@event.IsActionPressed("cam_pan_speed_toggle"))
+        public override void _Ready()
         {
-            _isSpeedTogglePressed = true;
-        }
-        else if (@event.IsActionReleased("cam_pan_speed_toggle"))
-        {
-            _isSpeedTogglePressed = false;
+            GetSlider().Value = GetAtlasPage().GetFreeCamera().PanSpeed;
+
+            GetSlider().Connect("value_changed", this, nameof(OnValueChanged));
         }
 
-        if (IsSpeedTogglePressed)
+        public override void _UnhandledInput(InputEvent @event)
         {
-            HSlider slider = GetSlider();
-            FreeCamera cam = GetAtlasPage().GetFreeCamera();
+            base._UnhandledInput(@event);
+
+            if (@event.IsActionPressed("cam_pan_speed_toggle"))
+            {
+                _isSpeedTogglePressed = true;
+            }
+            else if (@event.IsActionReleased("cam_pan_speed_toggle"))
+            {
+                _isSpeedTogglePressed = false;
+            }
+
+            if (IsSpeedTogglePressed)
+            {
+                HSlider slider = GetSlider();
+                FreeCamera cam = GetAtlasPage().GetFreeCamera();
             
-            if (!cam.IsZoomBlocked)
-            {
-                cam.SetZoomLocked(true);
-            }
+                if (!cam.IsZoomBlocked)
+                {
+                    cam.SetZoomLocked(true);
+                }
             
-            if (@event.IsActionPressed("cam_pan_speed_up"))
-            {
-                slider.Value = slider.Value + slider.Step;
+                if (@event.IsActionPressed("cam_pan_speed_up"))
+                {
+                    slider.Value = slider.Value + slider.Step;
+                }
+                else if (@event.IsActionPressed("cam_pan_speed_down"))
+                {
+                    slider.Value = slider.Value - slider.Step;
+                }
             }
-            else if (@event.IsActionPressed("cam_pan_speed_down"))
+            else
             {
-                slider.Value = slider.Value - slider.Step;
+                if (GetAtlasPage().GetFreeCamera().IsZoomBlocked)
+                {
+                    GetAtlasPage().GetFreeCamera().SetZoomLocked(false);
+                }
             }
         }
-        else
+
+        private void OnValueChanged(float value)
         {
-            if (GetAtlasPage().GetFreeCamera().IsZoomBlocked)
-            {
-                GetAtlasPage().GetFreeCamera().SetZoomLocked(false);
-            }
+            GetAtlasPage().GetFreeCamera().SetPanSpeed((int)value);
         }
-    }
 
-    private void OnValueChanged(float value)
-    {
-        GetAtlasPage().GetFreeCamera().SetPanSpeed((int)value);
-    }
+        private HSlider GetSlider()
+        {
+            return GetNode<HSlider>("./HSlider");
+        }
 
-    private HSlider GetSlider()
-    {
-        return GetNode<HSlider>("./HSlider");
-    }
-
-    private AtlasPage GetAtlasPage()
-    {
-        return GetNode<AtlasPage>("../..");
+        private AtlasPage GetAtlasPage()
+        {
+            return GetNode<AtlasPage>("../..");
+        }
     }
 }

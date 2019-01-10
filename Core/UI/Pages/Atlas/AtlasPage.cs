@@ -1,16 +1,17 @@
-using Godot;
-using System;
 using Taleteller.Core.Viewports.Cameras;
 
-public class AtlasPage : Control
+namespace Taleteller.Core.UI.Pages.Atlas
 {
-    public override void _Ready()
+    public class AtlasPage : Page
     {
+        public override void _Ready()
+        {
         
-    }
+        }
 
-    public FreeCamera GetFreeCamera()
-    {
-        return GetNode<FreeCamera>("../../Atlas2D/FreeCam");
+        public FreeCamera GetFreeCamera()
+        {
+            return GetNode<FreeCamera>("../../Atlas2D/FreeCam");
+        }
     }
 }

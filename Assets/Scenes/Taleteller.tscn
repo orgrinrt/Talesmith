@@ -1,11 +1,14 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Core/Base/App.cs" type="Script" id=1]
 [ext_resource path="res://Assets/Resources/Themes/Default.tres" type="Theme" id=2]
-[ext_resource path="res://Assets/Scenes/Cameras/FreeCam.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Assets/Graphics/Maps/vilirin_test1.png" type="Texture" id=4]
-[ext_resource path="res://Core/UI/Pages/Atlas/AtlasPage.cs" type="Script" id=5]
-[ext_resource path="res://Core/UI/Pages/Atlas/QuickSettings/PanSpeedField.cs" type="Script" id=6]
+[ext_resource path="res://Core/UI/Inspector/Inspector.cs" type="Script" id=3]
+[ext_resource path="res://Core/UI/Inspector/Pages/Atlas.cs" type="Script" id=4]
+[ext_resource path="res://Core/UI/Inspector/Dragger.cs" type="Script" id=5]
+[ext_resource path="res://Assets/Scenes/Cameras/FreeCam.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Graphics/Maps/vilirin_test1.png" type="Texture" id=7]
+[ext_resource path="res://Core/UI/Pages/Atlas/AtlasPage.cs" type="Script" id=8]
+[ext_resource path="res://Core/UI/Pages/Atlas/QuickSettings/PanSpeedField.cs" type="Script" id=9]
 
 [node name="Taleteller" type="Node"]
 script = ExtResource( 1 )
@@ -139,16 +142,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -225.0
 margin_top = 40.0
+rect_min_size = Vector2( 225, 0 )
 theme = ExtResource( 2 )
+script = ExtResource( 3 )
 
 [node name="Panel" type="Panel" parent="Menus/Inspector"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Atlas" type="Control" parent="Menus/Inspector"]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 4 )
 
 [node name="TabContainer" type="TabContainer" parent="Menus/Inspector/Atlas"]
 editor/display_folded = true
@@ -158,12 +163,16 @@ tab_align = 0
 drag_to_rearrange_enabled = true
 
 [node name="Inspector" type="ScrollContainer" parent="Menus/Inspector/Atlas/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 29.0
+margin_right = -5.0
+margin_bottom = -5.0
 scroll_horizontal_enabled = false
 
 [node name="Layers" type="ScrollContainer" parent="Menus/Inspector/Atlas/TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -177,18 +186,19 @@ anchor_bottom = 1.0
 margin_left = -3.0
 margin_right = 1.0
 mouse_default_cursor_shape = 10
+script = ExtResource( 5 )
 
 [node name="Atlas2D" type="Node2D" parent="."]
 editor/display_folded = true
 
-[node name="FreeCam" parent="Atlas2D" instance=ExtResource( 3 )]
+[node name="FreeCam" parent="Atlas2D" instance=ExtResource( 6 )]
 position = Vector2( 498.693, 299.995 )
 current = true
 smoothing_enabled = true
 editor_draw_limits = true
 
 [node name="Map" type="Sprite" parent="Atlas2D"]
-texture = ExtResource( 4 )
+texture = ExtResource( 7 )
 
 [node name="AtlasUI" type="CanvasLayer" parent="."]
 editor/display_folded = true
@@ -198,7 +208,7 @@ layer = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-script = ExtResource( 5 )
+script = ExtResource( 8 )
 
 [node name="SubBar" type="HBoxContainer" parent="AtlasUI/AtlasPage"]
 editor/display_folded = true
@@ -212,7 +222,7 @@ theme = ExtResource( 2 )
 [node name="PanSpeed" type="HBoxContainer" parent="AtlasUI/AtlasPage/SubBar"]
 margin_right = 174.0
 margin_bottom = 24.0
-script = ExtResource( 6 )
+script = ExtResource( 9 )
 
 [node name="Label" type="Label" parent="AtlasUI/AtlasPage/SubBar/PanSpeed"]
 margin_top = 1.0

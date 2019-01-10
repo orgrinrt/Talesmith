@@ -19,6 +19,10 @@ config/name="Taleteller"
 run/main_scene="res://Assets/Scenes/Taleteller.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Iterator="*res://Assets/Scenes/Systems/Iterator.tscn"
+
 [input]
 
 cam_pan_right={
