@@ -1,24 +1,69 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Core/Base/App.cs" type="Script" id=1]
 [ext_resource path="res://Assets/Resources/Themes/Default.tres" type="Theme" id=2]
-[ext_resource path="res://Core/UI/Inspector/Inspector.cs" type="Script" id=3]
-[ext_resource path="res://Core/UI/Inspector/Pages/Atlas.cs" type="Script" id=4]
-[ext_resource path="res://Core/UI/Inspector/Dragger.cs" type="Script" id=5]
-[ext_resource path="res://Assets/Scenes/Cameras/FreeCam.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Assets/Graphics/Maps/vilirin_test1.png" type="Texture" id=7]
-[ext_resource path="res://Core/UI/Pages/Atlas/AtlasPage.cs" type="Script" id=8]
-[ext_resource path="res://Core/UI/Pages/Atlas/QuickSettings/PanSpeedField.cs" type="Script" id=9]
+[ext_resource path="res://Assets/Resources/Themes/PanelEmphasisColor.tres" type="Theme" id=3]
+[ext_resource path="res://Assets/Resources/Themes/StyleBoxFlatDefault.tres" type="StyleBox" id=4]
+[ext_resource path="res://Assets/Graphics/Icons/AppIconTemp.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Graphics/Icons/40x40/Quill.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Graphics/Icons/40x40/Wiki.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Graphics/Icons/40x40/Atlas.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Graphics/Icons/40x40/Timeline.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Graphics/Icons/40x40/Settings.png" type="Texture" id=10]
+[ext_resource path="res://Core/UI/Inspector/Inspector.cs" type="Script" id=11]
+[ext_resource path="res://Core/UI/Inspector/Pages/Atlas.cs" type="Script" id=12]
+[ext_resource path="res://Assets/Scenes/UI/Layers/LayerListItem.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Core/UI/Inspector/Dragger.cs" type="Script" id=14]
+[ext_resource path="res://Assets/Scenes/Cameras/FreeCam.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Assets/Graphics/Maps/vilirin_test1.png" type="Texture" id=16]
+[ext_resource path="res://Core/UI/Pages/Atlas/AtlasPage.cs" type="Script" id=17]
+[ext_resource path="res://Core/UI/Pages/Atlas/QuickSettings/PanSpeedField.cs" type="Script" id=18]
+
+[sub_resource type="StyleBoxFlat" id=4]
+
+content_margin_left = 6.0
+content_margin_right = 6.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0.184314, 0.172549, 0.164706, 0 )
+shadow_color = Color( 0, 0, 0, 0.129412 )
+
+[sub_resource type="Theme" id=3]
+
+Button/colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = null
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = null
+Button/styles/normal = ExtResource( 4 )
+Button/styles/pressed = SubResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=1]
+
+content_margin_left = 6.0
+content_margin_right = 6.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0.184314, 0.172549, 0.164706, 1 )
+shadow_color = Color( 0, 0, 0, 0.129412 )
+
+[sub_resource type="Theme" id=2]
+
+Panel/styles/panel = SubResource( 1 )
+Panel/styles/panelf = null
+Panel/styles/panelnc = null
 
 [node name="Taleteller" type="Node"]
 script = ExtResource( 1 )
 
 [node name="Foremost" type="CanvasLayer" parent="."]
-editor/display_folded = true
 layer = 99
 
 [node name="Topbar" type="Control" parent="Foremost"]
-editor/display_folded = true
 anchor_right = 1.0
 margin_left = 40.0
 margin_bottom = 20.0
@@ -27,8 +72,10 @@ theme = ExtResource( 2 )
 [node name="Panel" type="Panel" parent="Foremost/Topbar"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 3 )
 
 [node name="HBox" type="HBoxContainer" parent="Foremost/Topbar"]
+editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -79,7 +126,6 @@ caret_blink = true
 layer = 98
 
 [node name="Sidebar" type="Control" parent="Menus"]
-editor/display_folded = true
 anchor_bottom = 1.0
 margin_right = 40.0
 theme = ExtResource( 2 )
@@ -87,42 +133,81 @@ theme = ExtResource( 2 )
 [node name="Panel" type="Panel" parent="Menus/Sidebar"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 3 )
 
 [node name="VBox" type="VBoxContainer" parent="Menus/Sidebar"]
-editor/display_folded = true
 anchor_bottom = 1.0
 margin_right = 40.0
 rect_min_size = Vector2( 40, 0 )
+theme = SubResource( 3 )
 
-[node name="Home" type="Button" parent="Menus/Sidebar/VBox"]
+[node name="AppIcon" type="TextureButton" parent="Menus/Sidebar/VBox"]
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
-text = "H"
+texture_normal = ExtResource( 5 )
 
-[node name="Wiki" type="Button" parent="Menus/Sidebar/VBox"]
+[node name="Home" type="Button" parent="Menus/Sidebar/VBox"]
 margin_top = 44.0
 margin_right = 40.0
 margin_bottom = 84.0
 rect_min_size = Vector2( 40, 40 )
-text = "W"
+focus_mode = 0
+toggle_mode = true
+enabled_focus_mode = 0
+align = 0
 
-[node name="Atlas" type="Button" parent="Menus/Sidebar/VBox"]
+[node name="Icon" type="TextureRect" parent="Menus/Sidebar/VBox/Home"]
+modulate = Color( 0.113725, 0.0980392, 0.0784314, 1 )
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 6 )
+stretch_mode = 6
+
+[node name="Wiki" type="Button" parent="Menus/Sidebar/VBox"]
 margin_top = 88.0
 margin_right = 40.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 40, 40 )
-text = "A"
+focus_mode = 0
+toggle_mode = true
+enabled_focus_mode = 0
 
-[node name="Timelines" type="Button" parent="Menus/Sidebar/VBox"]
+[node name="Icon" type="TextureRect" parent="Menus/Sidebar/VBox/Wiki"]
+modulate = Color( 0.113725, 0.0980392, 0.0784314, 1 )
+texture = ExtResource( 7 )
+stretch_mode = 6
+
+[node name="Atlas" type="Button" parent="Menus/Sidebar/VBox"]
 margin_top = 132.0
 margin_right = 40.0
 margin_bottom = 172.0
 rect_min_size = Vector2( 40, 40 )
-text = "T"
+focus_mode = 0
+toggle_mode = true
+enabled_focus_mode = 0
+
+[node name="Icon" type="TextureRect" parent="Menus/Sidebar/VBox/Atlas"]
+modulate = Color( 0.113725, 0.0980392, 0.0784314, 1 )
+texture = ExtResource( 8 )
+stretch_mode = 6
+
+[node name="Timelines" type="Button" parent="Menus/Sidebar/VBox"]
+margin_top = 176.0
+margin_right = 40.0
+margin_bottom = 216.0
+rect_min_size = Vector2( 40, 40 )
+focus_mode = 0
+toggle_mode = true
+enabled_focus_mode = 0
+
+[node name="Icon" type="TextureRect" parent="Menus/Sidebar/VBox/Timelines"]
+modulate = Color( 0.113725, 0.0980392, 0.0784314, 1 )
+texture = ExtResource( 9 )
+stretch_mode = 6
 
 [node name="Filler" type="Control" parent="Menus/Sidebar/VBox"]
-margin_top = 176.0
+margin_top = 220.0
 margin_right = 40.0
 margin_bottom = 556.0
 rect_min_size = Vector2( 40, 40 )
@@ -134,7 +219,14 @@ margin_top = 560.0
 margin_right = 40.0
 margin_bottom = 600.0
 rect_min_size = Vector2( 40, 40 )
-text = "C"
+focus_mode = 0
+toggle_mode = true
+enabled_focus_mode = 0
+
+[node name="Icon" type="TextureRect" parent="Menus/Sidebar/VBox/Config"]
+modulate = Color( 0.113725, 0.0980392, 0.0784314, 1 )
+texture = ExtResource( 10 )
+stretch_mode = 6
 
 [node name="Inspector" type="Control" parent="Menus"]
 anchor_left = 1.0
@@ -144,34 +236,46 @@ margin_left = -225.0
 margin_top = 40.0
 rect_min_size = Vector2( 225, 0 )
 theme = ExtResource( 2 )
-script = ExtResource( 3 )
+script = ExtResource( 11 )
 
 [node name="Panel" type="Panel" parent="Menus/Inspector"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = SubResource( 2 )
 
 [node name="Atlas" type="Control" parent="Menus/Inspector"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 4 )
+script = ExtResource( 12 )
 
 [node name="TabContainer" type="TabContainer" parent="Menus/Inspector/Atlas"]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 tab_align = 0
 drag_to_rearrange_enabled = true
 
-[node name="Inspector" type="ScrollContainer" parent="Menus/Inspector/Atlas/TabContainer"]
+[node name="Layers" type="ScrollContainer" parent="Menus/Inspector/Atlas/TabContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 29.0
-margin_right = -5.0
-margin_bottom = -5.0
+margin_left = 6.0
+margin_top = 26.0
+margin_right = -6.0
+margin_bottom = -4.0
 scroll_horizontal_enabled = false
 
-[node name="Layers" type="ScrollContainer" parent="Menus/Inspector/Atlas/TabContainer"]
+[node name="LayerList" type="VBoxContainer" parent="Menus/Inspector/Atlas/TabContainer/Layers"]
+margin_right = 213.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+
+[node name="LayerListItem" parent="Menus/Inspector/Atlas/TabContainer/Layers/LayerList" instance=ExtResource( 13 )]
+anchor_right = 0.0
+margin_right = 213.0
+margin_bottom = 28.0
+
+[node name="Inspector" type="ScrollContainer" parent="Menus/Inspector/Atlas/TabContainer"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -186,32 +290,34 @@ anchor_bottom = 1.0
 margin_left = -3.0
 margin_right = 1.0
 mouse_default_cursor_shape = 10
-script = ExtResource( 5 )
+script = ExtResource( 14 )
 
 [node name="Atlas2D" type="Node2D" parent="."]
-editor/display_folded = true
 
-[node name="FreeCam" parent="Atlas2D" instance=ExtResource( 6 )]
+[node name="FreeCam" parent="Atlas2D" instance=ExtResource( 15 )]
 position = Vector2( 498.693, 299.995 )
 current = true
 smoothing_enabled = true
 editor_draw_limits = true
 
 [node name="Map" type="Sprite" parent="Atlas2D"]
-texture = ExtResource( 7 )
+texture = ExtResource( 16 )
+
+[node name="Layers" type="Node2D" parent="Atlas2D"]
+
+[node name="Default" type="Node2D" parent="Atlas2D/Layers"]
 
 [node name="AtlasUI" type="CanvasLayer" parent="."]
-editor/display_folded = true
 layer = 2
 
 [node name="AtlasPage" type="Control" parent="AtlasUI"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-script = ExtResource( 8 )
+theme = ExtResource( 2 )
+script = ExtResource( 17 )
 
 [node name="SubBar" type="HBoxContainer" parent="AtlasUI/AtlasPage"]
-editor/display_folded = true
 anchor_right = 1.0
 margin_left = 45.0
 margin_top = 40.0
@@ -222,7 +328,7 @@ theme = ExtResource( 2 )
 [node name="PanSpeed" type="HBoxContainer" parent="AtlasUI/AtlasPage/SubBar"]
 margin_right = 174.0
 margin_bottom = 24.0
-script = ExtResource( 9 )
+script = ExtResource( 18 )
 
 [node name="Label" type="Label" parent="AtlasUI/AtlasPage/SubBar/PanSpeed"]
 margin_top = 1.0
@@ -236,6 +342,7 @@ margin_right = 174.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_vertical = 3
+theme = ExtResource( 2 )
 max_value = 50.0
 step = 5.0
 value = 20.0
