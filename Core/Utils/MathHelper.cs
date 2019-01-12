@@ -1,6 +1,6 @@
 ﻿using Godot;
 
-namespace Taleteller.Core.Utils
+namespace Talesmith.Core.Utils
 {
     public class MathHelper
     {

@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Taleteller.Core.Utils;
+using Talesmith.Core.Utils;
 
-namespace Taleteller.Core.LocalData
+namespace Talesmith.Core.LocalData
 {
     public class Directories
     {

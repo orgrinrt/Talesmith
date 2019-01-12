@@ -1,7 +1,7 @@
 ﻿using Godot;
-using Taleteller.Core.Constants;
+using Talesmith.Core.Constants;
 
-namespace Taleteller.Core.UI.Pages
+namespace Talesmith.Core.UI.Pages
 {
     public class Page : Control
     {

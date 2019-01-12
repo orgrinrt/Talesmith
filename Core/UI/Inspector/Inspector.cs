@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Godot;
 
-namespace Taleteller.Core.UI.Inspector
+namespace Talesmith.Core.UI.Inspector
 {
     public class Inspector : Control
     {

@@ -2,7 +2,7 @@
 using Godot;
 using Godot.Collections;
 
-namespace Taleteller.Core.Utils
+namespace Talesmith.Core.Utils
 {
     public class Files
     {

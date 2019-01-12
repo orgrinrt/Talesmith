@@ -27,7 +27,7 @@ SOFTWARE.
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Taleteller.Core.Utils
+namespace Talesmith.Core.Utils
 {
     /// <summary>
     /// A container for running multiple routines in parallel. Coroutines can be nested.

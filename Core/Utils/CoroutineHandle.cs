@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace Taleteller.Core.Utils
+namespace Talesmith.Core.Utils
 {
     /// <summary>
     /// A handle to a (potentially running) coroutine.

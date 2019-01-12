@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Taleteller.Core.Utils.Console
+namespace Talesmith.Core.Utils.Console
 {
     public class Console
     {

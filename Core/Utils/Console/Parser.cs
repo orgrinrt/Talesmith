@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Godot;
 
-namespace Taleteller.Core.Utils.Console
+namespace Talesmith.Core.Utils.Console
 {
     public class Parser
     {

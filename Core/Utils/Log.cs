@@ -6,7 +6,7 @@ using Directory = System.IO.Directory;
 using Path = System.IO.Path;
 using Timer = System.Timers.Timer;
 
-namespace Taleteller.Core.Utils
+namespace Talesmith.Core.Utils
 {
     public class Log
     {

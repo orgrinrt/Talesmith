@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Godot;
 
-namespace Taleteller.Core.Utils
+namespace Talesmith.Core.Utils
 {
     public static class Helpers
     {

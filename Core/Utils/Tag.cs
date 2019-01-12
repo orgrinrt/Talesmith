@@ -1,4 +1,4 @@
-﻿namespace Taleteller.Core.Utils
+﻿namespace Talesmith.Core.Utils
 {
     public enum Tag
     {

@@ -1,4 +1,4 @@
-﻿namespace Taleteller.Core.UI.Inspector.Pages
+﻿namespace Talesmith.Core.UI.Inspector.Pages
 {
     public class Atlas : InspectorPage
     {

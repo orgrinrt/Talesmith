@@ -1,4 +1,4 @@
-﻿namespace Taleteller.Core.Constants
+﻿namespace Talesmith.Core.Constants
 {
     public class Groups
     {

@@ -1,7 +1,7 @@
 ﻿using Godot;
-using Taleteller.Core.Constants;
+using Talesmith.Core.Constants;
 
-namespace Taleteller.Core.Viewports.Cameras
+namespace Talesmith.Core.Viewports.Cameras
 {
     public class Camera : Camera2D
     {

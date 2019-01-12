@@ -1,7 +1,7 @@
 ﻿using Godot;
 using Path = System.IO.Path;
 
-namespace Taleteller.Core.Utils
+namespace Talesmith.Core.Utils
 {
     public class Paths
     {

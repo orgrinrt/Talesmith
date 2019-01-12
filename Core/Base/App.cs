@@ -1,6 +1,6 @@
 using Godot;
 
-namespace Taleteller.Core
+namespace Talesmith.Core
 {
     public class App : Node
     {

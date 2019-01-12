@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{86D66C02-4E65-4B43-A5CD-A3C9033727E0}</ProjectGuid>
+    <ProjectGuid>{CDEB75A0-A7B5-4E22-AC97-6FB270B6F9ED}</ProjectGuid>
     <OutputType>Library</OutputType>
     <OutputPath>.mono\temp\bin\$(Configuration)</OutputPath>
-    <RootNamespace>Taleteller</RootNamespace>
-    <AssemblyName>Taleteller</AssemblyName>
+    <RootNamespace>Talesmith</RootNamespace>
+    <AssemblyName>Talesmith</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <BaseIntermediateOutputPath>.mono\temp\obj</BaseIntermediateOutputPath>
     <IntermediateOutputPath>$(BaseIntermediateOutputPath)\$(Configuration)</IntermediateOutputPath>

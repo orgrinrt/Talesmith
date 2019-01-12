@@ -1,6 +1,6 @@
 ﻿using Godot;
 
-namespace Taleteller.Core.UI.Inspector
+namespace Talesmith.Core.UI.Inspector
 {
     public class InspectorPage : Control
     {

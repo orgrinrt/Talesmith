@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using Godot;
-using Taleteller.Core.Systems;
-using Taleteller.Core.Utils;
+using Talesmith.Core.Systems;
 
-namespace Taleteller.Core.UI.Inspector
+namespace Talesmith.Core.UI.Inspector
 {
     public class Dragger : Control
     {

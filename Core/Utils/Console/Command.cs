@@ -1,4 +1,4 @@
-﻿namespace Taleteller.Core.Utils.Console
+﻿namespace Talesmith.Core.Utils.Console
 {
     public class Command
     {

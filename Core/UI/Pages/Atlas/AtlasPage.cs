@@ -1,6 +1,6 @@
-using Taleteller.Core.Viewports.Cameras;
+using Talesmith.Core.Viewports.Cameras;
 
-namespace Taleteller.Core.UI.Pages.Atlas
+namespace Talesmith.Core.UI.Pages.Atlas
 {
     public class AtlasPage : Page
     {

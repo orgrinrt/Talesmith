@@ -1,7 +1,7 @@
 using Godot;
-using Taleteller.Core.Utils;
+using Talesmith.Core.Utils;
 
-namespace Taleteller.Core.Systems
+namespace Talesmith.Core.Systems
 {
     public class Iterator : Node
     {

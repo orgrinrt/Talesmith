@@ -1,6 +1,6 @@
 using Godot;
 
-namespace Taleteller.Core.Viewports.Cameras
+namespace Talesmith.Core.Viewports.Cameras
 {
     public class FreeCamera : Camera
     {
