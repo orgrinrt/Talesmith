@@ -25,10 +25,6 @@ config/icon="res://Assets/Graphics/Icons/AppIconTemp.png"
 
 Iterator="*res://Assets/Scenes/Systems/Iterator.tscn"
 
-[gui]
-
-theme/custom="res://Assets/Resources/Themes/Default.tres"
-
 [input]
 
 ui_accept={
