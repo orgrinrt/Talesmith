@@ -31,6 +31,10 @@ config/icon="res://Assets/Graphics/Icons/AppIconTemp.png"
 Iterator="*res://Assets/Scenes/Systems/Iterator.tscn"
 App="*res://Assets/Scenes/App.tscn"
 
+[editor_plugins]
+
+enabled=PoolStringArray( "ResourceTypes" )
+
 [input]
 
 ui_accept={

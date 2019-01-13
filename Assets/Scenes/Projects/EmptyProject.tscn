@@ -1,17 +1,20 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Core/LocalData/Project.cs" type="Script" id=1]
 [ext_resource path="res://Assets/Scenes/Cameras/FreeCam.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Graphics/Maps/vilirin_test1.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Resources/Themes/Default.tres" type="Theme" id=4]
-[ext_resource path="res://Core/UI/Pages/Atlas/AtlasPage.cs" type="Script" id=5]
-[ext_resource path="res://Core/UI/Pages/Atlas/QuickSettings/PanSpeedField.cs" type="Script" id=6]
-
+[ext_resource path="res://Core/UI/Pages/PageController.cs" type="Script" id=4]
+[ext_resource path="res://Assets/Resources/Themes/Default.tres" type="Theme" id=5]
+[ext_resource path="res://Core/UI/Pages/Atlas/AtlasPage.cs" type="Script" id=6]
+[ext_resource path="res://Core/UI/Pages/Atlas/QuickSettings/PanSpeedField.cs" type="Script" id=7]
+[ext_resource path="res://Core/UI/Pages/WorldConfig/ConfigPage.cs" type="Script" id=8]
+[ext_resource path="res://Assets/Resources/Themes/PanelEmphasisColor.tres" type="Theme" id=9]
 
 [node name="Project" type="Node"]
 script = ExtResource( 1 )
 
 [node name="Atlas2D" type="Node2D" parent="."]
+visible = false
 
 [node name="FreeCam" parent="Atlas2D" instance=ExtResource( 2 )]
 position = Vector2( 498.693, 299.995 )
@@ -26,42 +29,51 @@ texture = ExtResource( 3 )
 
 [node name="Default" type="Node2D" parent="Atlas2D/Layers"]
 
-[node name="AtlasUI" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="."]
 layer = 2
 
-[node name="AtlasPage" type="Control" parent="AtlasUI"]
+[node name="Pages" type="Control" parent="UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 40.0
+script = ExtResource( 4 )
+
+[node name="AtlasPage" type="Control" parent="UI/Pages"]
+editor/display_folded = true
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-theme = ExtResource( 4 )
-script = ExtResource( 5 )
-
-[node name="SubBar" type="HBoxContainer" parent="AtlasUI/AtlasPage"]
-anchor_right = 1.0
-margin_left = 42.0
-margin_top = 40.0
-margin_right = -225.0
-margin_bottom = 64.0
-theme = ExtResource( 4 )
-
-[node name="PanSpeed" type="HBoxContainer" parent="AtlasUI/AtlasPage/SubBar"]
-margin_right = 174.0
-margin_bottom = 24.0
+theme = ExtResource( 5 )
 script = ExtResource( 6 )
 
-[node name="Label" type="Label" parent="AtlasUI/AtlasPage/SubBar/PanSpeed"]
-margin_top = 1.0
+[node name="SubBar" type="HBoxContainer" parent="UI/Pages/AtlasPage"]
+editor/display_folded = true
+anchor_right = 1.0
+margin_left = 42.0
+margin_right = -225.0
+margin_bottom = 64.0
+theme = ExtResource( 5 )
+
+[node name="PanSpeed" type="HBoxContainer" parent="UI/Pages/AtlasPage/SubBar"]
+editor/display_folded = true
+margin_right = 174.0
+margin_bottom = 22.0
+size_flags_vertical = 0
+script = ExtResource( 7 )
+
+[node name="Label" type="Label" parent="UI/Pages/AtlasPage/SubBar/PanSpeed"]
 margin_right = 70.0
-margin_bottom = 23.0
+margin_bottom = 22.0
 text = "PanSpeed"
 
-[node name="HSlider" type="HSlider" parent="AtlasUI/AtlasPage/SubBar/PanSpeed"]
+[node name="HSlider" type="HSlider" parent="UI/Pages/AtlasPage/SubBar/PanSpeed"]
 margin_left = 74.0
 margin_right = 174.0
-margin_bottom = 24.0
+margin_bottom = 22.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_vertical = 3
-theme = ExtResource( 4 )
+theme = ExtResource( 5 )
 max_value = 50.0
 step = 5.0
 value = 20.0
@@ -69,10 +81,52 @@ rounded = true
 tick_count = 11
 ticks_on_borders = true
 
-[node name="Filler" type="Control" parent="AtlasUI/AtlasPage/SubBar"]
+[node name="Filler" type="Control" parent="UI/Pages/AtlasPage/SubBar"]
 margin_left = 178.0
 margin_right = 757.0
-margin_bottom = 24.0
+margin_bottom = 64.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="ConfigPage" type="Control" parent="UI/Pages"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 5 )
+script = ExtResource( 8 )
+
+[node name="Panel" type="Panel" parent="UI/Pages/ConfigPage"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 9 )
+
+[node name="MarginContainer" type="HBoxContainer" parent="UI/Pages/ConfigPage"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 50.0
+margin_top = 50.0
+margin_right = -50.0
+margin_bottom = -50.0
+
+[node name="SidePanel" type="Container" parent="UI/Pages/ConfigPage/MarginContainer"]
+margin_right = 230.0
+margin_bottom = 460.0
+rect_min_size = Vector2( 230, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="List" type="VBoxContainer" parent="UI/Pages/ConfigPage/MarginContainer/SidePanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Button" type="Button" parent="UI/Pages/ConfigPage/MarginContainer/SidePanel/List"]
+margin_right = 230.0
+margin_bottom = 22.0
+
+[node name="Content" type="Container" parent="UI/Pages/ConfigPage/MarginContainer"]
+margin_left = 234.0
+margin_right = 924.0
+margin_bottom = 460.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 10.0
 

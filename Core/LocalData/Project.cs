@@ -1,10 +1,17 @@
 using Godot;
-using System;
 
-public class Project : Node
+namespace Talesmith.Core.LocalData
 {
-    public override void _Ready()
+    public class Project : Node
     {
-        
+        public static Project Self;
+    
+        public override void _Ready()
+        {
+            if (Self == null)
+            {
+                Self = this;
+            }
+        }
     }
 }

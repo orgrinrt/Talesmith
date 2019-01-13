@@ -41,6 +41,7 @@ namespace Talesmith.Core.UI.Inspector
         {
             _isHandling = true;
             Inspector inspector = GetInspector();
+            Control pageParent = GetPageParent();
             while (true)
             {
                 float dist = (RectGlobalPosition.x - GetGlobalMousePosition().x);
@@ -53,6 +54,8 @@ namespace Talesmith.Core.UI.Inspector
                 {
                     inspector.MarginLeft = _inspectorMaxSize;
                 }
+
+                pageParent.MarginRight = inspector.MarginLeft;
                 
                 if (!Input.IsMouseButtonPressed(1) || _isHandling == false)
                 {
@@ -92,6 +95,11 @@ namespace Talesmith.Core.UI.Inspector
         private Inspector GetInspector()
         {
             return GetNode<Inspector>("..");
+        }
+
+        private Control GetPageParent()
+        {
+            return App.Self.GetProject().GetNode<Control>("./UI/Pages");
         }
     }
 }

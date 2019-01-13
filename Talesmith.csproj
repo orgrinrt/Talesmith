@@ -49,6 +49,7 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Addons\ResourceTypes\AppPrefs.cs" />
     <Compile Include="Core\Base\App.cs" />
     <Compile Include="Core\Base\Constants\Groups.cs" />
     <Compile Include="Core\Base\Constants\NodePaths.cs" />
@@ -64,6 +65,9 @@
     <Compile Include="Core\UI\Pages\Atlas\AtlasPage.cs" />
     <Compile Include="Core\UI\Pages\Atlas\QuickSettings\PanSpeedField.cs" />
     <Compile Include="Core\UI\Pages\Page.cs" />
+    <Compile Include="Core\UI\Pages\PageController.cs" />
+    <Compile Include="Core\UI\Pages\PageEnum.cs" />
+    <Compile Include="Core\UI\Pages\WorldConfig\ConfigPage.cs" />
     <Compile Include="Core\Utils\BitHelper.cs" />
     <Compile Include="Core\Utils\CollisionGroup.cs" />
     <Compile Include="Core\Utils\CollisionLayer.cs" />
@@ -89,6 +93,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Addons\ResourceTypes" />
     <Folder Include="Core\Base\Resources" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

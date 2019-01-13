@@ -1,4 +1,5 @@
 using Godot;
+using Talesmith.Core.UI.Pages;
 
 namespace Talesmith.Core.UI.Menus
 {
@@ -11,6 +12,19 @@ namespace Talesmith.Core.UI.Menus
         public override void _Ready()
         {
             GetAppIcon().Connect("button_up", this, nameof(OnAppIconPressed));
+
+            GetNode("./Menu/Atlas").Connect("button_up", this, nameof(OnAtlasPressed));
+            GetNode("./Menu/Config").Connect("button_up", this, nameof(OnConfigPressed));
+        }
+
+        private void OnAtlasPressed()
+        {
+            App.Self.GetPageController().ChangePage(PageEnum.Atlas);
+        }
+
+        private void OnConfigPressed()
+        {
+            App.Self.GetPageController().ChangePage(PageEnum.WorldConfig);
         }
 
         private void OnAppIconPressed()

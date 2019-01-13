@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Godot;
+using Talesmith.Core.UI.Pages;
 using Environment = System.Environment;
 using Path = System.IO.Path;
 
@@ -7,26 +8,30 @@ namespace Talesmith.Core.UI.Inspector
 {
     public class Inspector : Control
     {
+        private bool _showing = true;
+        private float _showingSpeed = 0.5f;
+        
         public override void _Ready()
         {
-            
+            CallDeferred(nameof(InitConnections));
         }
 
-        public void OpenPage(InspectorPageEnum page)
+        public void OpenPage(Page page)
         {
-            switch (page)
+            switch (page.PageEnum)
             {
-                case InspectorPageEnum.Atlas:
+                case PageEnum.Atlas:
                     HidePages();
                     GetAtlasPage().Show();
+                    break;
+                case PageEnum.WorldConfig:
+                    HideInspector();
                     break;
             }
         }
 
         private void HidePages()
         {
-            List<InspectorPage> Pages = new List<InspectorPage>();
-
             foreach (Node node in GetChildren())
             {
                 if (node is InspectorPage page)
@@ -34,6 +39,41 @@ namespace Talesmith.Core.UI.Inspector
                     page.Hide();
                 }
             }
+        }
+
+        private void HideInspector()
+        {
+            if (_showing)
+            {
+                GetTween().InterpolateProperty(
+                    this,
+                    "rect_position",
+                    RectGlobalPosition,
+                    new Vector2(GetTree().GetRoot().Size.x + 1, RectGlobalPosition.y),
+                    _showingSpeed,
+                    Tween.TransitionType.Cubic,
+                    Tween.EaseType.Out);
+                GetTween().Start();
+                _showing = false;
+            }
+            else
+            {
+                GetTween().InterpolateProperty(
+                    this,
+                    "rect_position",
+                    RectGlobalPosition,
+                    new Vector2(GetTree().GetRoot().Size.x + MarginLeft, RectGlobalPosition.y),
+                    _showingSpeed,
+                    Tween.TransitionType.Cubic,
+                    Tween.EaseType.Out);
+                GetTween().Start();
+                _showing = true;
+            }
+        }
+
+        private void InitConnections()
+        {
+            App.Self.Connect(nameof(App.MainPageChanged), this, nameof(OpenPage));
         }
 
         private InspectorPage GetAtlasPage()
@@ -45,10 +85,10 @@ namespace Talesmith.Core.UI.Inspector
         {
             return GetNode<Dragger>("./Dragger");
         }
-    }
 
-    public enum InspectorPageEnum
-    {
-        Atlas
+        private Tween GetTween()
+        {
+            return GetNode<Tween>("./Tween");
+        }
     }
 }
