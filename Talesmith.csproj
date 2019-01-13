@@ -54,6 +54,7 @@
     <Compile Include="Core\Base\Constants\NodePaths.cs" />
     <Compile Include="Core\Base\Constants\ResPaths.cs" />
     <Compile Include="Core\LocalData\Directories.cs" />
+    <Compile Include="Core\LocalData\Project.cs" />
     <Compile Include="Core\Systems\Iterator.cs" />
     <Compile Include="Core\UI\Inspector\Dragger.cs" />
     <Compile Include="Core\UI\Inspector\Inspector.cs" />
@@ -86,6 +87,9 @@
     <Compile Include="Core\Viewports\Cameras\Camera.cs" />
     <Compile Include="Core\Viewports\Cameras\FreeCamera.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Core\Base\Resources" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

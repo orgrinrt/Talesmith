@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using Godot;
+using Environment = System.Environment;
+using Path = System.IO.Path;
 
 namespace Talesmith.Core.UI.Inspector
 {

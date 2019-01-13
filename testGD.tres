@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://ResourceTypes/TestingResource.gd" type="Script" id=1]
+
+[resource]
+
+script = ExtResource( 1 )
+Name = "NameHere"
+Age = 69
+Whatever = true
+Later = "ok ok ok"
+NightyNight = "huh"
+
