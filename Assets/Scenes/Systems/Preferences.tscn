@@ -2,10 +2,10 @@
 
 [ext_resource path="res://Core/Systems/Preferences.cs" type="Script" id=1]
 [ext_resource path="res://Data/Preferences/ViewPrefs.tres" type="Resource" id=2]
-[ext_resource path="res://Data/Preferences/AppPrefs.tres" type="Resource" id=3]
+[ext_resource path="res://Data/Preferences/AppearancePrefs.tres" type="Resource" id=3]
 
 [node name="Preferences" type="Node"]
 script = ExtResource( 1 )
 ViewPreferences = ExtResource( 2 )
-AppPreferences = ExtResource( 3 )
+AppearancePreferences = ExtResource( 3 )
 

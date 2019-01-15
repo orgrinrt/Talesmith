@@ -32,8 +32,11 @@ namespace Talesmith.Core.UI.Pages.Atlas
                     }
                     break;
                 case NotificationMouseEnter:
-                    GD.Print("GRAB FOCUS");
                     GrabFocus();
+                    GetFreeCamera().SetPanningLocked(false);
+                    break;
+                case NotificationMouseExit:
+                    GetFreeCamera().SetPanningLocked(true);
                     break;
             }
         }

@@ -16,10 +16,13 @@ namespace Talesmith.Core.UI.Inspector
             
             Connect("mouse_entered", this, nameof(OnMouseEnter));
             Connect("mouse_exited", this, nameof(OnMouseExit));
+            CallDeferred(nameof(DeferredInit));
+            SetFocusMode(FocusModeEnum.All);
         }
 
         private IEnumerator<float> MonitorForClick()
         {
+            GrabFocus();
             while (true)
             {
                 if (Input.IsMouseButtonPressed(1) && !_isHandling)
@@ -75,6 +78,14 @@ namespace Talesmith.Core.UI.Inspector
             }
         }
 
+        private void OnInspectorToggled(bool visible)
+        {
+            if (!visible)
+            {
+                GetPageParent().MarginRight = 0;
+            }
+        }
+
         private void OnMouseEnter()
         {
             if (!Iterator.Coroutine.IsRunning(MonitorForClick()))
@@ -90,6 +101,11 @@ namespace Talesmith.Core.UI.Inspector
             {
                 Iterator.Coroutine.Stop(MonitorForClick());
             }
+        }
+
+        private void DeferredInit()
+        {
+            App.Self.Preferences.Connect(nameof(Preferences.InspectorToggled), this, nameof(OnInspectorToggled));
         }
 
         private Inspector GetInspector()

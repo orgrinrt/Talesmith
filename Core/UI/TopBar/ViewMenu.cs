@@ -1,6 +1,8 @@
 using Godot;
 using System;
 using Talesmith.Core;
+using Talesmith.Core.Utils;
+using Array = Godot.Collections.Array;
 
 public class ViewMenu : MenuButton
 {
@@ -9,9 +11,23 @@ public class ViewMenu : MenuButton
         GetPopup().AddCheckItem("Inspector");
         GetPopup().AddCheckItem("Big Icons");
 
+        Array actionlist = InputMap.GetActionList("inspector_toggle");
+        InputEventKey key = (InputEventKey)actionlist[0];
+        GetPopup().SetItemAccelerator(0, key.GetScancodeWithModifiers());
+
         GetPopup().Connect("index_pressed", this, nameof(OnItemPressed)); // returns the INDEX of the item pressed
         
         CallDeferred(nameof(SetValues));
+        
+        foreach (Godot.Object item in actionlist)
+        {
+            GD.Print(item.GetClass());
+            GD.Print(item);
+            InputEventKey eventKey = (InputEventKey) item;
+            
+            GD.Print(eventKey.GetScancodeWithModifiers());
+            GD.Print((int)KeyList.I + (int)KeyModifierMask.MaskCtrl);
+        }
     }
 
     private void OnItemPressed(int index)

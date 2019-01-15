@@ -13,7 +13,7 @@ namespace Talesmith.Core.UI.Inspector
         
         public override void _Ready()
         {
-            CallDeferred(nameof(InitConnections));
+            CallDeferred(nameof(DeferredInit));
         }
 
         public void OpenPage(Page page)
@@ -25,7 +25,7 @@ namespace Talesmith.Core.UI.Inspector
                     GetAtlasPage().Show();
                     break;
                 case PageEnum.WorldConfig:
-                    ToggleInspector(false); // note that the bool here is just to accomodate the InspectorToggled signal from ViewPrefs (we dont use it here)
+                    
                     break;
             }
         }
@@ -71,10 +71,17 @@ namespace Talesmith.Core.UI.Inspector
             }
         }
 
-        private void InitConnections()
+        private void DeferredInit()
         {
             App.Self.Connect(nameof(App.MainPageChanged), this, nameof(OpenPage));
             App.Self.Preferences.Connect(nameof(Preferences.InspectorToggled), this, nameof(ToggleInspector));
+            _showingSpeed = (float) App.Self.Preferences.AppearancePreferences.Get("ui_animation_speed");
+            App.Self.Preferences.Connect(nameof(Preferences.AnimationSpeedChanged), this, nameof(OnAnimationSpeedChanged));
+        }
+
+        private void OnAnimationSpeedChanged(float newSpeed)
+        {
+            _showingSpeed = newSpeed;
         }
 
         private InspectorPage GetAtlasPage()

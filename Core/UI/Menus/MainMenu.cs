@@ -7,7 +7,7 @@ namespace Talesmith.Core.UI.Menus
     {
         private bool _showing = false;
         private Vector2 _showingPos = new Vector2(0, 40);
-        private float _showingSpeed = 0.8f;
+        private float _showingSpeed = 0.5f;
     
         public override void _Ready()
         {
@@ -15,6 +15,8 @@ namespace Talesmith.Core.UI.Menus
 
             GetNode("./Menu/Atlas").Connect("button_up", this, nameof(OnAtlasPressed));
             GetNode("./Menu/Config").Connect("button_up", this, nameof(OnConfigPressed));
+            
+            CallDeferred(nameof(DeferredInit));
         }
 
         private void OnAtlasPressed()
@@ -57,6 +59,17 @@ namespace Talesmith.Core.UI.Menus
                 GetTween().Start();
                 _showing = true;
             }
+        }
+
+        private void DeferredInit()
+        {
+            _showingSpeed = (float) App.Self.Preferences.AppearancePreferences.Get("ui_animation_speed");
+            App.Self.Preferences.Connect(nameof(Preferences.AnimationSpeedChanged), this, nameof(OnAnimationSpeedChanged));
+        }
+
+        private void OnAnimationSpeedChanged(float newSpeed)
+        {
+            _showingSpeed = newSpeed;
         }
 
         private TextureButton GetAppIcon()
