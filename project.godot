@@ -8,14 +8,9 @@
 
 config_version=4
 
-_global_script_classes=[ {
-"base": "Resource",
-"class": "TestingResource",
-"language": "GDScript",
-"path": "res://ResourceTypes/TestingResource.gd"
-} ]
+_global_script_classes=[  ]
 _global_script_class_icons={
-"TestingResource": ""
+
 }
 
 [application]
@@ -28,6 +23,7 @@ config/icon="res://Assets/Graphics/Icons/AppIconTemp.png"
 
 [autoload]
 
+Preferences="*res://Assets/Scenes/Systems/Preferences.tscn"
 Iterator="*res://Assets/Scenes/Systems/Iterator.tscn"
 App="*res://Assets/Scenes/App.tscn"
 

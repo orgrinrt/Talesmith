@@ -25,7 +25,7 @@ namespace Talesmith.Core.UI.Inspector
                     GetAtlasPage().Show();
                     break;
                 case PageEnum.WorldConfig:
-                    HideInspector();
+                    ToggleInspector(false); // note that the bool here is just to accomodate the InspectorToggled signal from ViewPrefs (we dont use it here)
                     break;
             }
         }
@@ -41,7 +41,7 @@ namespace Talesmith.Core.UI.Inspector
             }
         }
 
-        private void HideInspector()
+        public void ToggleInspector(bool visible)
         {
             if (_showing)
             {
@@ -62,7 +62,7 @@ namespace Talesmith.Core.UI.Inspector
                     this,
                     "rect_position",
                     RectGlobalPosition,
-                    new Vector2(GetTree().GetRoot().Size.x + MarginLeft, RectGlobalPosition.y),
+                    new Vector2(GetTree().GetRoot().Size.x - RectSize.x, RectGlobalPosition.y),
                     _showingSpeed,
                     Tween.TransitionType.Cubic,
                     Tween.EaseType.Out);
@@ -74,6 +74,7 @@ namespace Talesmith.Core.UI.Inspector
         private void InitConnections()
         {
             App.Self.Connect(nameof(App.MainPageChanged), this, nameof(OpenPage));
+            App.Self.Preferences.Connect(nameof(Preferences.InspectorToggled), this, nameof(ToggleInspector));
         }
 
         private InspectorPage GetAtlasPage()

@@ -1,4 +1,5 @@
 using Godot;
+using Talesmith.Core.Constants;
 using Talesmith.Core.LocalData;
 using Talesmith.Core.UI.Pages;
 
@@ -12,6 +13,7 @@ namespace Talesmith.Core
         
         public PageController PageController => GetPageController();
         public Project Project => GetProject();
+        public Preferences Preferences => GetPreferences();
         
         public override void _Ready()
         {
@@ -30,6 +32,11 @@ namespace Talesmith.Core
         public PageController GetPageController()
         {
             return GetProject().GetNode<PageController>("./UI/Pages");
+        }
+
+        public Preferences GetPreferences()
+        {
+            return GetNode<Preferences>(NodePaths.Preferences);
         }
     }
 }
