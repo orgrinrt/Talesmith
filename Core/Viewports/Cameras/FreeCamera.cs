@@ -55,9 +55,9 @@ namespace Talesmith.Core.Viewports.Cameras
             }
         }
 
-        public override void _UnhandledInput(InputEvent inputEvent)
+        public override void _Input(InputEvent inputEvent)
         {
-            base._UnhandledInput(inputEvent);
+            base._Input(inputEvent);
 
             if (!IsPanningBlocked)
             {
