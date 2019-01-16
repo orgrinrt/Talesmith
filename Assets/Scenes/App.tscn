@@ -68,7 +68,7 @@ Button/styles/hover = null
 Button/styles/normal = SubResource( 3 )
 Button/styles/pressed = SubResource( 4 )
 
-[node name="Taleteller" type="Node"]
+[node name="App" type="Node"]
 script = ExtResource( 1 )
 
 [node name="Popups" type="CanvasLayer" parent="."]
@@ -236,6 +236,7 @@ caret_blink = true
 layer = 98
 
 [node name="MainMenu" type="Container" parent="Menus"]
+editor/display_folded = true
 margin_top = -185.0
 margin_right = 40.0
 margin_bottom = 40.0

@@ -19,6 +19,16 @@ namespace Talesmith.Core.UI.Menus
             CallDeferred(nameof(DeferredInit));
         }
 
+        public override void _Input(InputEvent @event)
+        {
+            base._Input(@event);
+
+            if (@event.IsActionPressed("main_menu_toggle") || @event.IsActionPressed("ui_home"))
+            {
+                OnAppIconPressed();
+            }
+        }
+
         private void OnAtlasPressed()
         {
             App.Self.GetPageController().ChangePage(PageEnum.Atlas);

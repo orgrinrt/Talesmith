@@ -72,15 +72,18 @@ namespace Talesmith.Core.Viewports.Cameras
                         _isMouseDragging = false;
                     }
                 }
-                else
+                else if (inputEvent is InputEventKey key)
                 {
-                    if (inputEvent.IsActionPressed("cam_pan_toggle"))
+                    if (!key.Control) // maybe later on we also want to check for shift/alt states too
                     {
-                        _isMouseDragging = true;
-                    }
-                    else if (inputEvent.IsActionReleased("cam_pan_toggle"))
-                    {
-                        _isMouseDragging = false;
+                        if (inputEvent.IsActionPressed("cam_pan_toggle"))
+                        {
+                            _isMouseDragging = true;
+                        }
+                        else if (inputEvent.IsActionReleased("cam_pan_toggle"))
+                        {
+                            _isMouseDragging = false;
+                        }
                     }
                 }
 
