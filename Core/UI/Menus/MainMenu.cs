@@ -13,8 +13,8 @@ namespace Talesmith.Core.UI.Menus
         {
             GetAppIcon().Connect("button_up", this, nameof(OnAppIconPressed));
 
-            GetNode("./Menu/Atlas").Connect("button_up", this, nameof(OnAtlasPressed));
-            GetNode("./Menu/Config").Connect("button_up", this, nameof(OnConfigPressed));
+            GetAtlasButton().Connect("button_up", this, nameof(OnAtlasPressed));
+            GetConfigButton().Connect("button_up", this, nameof(OnConfigPressed));
             
             CallDeferred(nameof(DeferredInit));
         }
@@ -31,11 +31,15 @@ namespace Talesmith.Core.UI.Menus
 
         private void OnAtlasPressed()
         {
+            UnpressAllMenuItems();
+            GetAtlasButton().Pressed = false;
             App.Self.GetPageController().ChangePage(PageEnum.Atlas);
         }
 
         private void OnConfigPressed()
         {
+            UnpressAllMenuItems();
+            GetConfigButton().Pressed = false;
             App.Self.GetPageController().ChangePage(PageEnum.WorldConfig);
         }
 
@@ -47,7 +51,7 @@ namespace Talesmith.Core.UI.Menus
                     this,
                     "rect_position",
                     RectGlobalPosition,
-                    _showingPos - new Vector2(0, RectSize.y),
+                    _showingPos - new Vector2(0, RectSize.y + 5),
                     _showingSpeed,
                     Tween.TransitionType.Cubic,
                     Tween.EaseType.Out
@@ -71,6 +75,17 @@ namespace Talesmith.Core.UI.Menus
             }
         }
 
+        private void UnpressAllMenuItems()
+        {
+            foreach (Node node in GetNode("./Menu").GetChildren())
+            {
+                if (node is Button button)
+                {
+                    button.Pressed = false;
+                }
+            }
+        }
+
         private void DeferredInit()
         {
             _showingSpeed = (float) App.Self.Preferences.AppearancePreferences.Get("ui_animation_speed");
@@ -90,6 +105,16 @@ namespace Talesmith.Core.UI.Menus
         private Tween GetTween()
         {
             return GetNode<Tween>("./Tween");
+        }
+
+        private Button GetAtlasButton()
+        {
+            return GetNode<Button>("./Menu/Atlas");
+        }
+
+        private Button GetConfigButton()
+        {
+            return GetNode<Button>("./Menu/Config");
         }
     }
 }

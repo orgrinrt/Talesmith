@@ -8,6 +8,7 @@ content_margin_top = 4.0
 content_margin_bottom = 4.0
 bg_color = Color( 0.121569, 0.117647, 0.117647, 1 )
 shadow_color = Color( 0, 0, 0, 0.129412 )
+shadow_size = 5
 
 [resource]
 

@@ -27,6 +27,7 @@ content_margin_top = 4.0
 content_margin_bottom = 4.0
 bg_color = Color( 0.184314, 0.172549, 0.164706, 1 )
 shadow_color = Color( 0, 0, 0, 0.129412 )
+shadow_size = 5
 
 [sub_resource type="Theme" id=2]
 
@@ -83,29 +84,8 @@ margin_bottom = 530.098
 [node name="Top" type="CanvasLayer" parent="."]
 layer = 99
 
-[node name="PageBar" type="Control" parent="Top"]
-editor/display_folded = true
-anchor_right = 1.0
-margin_left = 40.0
-margin_top = 20.0
-margin_bottom = 40.0
-theme = ExtResource( 2 )
-
-[node name="Panel" type="Panel" parent="Top/PageBar"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="MenuItems" type="HBoxContainer" parent="Top/PageBar"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="Map" type="MenuButton" parent="Top/PageBar/MenuItems"]
-margin_right = 39.0
-margin_bottom = 22.0
-text = "Map"
-items = [ "Open", null, 0, false, false, -1, 0, null, "", false, "Open Recent", null, 0, false, false, -1, 0, null, "", false, "", null, 0, false, false, -1, 0, null, "", true, "Search", null, 0, false, false, -1, 0, null, "", false ]
-
 [node name="Inspector" type="Control" parent="Top"]
+editor/display_folded = true
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -173,6 +153,28 @@ script = ExtResource( 6 )
 
 [node name="Tween" type="Tween" parent="Top/Inspector"]
 
+[node name="PageBar" type="Control" parent="Top"]
+editor/display_folded = true
+anchor_right = 1.0
+margin_left = 40.0
+margin_top = 20.0
+margin_bottom = 40.0
+theme = ExtResource( 2 )
+
+[node name="Panel" type="Panel" parent="Top/PageBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MenuItems" type="HBoxContainer" parent="Top/PageBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Map" type="MenuButton" parent="Top/PageBar/MenuItems"]
+margin_right = 39.0
+margin_bottom = 22.0
+text = "Map"
+items = [ "Open", null, 0, false, false, -1, 0, null, "", false, "Open Recent", null, 0, false, false, -1, 0, null, "", false, "", null, 0, false, false, -1, 0, null, "", true, "Search", null, 0, false, false, -1, 0, null, "", false ]
+
 [node name="Topbar" type="Control" parent="Top"]
 anchor_right = 1.0
 margin_left = 40.0
@@ -236,8 +238,7 @@ caret_blink = true
 layer = 98
 
 [node name="MainMenu" type="Container" parent="Menus"]
-editor/display_folded = true
-margin_top = -185.0
+margin_top = -175.0
 margin_right = 40.0
 margin_bottom = 40.0
 theme = ExtResource( 2 )
@@ -251,7 +252,6 @@ anchor_bottom = 1.0
 theme = ExtResource( 7 )
 
 [node name="Menu" type="VBoxContainer" parent="Menus/MainMenu"]
-margin_top = 5.0
 margin_right = 40.0
 rect_min_size = Vector2( 40, 0 )
 theme = SubResource( 5 )
