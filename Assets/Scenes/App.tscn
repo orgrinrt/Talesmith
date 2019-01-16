@@ -91,6 +91,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -225.0
 margin_top = 40.0
+margin_bottom = -20.0
 rect_min_size = Vector2( 225, 0 )
 theme = ExtResource( 2 )
 script = ExtResource( 3 )
@@ -176,6 +177,7 @@ text = "Map"
 items = [ "Open", null, 0, false, false, -1, 0, null, "", false, "Open Recent", null, 0, false, false, -1, 0, null, "", false, "", null, 0, false, false, -1, 0, null, "", true, "Search", null, 0, false, false, -1, 0, null, "", false ]
 
 [node name="Topbar" type="Control" parent="Top"]
+editor/display_folded = true
 anchor_right = 1.0
 margin_left = 40.0
 margin_bottom = 20.0
@@ -225,7 +227,7 @@ margin_bottom = 22.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="LineEdit" type="LineEdit" parent="Top/Topbar/HBox"]
+[node name="Search" type="LineEdit" parent="Top/Topbar/HBox"]
 margin_left = 759.0
 margin_right = 984.0
 margin_bottom = 22.0
@@ -233,6 +235,62 @@ rect_min_size = Vector2( 225, 0 )
 placeholder_text = "Search <ctrl+f>"
 placeholder_alpha = 0.221
 caret_blink = true
+
+[node name="BottomBar" type="Control" parent="Top"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -20.0
+theme = ExtResource( 2 )
+
+[node name="Panel" type="Panel" parent="Top/BottomBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Row" type="HBoxContainer" parent="Top/BottomBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -1.0
+margin_bottom = 1.0
+
+[node name="UndoLabel" type="Label" parent="Top/BottomBar/Row"]
+margin_right = 201.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Undo Action Title <ctrl+z>"
+
+[node name="Filler" type="Control" parent="Top/BottomBar/Row"]
+margin_left = 205.0
+margin_right = 406.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="StatusLabel" type="Label" parent="Top/BottomBar/Row"]
+margin_left = 410.0
+margin_right = 611.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "This is current status"
+align = 1
+
+[node name="Filler2" type="Control" parent="Top/BottomBar/Row"]
+margin_left = 615.0
+margin_right = 816.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VersionLabel" type="Label" parent="Top/BottomBar/Row"]
+margin_left = 820.0
+margin_right = 1024.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "v0.12a"
+align = 2
 
 [node name="Menus" type="CanvasLayer" parent="."]
 layer = 98
