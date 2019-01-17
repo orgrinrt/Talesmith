@@ -18,10 +18,10 @@ namespace Talesmith.Core.UI.Inspector
 
         public void OpenPage(Page page)
         {
+            HidePages();
             switch (page.PageEnum)
             {
                 case PageEnum.Atlas:
-                    HidePages();
                     GetAtlasPage().Show();
                     break;
                 case PageEnum.WorldConfig:
@@ -53,6 +53,17 @@ namespace Talesmith.Core.UI.Inspector
                     _showingSpeed,
                     Tween.TransitionType.Cubic,
                     Tween.EaseType.Out);
+
+                PageController page = App.Self.GetPageController();
+                GetTween().InterpolateProperty(
+                    page,
+                    "margin_right",
+                    page.MarginRight,
+                    0,
+                    _showingSpeed,
+                    Tween.TransitionType.Cubic,
+                    Tween.EaseType.Out);
+                
                 GetTween().Start();
                 _showing = false;
             }
@@ -66,6 +77,17 @@ namespace Talesmith.Core.UI.Inspector
                     _showingSpeed,
                     Tween.TransitionType.Cubic,
                     Tween.EaseType.Out);
+                
+                PageController page = App.Self.GetPageController();
+                GetTween().InterpolateProperty(
+                    page,
+                    "margin_right",
+                    page.MarginRight,
+                    -RectSize.x,
+                    _showingSpeed,
+                    Tween.TransitionType.Cubic,
+                    Tween.EaseType.Out);
+                
                 GetTween().Start();
                 _showing = true;
             }

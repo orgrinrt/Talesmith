@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Core/Base/App.cs" type="Script" id=1]
 [ext_resource path="res://Assets/Resources/Themes/Default.tres" type="Theme" id=2]
@@ -11,13 +11,15 @@
 [ext_resource path="res://Core/UI/TopBar/EditMenu.cs" type="Script" id=9]
 [ext_resource path="res://Core/UI/TopBar/ViewMenu.cs" type="Script" id=10]
 [ext_resource path="res://Core/UI/TopBar/HelpMenu.cs" type="Script" id=11]
-[ext_resource path="res://Core/UI/Menus/MainMenu.cs" type="Script" id=12]
-[ext_resource path="res://Assets/Graphics/Icons/40x40/Quill.png" type="Texture" id=13]
-[ext_resource path="res://Assets/Graphics/Icons/40x40/Wiki.png" type="Texture" id=14]
-[ext_resource path="res://Assets/Graphics/Icons/40x40/Atlas.png" type="Texture" id=15]
-[ext_resource path="res://Assets/Graphics/Icons/40x40/Timeline.png" type="Texture" id=16]
-[ext_resource path="res://Assets/Graphics/Icons/40x40/Settings.png" type="Texture" id=17]
-[ext_resource path="res://Assets/Graphics/Icons/AppIconTemp.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Graphics/Icons/16x16/Bell.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Graphics/Icons/16x16/Cloud.png" type="Texture" id=13]
+[ext_resource path="res://Core/UI/Menus/MainMenu.cs" type="Script" id=14]
+[ext_resource path="res://Assets/Graphics/Icons/40x40/Quill.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Graphics/Icons/40x40/Wiki.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Graphics/Icons/40x40/Atlas.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Graphics/Icons/40x40/Timeline.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Graphics/Icons/40x40/Settings.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Graphics/Icons/AppIconTemp.png" type="Texture" id=20]
 
 [sub_resource type="StyleBoxFlat" id=1]
 
@@ -246,19 +248,20 @@ theme = ExtResource( 2 )
 [node name="Panel" type="Panel" parent="Top/BottomBar"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 7 )
 
 [node name="Row" type="HBoxContainer" parent="Top/BottomBar"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -1.0
-margin_bottom = 1.0
+margin_bottom = 2.0
 
 [node name="UndoLabel" type="Label" parent="Top/BottomBar/Row"]
 margin_right = 201.0
 margin_bottom = 22.0
 size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_vertical = 5
 text = "Undo Action Title <ctrl+z>"
+valign = 3
 
 [node name="Filler" type="Control" parent="Top/BottomBar/Row"]
 margin_left = 205.0
@@ -272,9 +275,10 @@ margin_left = 410.0
 margin_right = 611.0
 margin_bottom = 22.0
 size_flags_horizontal = 3
-size_flags_vertical = 6
+size_flags_vertical = 5
 text = "This is current status"
 align = 1
+valign = 3
 
 [node name="Filler2" type="Control" parent="Top/BottomBar/Row"]
 margin_left = 615.0
@@ -283,14 +287,43 @@ margin_bottom = 22.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="VersionLabel" type="Label" parent="Top/BottomBar/Row"]
+[node name="Right" type="HBoxContainer" parent="Top/BottomBar/Row"]
 margin_left = 820.0
 margin_right = 1024.0
 margin_bottom = 22.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "v0.12a"
+
+[node name="VersionLabel" type="Label" parent="Top/BottomBar/Row/Right"]
+margin_right = 150.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+size_flags_vertical = 5
 align = 2
+
+[node name="NotificationIcon" type="TextureButton" parent="Top/BottomBar/Row/Right"]
+margin_left = 154.0
+margin_right = 174.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 20, 0 )
+texture_normal = ExtResource( 12 )
+expand = true
+stretch_mode = 3
+
+[node name="SyncIcon" type="TextureButton" parent="Top/BottomBar/Row/Right"]
+margin_left = 178.0
+margin_right = 198.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 20, 0 )
+texture_normal = ExtResource( 13 )
+expand = true
+stretch_mode = 3
+
+[node name="Padder" type="Control" parent="Top/BottomBar/Row/Right"]
+margin_left = 202.0
+margin_right = 204.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 2, 0 )
 
 [node name="Menus" type="CanvasLayer" parent="."]
 layer = 98
@@ -300,7 +333,7 @@ margin_top = -175.0
 margin_right = 40.0
 margin_bottom = 40.0
 theme = ExtResource( 2 )
-script = ExtResource( 12 )
+script = ExtResource( 14 )
 
 [node name="Tween" type="Tween" parent="Menus/MainMenu"]
 
@@ -328,7 +361,7 @@ align = 0
 modulate = Color( 0.568627, 0.537255, 0.478431, 1 )
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 13 )
+texture = ExtResource( 15 )
 stretch_mode = 6
 
 [node name="Wiki" type="Button" parent="Menus/MainMenu/Menu"]
@@ -343,7 +376,7 @@ enabled_focus_mode = 0
 
 [node name="Icon" type="TextureRect" parent="Menus/MainMenu/Menu/Wiki"]
 modulate = Color( 0.568627, 0.537255, 0.478431, 1 )
-texture = ExtResource( 14 )
+texture = ExtResource( 16 )
 stretch_mode = 6
 
 [node name="Atlas" type="Button" parent="Menus/MainMenu/Menu"]
@@ -358,7 +391,7 @@ enabled_focus_mode = 0
 
 [node name="Icon" type="TextureRect" parent="Menus/MainMenu/Menu/Atlas"]
 modulate = Color( 0.568627, 0.537255, 0.478431, 1 )
-texture = ExtResource( 15 )
+texture = ExtResource( 17 )
 stretch_mode = 6
 
 [node name="Timelines" type="Button" parent="Menus/MainMenu/Menu"]
@@ -373,7 +406,7 @@ enabled_focus_mode = 0
 
 [node name="Icon" type="TextureRect" parent="Menus/MainMenu/Menu/Timelines"]
 modulate = Color( 0.568627, 0.537255, 0.478431, 1 )
-texture = ExtResource( 16 )
+texture = ExtResource( 18 )
 stretch_mode = 6
 
 [node name="Config" type="Button" parent="Menus/MainMenu/Menu"]
@@ -388,14 +421,14 @@ enabled_focus_mode = 0
 
 [node name="Icon" type="TextureRect" parent="Menus/MainMenu/Menu/Config"]
 modulate = Color( 0.568627, 0.537255, 0.478431, 1 )
-texture = ExtResource( 17 )
+texture = ExtResource( 19 )
 stretch_mode = 6
 
 [node name="AppIcon" type="TextureButton" parent="Menus"]
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
-texture_normal = ExtResource( 18 )
+texture_normal = ExtResource( 20 )
 expand = true
 stretch_mode = 6
 

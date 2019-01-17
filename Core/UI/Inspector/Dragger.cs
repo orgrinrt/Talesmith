@@ -44,7 +44,7 @@ namespace Talesmith.Core.UI.Inspector
         {
             _isHandling = true;
             Inspector inspector = GetInspector();
-            Control pageParent = GetPageParent();
+            Control pageParent = App.Self.GetPageController();
             while (true)
             {
                 float dist = (RectGlobalPosition.x - GetGlobalMousePosition().x);
@@ -78,14 +78,6 @@ namespace Talesmith.Core.UI.Inspector
             }
         }
 
-        private void OnInspectorToggled(bool visible)
-        {
-            if (!visible)
-            {
-                GetPageParent().MarginRight = 0;
-            }
-        }
-
         private void OnMouseEnter()
         {
             if (!Iterator.Coroutine.IsRunning(MonitorForClick()))
@@ -105,17 +97,12 @@ namespace Talesmith.Core.UI.Inspector
 
         private void DeferredInit()
         {
-            App.Self.Preferences.Connect(nameof(Preferences.InspectorToggled), this, nameof(OnInspectorToggled));
+            //App.Self.Preferences.Connect(nameof(Preferences.InspectorToggled), this, nameof(OnInspectorToggled));
         }
 
         private Inspector GetInspector()
         {
             return GetNode<Inspector>("..");
-        }
-
-        private Control GetPageParent()
-        {
-            return App.Self.GetProject().GetNode<Control>("./UI/Pages");
         }
     }
 }

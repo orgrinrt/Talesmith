@@ -40,6 +40,7 @@ mouse_filter = 2
 script = ExtResource( 4 )
 
 [node name="AtlasPage" type="Control" parent="UI/Pages"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 5 )
@@ -87,7 +88,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="ConfigPage" type="Control" parent="UI/Pages"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 5 )
@@ -106,20 +106,113 @@ margin_top = 50.0
 margin_right = -50.0
 margin_bottom = -50.0
 
-[node name="SidePanel" type="Container" parent="UI/Pages/ConfigPage/MarginContainer"]
+[node name="SidePanel" type="ScrollContainer" parent="UI/Pages/ConfigPage/MarginContainer"]
 margin_right = 230.0
 margin_bottom = 460.0
 rect_min_size = Vector2( 230, 0 )
+rect_clip_content = false
 size_flags_horizontal = 3
 size_flags_vertical = 3
+scroll_horizontal_enabled = false
 
-[node name="List" type="VBoxContainer" parent="UI/Pages/ConfigPage/MarginContainer/SidePanel"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="Menus" type="VBoxContainer" parent="UI/Pages/ConfigPage/MarginContainer/SidePanel"]
+margin_right = 230.0
+margin_bottom = 460.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 15
 
-[node name="Button" type="Button" parent="UI/Pages/ConfigPage/MarginContainer/SidePanel/List"]
+[node name="Project" type="VBoxContainer" parent="UI/Pages/ConfigPage/MarginContainer/SidePanel/Menus"]
+margin_right = 230.0
+margin_bottom = 157.0
+custom_constants/separation = 5
+
+[node name="CategoryTitle" type="Label" parent="UI/Pages/ConfigPage/MarginContainer/SidePanel/Menus/Project"]
 margin_right = 230.0
 margin_bottom = 22.0
+text = "Project"
+
+[node name="World" type="Button" parent="UI/Pages/ConfigPage/MarginContainer/SidePanel/Menus/Project"]
+margin_top = 27.0
+margin_right = 230.0
+margin_bottom = 49.0
+toggle_mode = true
+pressed = true
+text = "World"
+
+[node name="Data" type="Button" parent="UI/Pages/ConfigPage/MarginContainer/SidePanel/Menus/Project"]
+margin_top = 54.0
+margin_right = 230.0
+margin_bottom = 76.0
+toggle_mode = true
+text = "Data"
+
+[node name="Wiki" type="Button" parent="UI/Pages/ConfigPage/MarginContainer/SidePanel/Menus/Project"]
+margin_top = 81.0
+margin_right = 230.0
+margin_bottom = 103.0
+toggle_mode = true
+text = "Wiki"
+
+[node name="Atlas" type="Button" parent="UI/Pages/ConfigPage/MarginContainer/SidePanel/Menus/Project"]
+margin_top = 108.0
+margin_right = 230.0
+margin_bottom = 130.0
+toggle_mode = true
+text = "Atlas"
+
+[node name="Timelines" type="Button" parent="UI/Pages/ConfigPage/MarginContainer/SidePanel/Menus/Project"]
+margin_top = 135.0
+margin_right = 230.0
+margin_bottom = 157.0
+toggle_mode = true
+text = "Timelines"
+
+[node name="App" type="VBoxContainer" parent="UI/Pages/ConfigPage/MarginContainer/SidePanel/Menus"]
+margin_top = 172.0
+margin_right = 230.0
+margin_bottom = 329.0
+custom_constants/separation = 5
+
+[node name="CategoryTitle" type="Label" parent="UI/Pages/ConfigPage/MarginContainer/SidePanel/Menus/App"]
+margin_right = 230.0
+margin_bottom = 22.0
+text = "Talesmith"
+
+[node name="General" type="Button" parent="UI/Pages/ConfigPage/MarginContainer/SidePanel/Menus/App"]
+margin_top = 27.0
+margin_right = 230.0
+margin_bottom = 49.0
+toggle_mode = true
+text = "General"
+
+[node name="Home" type="Button" parent="UI/Pages/ConfigPage/MarginContainer/SidePanel/Menus/App"]
+margin_top = 54.0
+margin_right = 230.0
+margin_bottom = 76.0
+toggle_mode = true
+text = "Home"
+
+[node name="SavingSyncing" type="Button" parent="UI/Pages/ConfigPage/MarginContainer/SidePanel/Menus/App"]
+margin_top = 81.0
+margin_right = 230.0
+margin_bottom = 103.0
+toggle_mode = true
+text = "Saving & Syncing"
+
+[node name="Appearance" type="Button" parent="UI/Pages/ConfigPage/MarginContainer/SidePanel/Menus/App"]
+margin_top = 108.0
+margin_right = 230.0
+margin_bottom = 130.0
+toggle_mode = true
+text = "Appearance"
+
+[node name="Language" type="Button" parent="UI/Pages/ConfigPage/MarginContainer/SidePanel/Menus/App"]
+margin_top = 135.0
+margin_right = 230.0
+margin_bottom = 157.0
+toggle_mode = true
+text = "Language"
 
 [node name="Content" type="Container" parent="UI/Pages/ConfigPage/MarginContainer"]
 margin_left = 234.0
@@ -128,4 +221,8 @@ margin_bottom = 460.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
+
+[node name="Panel" type="Panel" parent="UI/Pages/ConfigPage/MarginContainer/Content"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 
