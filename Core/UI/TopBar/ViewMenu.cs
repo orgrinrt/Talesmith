@@ -18,16 +18,6 @@ public class ViewMenu : MenuButton
         GetPopup().Connect("index_pressed", this, nameof(OnItemPressed)); // returns the INDEX of the item pressed
         
         CallDeferred(nameof(SetValues));
-        
-        foreach (Godot.Object item in actionlist)
-        {
-            GD.Print(item.GetClass());
-            GD.Print(item);
-            InputEventKey eventKey = (InputEventKey) item;
-            
-            GD.Print(eventKey.GetScancodeWithModifiers());
-            GD.Print((int)KeyList.I + (int)KeyModifierMask.MaskCtrl);
-        }
     }
 
     private void OnItemPressed(int index)
@@ -40,7 +30,9 @@ public class ViewMenu : MenuButton
         switch (index)
         {
             case 0:
-                App.Self.Preferences.EmitSignal(nameof(Preferences.InspectorToggled), GetPopup().IsItemChecked(index));
+                bool isChecked = GetPopup().IsItemChecked(index);
+                App.Self.Preferences.EmitSignal(nameof(Preferences.InspectorToggled), isChecked);
+                App.Self.Preferences.ViewPreferences.Set("show_inspector", isChecked);
                 break;
             case 1:
                 GD.Print("USE BIG ICONS CHANGED");
