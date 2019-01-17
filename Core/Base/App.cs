@@ -1,6 +1,7 @@
 using Godot;
 using Talesmith.Core.Constants;
 using Talesmith.Core.LocalData;
+using Talesmith.Core.UI.Inspector;
 using Talesmith.Core.UI.Pages;
 
 namespace Talesmith.Core
@@ -37,6 +38,11 @@ namespace Talesmith.Core
         public Preferences GetPreferences()
         {
             return GetNode<Preferences>(NodePaths.Preferences);
+        }
+
+        public Inspector GetInspector()
+        {
+            return GetNode<Inspector>(NodePaths.Inspector);
         }
     }
 }

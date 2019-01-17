@@ -7,7 +7,7 @@ namespace Talesmith.Core.UI.Pages
     {
         public override void _Ready()
         {
-        
+            MarginRight = -App.Self.GetInspector().RectSize.x;
         }
 
         public void ChangePage(PageEnum page)

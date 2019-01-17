@@ -16,9 +16,9 @@ namespace Talesmith.Core.UI.Pages.Atlas.QuickSettings
             GetSlider().Connect("value_changed", this, nameof(OnValueChanged));
         }
 
-        public override void _UnhandledInput(InputEvent @event)
+        public override void _Input(InputEvent @event)
         {
-            base._UnhandledInput(@event);
+            base._Input(@event);
 
             if (@event.IsActionPressed("cam_pan_speed_toggle"))
             {
@@ -29,7 +29,7 @@ namespace Talesmith.Core.UI.Pages.Atlas.QuickSettings
                 _isSpeedTogglePressed = false;
             }
 
-            if (IsSpeedTogglePressed)
+            if (IsSpeedTogglePressed && GetAtlasPage().HasFocus())
             {
                 HSlider slider = GetSlider();
                 FreeCamera cam = GetAtlasPage().GetFreeCamera();

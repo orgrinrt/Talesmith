@@ -126,6 +126,10 @@ namespace Talesmith.Core.Viewports.Cameras
                     }
                 }
             }
+            else if (inputEvent.IsActionReleased("cam_pan_toggle"))
+            {
+                _isMouseDragging = false;
+            }
         }
 
         public void SetPanSpeed(int value)
