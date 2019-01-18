@@ -5,6 +5,9 @@ namespace Talesmith.Core.UI.Pages
 {
     public class PageController : Control
     {
+        private Page _currPage;
+        public Page CurrPage => _currPage;
+        
         public override void _Ready()
         {
             MarginRight = -App.Self.GetInspector().RectSize.x;
@@ -27,6 +30,7 @@ namespace Talesmith.Core.UI.Pages
 
             pageToOpen.Show();
             App.Self.EmitSignal(nameof(App.MainPageChanged), pageToOpen);
+            _currPage = pageToOpen;
         }
 
         private void HidePages()

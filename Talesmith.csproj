@@ -64,6 +64,7 @@
     <Compile Include="Core\UI\Menus\MainMenu.cs" />
     <Compile Include="Core\UI\Pages\Atlas\AtlasPage.cs" />
     <Compile Include="Core\UI\Pages\Atlas\QuickSettings\PanSpeedField.cs" />
+    <Compile Include="Core\UI\Pages\ITabSwitchableItem.cs" />
     <Compile Include="Core\UI\Pages\Page.cs" />
     <Compile Include="Core\UI\Pages\PageController.cs" />
     <Compile Include="Core\UI\Pages\PageEnum.cs" />

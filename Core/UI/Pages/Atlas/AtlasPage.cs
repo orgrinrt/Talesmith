@@ -4,11 +4,14 @@ using Talesmith.Core.Viewports.Cameras;
 
 namespace Talesmith.Core.UI.Pages.Atlas
 {
-    public class AtlasPage : Page
+    public class AtlasPage : Page, ITabSwitchableItem
     {
+        public ITabSwitchableItem NextItem => GetNextItem();
+        public ITabSwitchableItem PrevItem => GetPrevItem();
+        
         public override void _Ready()
         {
-            PageEnum = PageEnum.Atlas;
+            _pageEnum = PageEnum.Atlas;
             SetFocusMode(FocusModeEnum.All);
         }
         
@@ -49,6 +52,16 @@ namespace Talesmith.Core.UI.Pages.Atlas
         private Node2D GetAtlas2D()
         {
             return GetNode<Node2D>("../../../Atlas2D");
+        }
+
+        public ITabSwitchableItem GetNextItem()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ITabSwitchableItem GetPrevItem()
+        {
+            throw new NotImplementedException();
         }
     }
 }

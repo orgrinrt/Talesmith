@@ -19,6 +19,7 @@ config/name="Talesmith"
 run/main_scene="res://Assets/Scenes/Projects/EmptyProject.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="Talesmith"
+run/low_processor_mode=true
 config/icon="res://Assets/Graphics/Icons/AppIconTemp.png"
 
 [autoload]
@@ -120,4 +121,6 @@ modifiers={
 
 [rendering]
 
+quality/intended_usage/framebuffer_allocation=0
+quality/intended_usage/framebuffer_allocation.mobile=0
 environment/default_environment="res://default_env.tres"

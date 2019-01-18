@@ -5,7 +5,9 @@ namespace Talesmith.Core.UI.Pages
 {
     public class Page : Control
     {
-        public PageEnum PageEnum;
+        internal PageEnum _pageEnum;
+        
+        public PageEnum PageEnum => _pageEnum;
         
         public override void _Ready()
         {

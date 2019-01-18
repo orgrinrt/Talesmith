@@ -2,10 +2,23 @@ using Godot;
 using System;
 using Talesmith.Core.UI.Pages;
 
-public class ConfigPage : Page
+public class ConfigPage : Page, ITabSwitchableItem
 {
+    public ITabSwitchableItem NextItem => GetNextItem();
+    public ITabSwitchableItem PrevItem => GetPrevItem();
+    
     public override void _Ready()
     {
-        PageEnum = PageEnum.WorldConfig;
+        _pageEnum = PageEnum.WorldConfig;
+    }
+
+    public ITabSwitchableItem GetNextItem()
+    {
+        throw new NotImplementedException();
+    }
+
+    public ITabSwitchableItem GetPrevItem()
+    {
+        throw new NotImplementedException();
     }
 }
