@@ -24,19 +24,21 @@ public class ViewMenu : MenuButton
     {
         if (GetPopup().IsItemCheckable(index))
         {
-            GetPopup().SetItemChecked(index, !GetPopup().IsItemChecked(index));
-        }
-        
-        switch (index)
-        {
-            case 0:
-                bool isChecked = GetPopup().IsItemChecked(index);
-                App.Self.Preferences.EmitSignal(nameof(Preferences.InspectorToggled), isChecked);
-                App.Self.Preferences.ViewPreferences.Set("show_inspector", isChecked);
-                break;
-            case 1:
-                GD.Print("USE BIG ICONS CHANGED");
-                break;
+            bool isChecked = GetPopup().IsItemChecked(index);
+            
+            GetPopup().SetItemChecked(index, !isChecked);
+            
+            switch (index)
+            {
+                case 0:
+                    App.Self.Preferences.EmitSignal(nameof(Preferences.InspectorToggled), isChecked);
+                    App.Self.Preferences.ViewPreferences.Set("show_inspector", isChecked);
+                    break;
+                case 1:
+                    App.Self.Preferences.EmitSignal(nameof(Preferences.UseBigIconsToggled), isChecked);
+                    App.Self.Preferences.ViewPreferences.Set("use_big_icons", isChecked);
+                    break;
+            }
         }
     }
 

@@ -4,6 +4,7 @@ using System;
 public class Preferences : Node
 {
 	[Signal] public delegate void InspectorToggled(bool visible);
+	[Signal] public delegate void UseBigIconsToggled(bool use);
 	[Signal] public delegate void AnimationSpeedChanged(float newValue);
 	
 	[Export()] public Resource ViewPreferences;

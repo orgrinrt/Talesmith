@@ -100,5 +100,17 @@
   <ItemGroup>
     <Folder Include="Core\Base\Resources" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Addons\ResourceTypes\appearance_prefs.gd" />
+    <Content Include="Addons\ResourceTypes\app_prefs.gd" />
+    <Content Include="Addons\ResourceTypes\Dock\Dock.tscn" />
+    <Content Include="Addons\ResourceTypes\Icons\AppPrefs.png" />
+    <Content Include="Addons\ResourceTypes\Icons\AppPrefs.png.import" />
+    <Content Include="Addons\ResourceTypes\Icons\ViewPrefs.png" />
+    <Content Include="Addons\ResourceTypes\Icons\ViewPrefs.png.import" />
+    <Content Include="Addons\ResourceTypes\plugin.cfg" />
+    <Content Include="Addons\ResourceTypes\resource_types.gd" />
+    <Content Include="Addons\ResourceTypes\view_prefs.gd" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
