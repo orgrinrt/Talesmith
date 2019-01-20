@@ -1,18 +1,20 @@
 using Godot;
-using System;
 
-public class Preferences : Node
+namespace Talesmith.Core.Systems
 {
-	[Signal] public delegate void InspectorToggled(bool visible);
-	[Signal] public delegate void UseBigIconsToggled(bool use);
-	[Signal] public delegate void AnimationSpeedChanged(float newValue);
+	public class Preferences : Node
+	{
+		[Signal] public delegate void InspectorToggled(bool visible);
+		[Signal] public delegate void UseBigIconsToggled(bool use);
+		[Signal] public delegate void AnimationSpeedChanged(float newValue);
 	
-	[Export()] public Resource ApplicationPreferences;
-	[Export()] public Resource ViewPreferences;
-	[Export()] public Resource AppearancePreferences;
+		[Export()] public Resource ApplicationPreferences;
+		[Export()] public Resource ViewPreferences;
+		[Export()] public Resource AppearancePreferences;
 	
-    public override void _Ready()
-    {
+		public override void _Ready()
+		{
 	    
-    }
+		}
+	}
 }

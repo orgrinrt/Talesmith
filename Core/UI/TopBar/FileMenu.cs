@@ -1,20 +1,22 @@
 using Godot;
-using System;
 
-public class FileMenu : MenuButton
+namespace Talesmith.Core.UI.TopBar
 {
-    public override void _Ready()
+    public class FileMenu : MenuButton
     {
-        GetPopup().AddItem("New");
-        GetPopup().AddItem("Open");
-        GetPopup().AddItem("Open Recent");
-        GetPopup().AddSeparator();
-        GetPopup().AddItem("Save");
-        GetPopup().AddItem("Save As");
-        GetPopup().AddSeparator();
-        GetPopup().AddItem("Import");
-        GetPopup().AddItem("Export");
-        GetPopup().AddSeparator();
-        GetPopup().AddItem("Exit");
+        public override void _Ready()
+        {
+            GetPopup().AddItem("New");
+            GetPopup().AddItem("Open");
+            GetPopup().AddItem("Open Recent");
+            GetPopup().AddSeparator();
+            GetPopup().AddItem("Save");
+            GetPopup().AddItem("Save As");
+            GetPopup().AddSeparator();
+            GetPopup().AddItem("Import");
+            GetPopup().AddItem("Export");
+            GetPopup().AddSeparator();
+            GetPopup().AddItem("Exit");
+        }
     }
 }

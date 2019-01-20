@@ -1,4 +1,4 @@
-﻿namespace Talesmith.Core.UI.Pages
+﻿namespace Talesmith.Core.UI.Workspaces
 {
     public interface ICycleableItem
     {

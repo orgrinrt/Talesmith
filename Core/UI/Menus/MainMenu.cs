@@ -1,5 +1,6 @@
 using Godot;
-using Talesmith.Core.UI.Pages;
+using Talesmith.Core.Systems;
+using Talesmith.Core.UI.Workspaces;
 
 namespace Talesmith.Core.UI.Menus
 {

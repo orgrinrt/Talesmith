@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using Godot;
-using Talesmith.Core.UI.Pages.Atlas;
+using Talesmith.Core.UI.Workspaces.Atlas;
+using Talesmith.Core.UI.Workspaces.WorldConfig;
 
-namespace Talesmith.Core.UI.Pages
+namespace Talesmith.Core.UI.Workspaces
 {
     public class WorkspaceController : Control
     {

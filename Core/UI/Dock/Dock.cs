@@ -1,11 +1,13 @@
-using Godot;
 using GDMechanic.Wiring;
-using GDMechanic.Wiring.Attributes;
+using Godot;
 
-public class Dock : Control
+namespace Talesmith.Core.UI.Dock
 {
-	public override void _Ready()
+    public class Dock : Control
     {
-        this.Wire();
-    }   
+        public override void _Ready()
+        {
+            this.Wire();
+        }   
+    }
 }

@@ -1,18 +1,20 @@
 using Godot;
-using System;
 
-public class EditMenu : MenuButton
+namespace Talesmith.Core.UI.TopBar
 {
-    public override void _Ready()
+    public class EditMenu : MenuButton
     {
-        GetPopup().AddItem("Undo");
-        GetPopup().AddItem("Redo");
-        GetPopup().AddItem("History");
-        GetPopup().AddSeparator();
-        GetPopup().AddItem("Image Library");
-        GetPopup().AddItem("Audio Library");
-        GetPopup().AddItem("Backups");
-        GetPopup().AddSeparator();
-        GetPopup().AddItem("Preferences");
+        public override void _Ready()
+        {
+            GetPopup().AddItem("Undo");
+            GetPopup().AddItem("Redo");
+            GetPopup().AddItem("History");
+            GetPopup().AddSeparator();
+            GetPopup().AddItem("Image Library");
+            GetPopup().AddItem("Audio Library");
+            GetPopup().AddItem("Backups");
+            GetPopup().AddSeparator();
+            GetPopup().AddItem("Preferences");
+        }
     }
 }

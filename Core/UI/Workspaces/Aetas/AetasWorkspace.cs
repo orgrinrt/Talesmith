@@ -1,11 +1,23 @@
-using Godot;
+using System;
 using GDMechanic.Wiring;
-using GDMechanic.Wiring.Attributes;
 
-public class AetasWorkspace : Control
+namespace Talesmith.Core.UI.Workspaces.Aetas
 {
-	public override void _Ready()
+    public class AetasWorkspace : Workspace
     {
-        this.Wire();
-    }   
+        public override void _Ready()
+        {
+            this.Wire();
+        }
+
+        public override ICycleableItem GetNextItem()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override ICycleableItem GetPrevItem()
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

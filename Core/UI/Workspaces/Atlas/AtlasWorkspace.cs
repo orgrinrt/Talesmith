@@ -2,13 +2,10 @@ using System;
 using Godot;
 using Talesmith.Core.Viewports.Cameras;
 
-namespace Talesmith.Core.UI.Pages.Atlas
+namespace Talesmith.Core.UI.Workspaces.Atlas
 {
-    public class AtlasWorkspace : Workspace, ICycleableItem
+    public class AtlasWorkspace : Workspace
     {
-        public ICycleableItem NextItem => GetNextItem();
-        public ICycleableItem PrevItem => GetPrevItem();
-        
         public override void _Ready()
         {
             _workspaceEnum = WorkspaceEnum.Atlas;
@@ -53,13 +50,13 @@ namespace Talesmith.Core.UI.Pages.Atlas
         {
             return GetNode<Node2D>("../../../Atlas2D");
         }
-
-        public ICycleableItem GetNextItem()
+        
+        public override ICycleableItem GetNextItem()
         {
             throw new NotImplementedException();
         }
 
-        public ICycleableItem GetPrevItem()
+        public override ICycleableItem GetPrevItem()
         {
             throw new NotImplementedException();
         }

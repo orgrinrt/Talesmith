@@ -1,24 +1,23 @@
-using Godot;
 using System;
-using Talesmith.Core.UI.Pages;
 
-public class ConfigWorkspace : Workspace, ICycleableItem
+namespace Talesmith.Core.UI.Workspaces.WorldConfig
 {
-    public ICycleableItem NextItem => GetNextItem();
-    public ICycleableItem PrevItem => GetPrevItem();
+    public class ConfigWorkspace : Workspace
+    {
     
-    public override void _Ready()
-    {
-        _workspaceEnum = WorkspaceEnum.WorldConfig;
-    }
+        public override void _Ready()
+        {
+            _workspaceEnum = WorkspaceEnum.WorldConfig;
+        }
+    
+        public override ICycleableItem GetNextItem()
+        {
+            throw new NotImplementedException();
+        }
 
-    public ICycleableItem GetNextItem()
-    {
-        throw new NotImplementedException();
-    }
-
-    public ICycleableItem GetPrevItem()
-    {
-        throw new NotImplementedException();
+        public override ICycleableItem GetPrevItem()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

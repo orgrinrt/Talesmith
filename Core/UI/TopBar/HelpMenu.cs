@@ -1,10 +1,12 @@
 using Godot;
-using System;
 
-public class HelpMenu : MenuButton
+namespace Talesmith.Core.UI.TopBar
 {
-    public override void _Ready()
+    public class HelpMenu : MenuButton
     {
+        public override void _Ready()
+        {
         
+        }
     }
 }

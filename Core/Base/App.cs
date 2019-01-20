@@ -1,8 +1,10 @@
 using Godot;
 using Talesmith.Core.Constants;
 using Talesmith.Core.LocalData;
+using Talesmith.Core.Systems;
+using Talesmith.Core.UI.Dock;
 using Talesmith.Core.UI.Inspector;
-using Talesmith.Core.UI.Pages;
+using Talesmith.Core.UI.Workspaces;
 
 namespace Talesmith.Core
 {

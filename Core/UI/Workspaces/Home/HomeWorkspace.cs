@@ -1,11 +1,23 @@
-using Godot;
+using System;
 using GDMechanic.Wiring;
-using GDMechanic.Wiring.Attributes;
 
-public class HomeWorkspace : Control
+namespace Talesmith.Core.UI.Workspaces.Home
 {
-	public override void _Ready()
+    public class HomeWorkspace : Workspace
     {
-        this.Wire();
-    }   
+        public override void _Ready()
+        {
+            this.Wire();
+        }
+    
+        public override ICycleableItem GetNextItem()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override ICycleableItem GetPrevItem()
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

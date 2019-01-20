@@ -1,7 +1,7 @@
 using Godot;
 using Talesmith.Core.Viewports.Cameras;
 
-namespace Talesmith.Core.UI.Pages.Atlas.QuickSettings
+namespace Talesmith.Core.UI.Workspaces.Atlas.QuickSettings
 {
     public class PanSpeedField : HBoxContainer
     {
