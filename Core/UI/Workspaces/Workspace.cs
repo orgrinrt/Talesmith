@@ -3,11 +3,11 @@ using Talesmith.Core.Constants;
 
 namespace Talesmith.Core.UI.Pages
 {
-    public class Page : Control
+    public class Workspace : Control
     {
-        internal PageEnum _pageEnum;
+        internal WorkspaceEnum _workspaceEnum;
         
-        public PageEnum PageEnum => _pageEnum;
+        public WorkspaceEnum WorkspaceEnum => _workspaceEnum;
         
         public override void _Ready()
         {

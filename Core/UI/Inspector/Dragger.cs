@@ -44,7 +44,7 @@ namespace Talesmith.Core.UI.Inspector
         {
             _isHandling = true;
             Inspector inspector = GetInspector();
-            Control pageParent = App.Self.GetPageController();
+            Control pageParent = App.Self.GetWorkspaceController();
             while (true)
             {
                 float dist = (RectGlobalPosition.x - GetGlobalMousePosition().x);

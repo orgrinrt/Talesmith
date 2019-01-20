@@ -4,14 +4,14 @@ using Talesmith.Core.Viewports.Cameras;
 
 namespace Talesmith.Core.UI.Pages.Atlas
 {
-    public class AtlasPage : Page, ITabSwitchableItem
+    public class AtlasWorkspace : Workspace, ICycleableItem
     {
-        public ITabSwitchableItem NextItem => GetNextItem();
-        public ITabSwitchableItem PrevItem => GetPrevItem();
+        public ICycleableItem NextItem => GetNextItem();
+        public ICycleableItem PrevItem => GetPrevItem();
         
         public override void _Ready()
         {
-            _pageEnum = PageEnum.Atlas;
+            _workspaceEnum = WorkspaceEnum.Atlas;
             SetFocusMode(FocusModeEnum.All);
         }
         
@@ -54,12 +54,12 @@ namespace Talesmith.Core.UI.Pages.Atlas
             return GetNode<Node2D>("../../../Atlas2D");
         }
 
-        public ITabSwitchableItem GetNextItem()
+        public ICycleableItem GetNextItem()
         {
             throw new NotImplementedException();
         }
 
-        public ITabSwitchableItem GetPrevItem()
+        public ICycleableItem GetPrevItem()
         {
             throw new NotImplementedException();
         }

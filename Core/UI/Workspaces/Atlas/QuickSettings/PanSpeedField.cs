@@ -67,9 +67,9 @@ namespace Talesmith.Core.UI.Pages.Atlas.QuickSettings
             return GetNode<HSlider>("./HSlider");
         }
 
-        private AtlasPage GetAtlasPage()
+        private AtlasWorkspace GetAtlasPage()
         {
-            return GetNode<AtlasPage>("../..");
+            return GetNode<AtlasWorkspace>("../..");
         }
     }
 }

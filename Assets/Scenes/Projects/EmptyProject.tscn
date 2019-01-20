@@ -1,14 +1,16 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Core/LocalData/Project.cs" type="Script" id=1]
 [ext_resource path="res://Assets/Scenes/Cameras/FreeCam.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Graphics/Maps/vilirin_test1.png" type="Texture" id=3]
-[ext_resource path="res://Core/UI/Pages/PageController.cs" type="Script" id=4]
-[ext_resource path="res://Assets/Resources/Themes/Default.tres" type="Theme" id=5]
-[ext_resource path="res://Core/UI/Pages/Atlas/AtlasPage.cs" type="Script" id=6]
-[ext_resource path="res://Core/UI/Pages/Atlas/QuickSettings/PanSpeedField.cs" type="Script" id=7]
-[ext_resource path="res://Core/UI/Pages/WorldConfig/ConfigPage.cs" type="Script" id=8]
-[ext_resource path="res://Assets/Resources/Themes/PanelEmphasisColor.tres" type="Theme" id=9]
+[ext_resource path="res://Core/UI/Workspaces/WorkspaceController.cs" type="Script" id=4]
+[ext_resource path="res://Core/UI/Workspaces/Studia/StudiaWorkspace.cs" type="Script" id=5]
+[ext_resource path="res://Assets/Resources/Themes/Default.tres" type="Theme" id=6]
+[ext_resource path="res://Core/UI/Workspaces/Atlas/AtlasWorkspace.cs" type="Script" id=7]
+[ext_resource path="res://Core/UI/Workspaces/Atlas/QuickSettings/PanSpeedField.cs" type="Script" id=8]
+[ext_resource path="res://Core/UI/Workspaces/Aetas/AetasWorkspace.cs" type="Script" id=9]
+[ext_resource path="res://Core/UI/Workspaces/WorldConfig/ConfigWorkspace.cs" type="Script" id=10]
+[ext_resource path="res://Assets/Resources/Themes/PanelEmphasisColor.tres" type="Theme" id=11]
 
 [node name="Project" type="Node"]
 script = ExtResource( 1 )
@@ -32,48 +34,56 @@ texture = ExtResource( 3 )
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 2
 
-[node name="Pages" type="Control" parent="UI"]
+[node name="Workspaces" type="Control" parent="UI"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 40.0
 mouse_filter = 2
 script = ExtResource( 4 )
 
-[node name="AtlasPage" type="Control" parent="UI/Pages"]
+[node name="Home" type="Control" parent="UI/Workspaces"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Wiki" type="Control" parent="UI/Workspaces"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 5 )
+
+[node name="Atlas" type="Control" parent="UI/Workspaces"]
 editor/display_folded = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 5 )
-script = ExtResource( 6 )
+theme = ExtResource( 6 )
+script = ExtResource( 7 )
 
-[node name="SubBar" type="HBoxContainer" parent="UI/Pages/AtlasPage"]
-editor/display_folded = true
+[node name="SubBar" type="HBoxContainer" parent="UI/Workspaces/Atlas"]
 anchor_right = 1.0
 margin_left = 42.0
 margin_right = -225.0
 margin_bottom = 64.0
-theme = ExtResource( 5 )
+theme = ExtResource( 6 )
 
-[node name="PanSpeed" type="HBoxContainer" parent="UI/Pages/AtlasPage/SubBar"]
+[node name="PanSpeed" type="HBoxContainer" parent="UI/Workspaces/Atlas/SubBar"]
 editor/display_folded = true
 margin_right = 174.0
 margin_bottom = 22.0
 size_flags_vertical = 0
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 
-[node name="Label" type="Label" parent="UI/Pages/AtlasPage/SubBar/PanSpeed"]
+[node name="Label" type="Label" parent="UI/Workspaces/Atlas/SubBar/PanSpeed"]
 margin_right = 70.0
 margin_bottom = 22.0
 text = "PanSpeed"
 
-[node name="HSlider" type="HSlider" parent="UI/Pages/AtlasPage/SubBar/PanSpeed"]
+[node name="HSlider" type="HSlider" parent="UI/Workspaces/Atlas/SubBar/PanSpeed"]
 margin_left = 74.0
 margin_right = 174.0
 margin_bottom = 22.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_vertical = 3
-theme = ExtResource( 5 )
+theme = ExtResource( 6 )
 max_value = 50.0
 step = 5.0
 value = 20.0
@@ -81,26 +91,32 @@ rounded = true
 tick_count = 11
 ticks_on_borders = true
 
-[node name="Filler" type="Control" parent="UI/Pages/AtlasPage/SubBar"]
+[node name="Filler" type="Control" parent="UI/Workspaces/Atlas/SubBar"]
 margin_left = 178.0
 margin_right = 757.0
 margin_bottom = 64.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ConfigPage" type="Control" parent="UI/Pages"]
+[node name="Aetas" type="Control" parent="UI/Workspaces"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 9 )
+
+[node name="Config" type="Control" parent="UI/Workspaces"]
 editor/display_folded = true
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 5 )
-script = ExtResource( 8 )
+theme = ExtResource( 6 )
+script = ExtResource( 10 )
 
-[node name="Panel" type="Panel" parent="UI/Pages/ConfigPage"]
+[node name="Panel" type="Panel" parent="UI/Workspaces/Config"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 9 )
+theme = ExtResource( 11 )
 
-[node name="Content" type="HBoxContainer" parent="UI/Pages/ConfigPage"]
+[node name="Content" type="HBoxContainer" parent="UI/Workspaces/Config"]
 editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -109,7 +125,7 @@ margin_top = 50.0
 margin_right = -25.0
 margin_bottom = -50.0
 
-[node name="SidePanel" type="ScrollContainer" parent="UI/Pages/ConfigPage/Content"]
+[node name="SidePanel" type="ScrollContainer" parent="UI/Workspaces/Config/Content"]
 margin_right = 230.0
 margin_bottom = 460.0
 rect_min_size = Vector2( 230, 0 )
@@ -118,24 +134,24 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
-[node name="Menus" type="VBoxContainer" parent="UI/Pages/ConfigPage/Content/SidePanel"]
+[node name="Menus" type="VBoxContainer" parent="UI/Workspaces/Config/Content/SidePanel"]
 margin_right = 230.0
 margin_bottom = 460.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 15
 
-[node name="Project" type="VBoxContainer" parent="UI/Pages/ConfigPage/Content/SidePanel/Menus"]
+[node name="Project" type="VBoxContainer" parent="UI/Workspaces/Config/Content/SidePanel/Menus"]
 margin_right = 230.0
 margin_bottom = 157.0
 custom_constants/separation = 5
 
-[node name="CategoryTitle" type="Label" parent="UI/Pages/ConfigPage/Content/SidePanel/Menus/Project"]
+[node name="CategoryTitle" type="Label" parent="UI/Workspaces/Config/Content/SidePanel/Menus/Project"]
 margin_right = 230.0
 margin_bottom = 22.0
 text = "Project"
 
-[node name="World" type="Button" parent="UI/Pages/ConfigPage/Content/SidePanel/Menus/Project"]
+[node name="World" type="Button" parent="UI/Workspaces/Config/Content/SidePanel/Menus/Project"]
 margin_top = 27.0
 margin_right = 230.0
 margin_bottom = 49.0
@@ -143,81 +159,81 @@ toggle_mode = true
 pressed = true
 text = "World"
 
-[node name="Data" type="Button" parent="UI/Pages/ConfigPage/Content/SidePanel/Menus/Project"]
+[node name="Data" type="Button" parent="UI/Workspaces/Config/Content/SidePanel/Menus/Project"]
 margin_top = 54.0
 margin_right = 230.0
 margin_bottom = 76.0
 toggle_mode = true
 text = "Data"
 
-[node name="Wiki" type="Button" parent="UI/Pages/ConfigPage/Content/SidePanel/Menus/Project"]
+[node name="Wiki" type="Button" parent="UI/Workspaces/Config/Content/SidePanel/Menus/Project"]
 margin_top = 81.0
 margin_right = 230.0
 margin_bottom = 103.0
 toggle_mode = true
 text = "Wiki"
 
-[node name="Atlas" type="Button" parent="UI/Pages/ConfigPage/Content/SidePanel/Menus/Project"]
+[node name="Atlas" type="Button" parent="UI/Workspaces/Config/Content/SidePanel/Menus/Project"]
 margin_top = 108.0
 margin_right = 230.0
 margin_bottom = 130.0
 toggle_mode = true
 text = "Atlas"
 
-[node name="Timelines" type="Button" parent="UI/Pages/ConfigPage/Content/SidePanel/Menus/Project"]
+[node name="Timelines" type="Button" parent="UI/Workspaces/Config/Content/SidePanel/Menus/Project"]
 margin_top = 135.0
 margin_right = 230.0
 margin_bottom = 157.0
 toggle_mode = true
 text = "Timelines"
 
-[node name="App" type="VBoxContainer" parent="UI/Pages/ConfigPage/Content/SidePanel/Menus"]
+[node name="App" type="VBoxContainer" parent="UI/Workspaces/Config/Content/SidePanel/Menus"]
 margin_top = 172.0
 margin_right = 230.0
 margin_bottom = 329.0
 custom_constants/separation = 5
 
-[node name="CategoryTitle" type="Label" parent="UI/Pages/ConfigPage/Content/SidePanel/Menus/App"]
+[node name="CategoryTitle" type="Label" parent="UI/Workspaces/Config/Content/SidePanel/Menus/App"]
 margin_right = 230.0
 margin_bottom = 22.0
 text = "Application"
 
-[node name="General" type="Button" parent="UI/Pages/ConfigPage/Content/SidePanel/Menus/App"]
+[node name="General" type="Button" parent="UI/Workspaces/Config/Content/SidePanel/Menus/App"]
 margin_top = 27.0
 margin_right = 230.0
 margin_bottom = 49.0
 toggle_mode = true
 text = "General"
 
-[node name="Home" type="Button" parent="UI/Pages/ConfigPage/Content/SidePanel/Menus/App"]
+[node name="Home" type="Button" parent="UI/Workspaces/Config/Content/SidePanel/Menus/App"]
 margin_top = 54.0
 margin_right = 230.0
 margin_bottom = 76.0
 toggle_mode = true
 text = "Home"
 
-[node name="SavingSyncing" type="Button" parent="UI/Pages/ConfigPage/Content/SidePanel/Menus/App"]
+[node name="SavingSyncing" type="Button" parent="UI/Workspaces/Config/Content/SidePanel/Menus/App"]
 margin_top = 81.0
 margin_right = 230.0
 margin_bottom = 103.0
 toggle_mode = true
 text = "Saving & Syncing"
 
-[node name="Appearance" type="Button" parent="UI/Pages/ConfigPage/Content/SidePanel/Menus/App"]
+[node name="Appearance" type="Button" parent="UI/Workspaces/Config/Content/SidePanel/Menus/App"]
 margin_top = 108.0
 margin_right = 230.0
 margin_bottom = 130.0
 toggle_mode = true
 text = "Appearance"
 
-[node name="Language" type="Button" parent="UI/Pages/ConfigPage/Content/SidePanel/Menus/App"]
+[node name="Language" type="Button" parent="UI/Workspaces/Config/Content/SidePanel/Menus/App"]
 margin_top = 135.0
 margin_right = 230.0
 margin_bottom = 157.0
 toggle_mode = true
 text = "Language"
 
-[node name="Content" type="Container" parent="UI/Pages/ConfigPage/Content"]
+[node name="Content" type="Container" parent="UI/Workspaces/Config/Content"]
 margin_left = 234.0
 margin_right = 949.0
 margin_bottom = 460.0
@@ -225,7 +241,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 
-[node name="Panel" type="Panel" parent="UI/Pages/ConfigPage/Content/Content"]
+[node name="Panel" type="Panel" parent="UI/Workspaces/Config/Content/Content"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 

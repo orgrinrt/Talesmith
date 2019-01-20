@@ -1,0 +1,24 @@
+[gd_scene format=2]
+
+[node name="Talesmith" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 261.0
+margin_bottom = 20.0
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+margin_right = 128.0
+margin_bottom = 20.0
+text = "Update Resources"
+
+[node name="SuccessLabel" type="Label" parent="HBoxContainer"]
+margin_left = 132.0
+margin_top = 3.0
+margin_right = 261.0
+margin_bottom = 17.0
+text = "Succesfully Updated"
+
+[node name="Timer" type="Timer" parent="."]
+

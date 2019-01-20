@@ -1,6 +1,6 @@
 namespace Talesmith.Core.UI.Pages
 {
-    public enum PageEnum
+    public enum WorkspaceEnum
     {
         Atlas,
         WorldConfig

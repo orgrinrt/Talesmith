@@ -33,14 +33,14 @@ namespace Talesmith.Core.UI.Menus
         {
             UnpressAllMenuItems();
             GetAtlasButton().Pressed = false;
-            App.Self.GetPageController().ChangePage(PageEnum.Atlas);
+            App.Self.GetWorkspaceController().ChangeWorkspace(WorkspaceEnum.Atlas);
         }
 
         private void OnConfigPressed()
         {
             UnpressAllMenuItems();
             GetConfigButton().Pressed = false;
-            App.Self.GetPageController().ChangePage(PageEnum.WorldConfig);
+            App.Self.GetWorkspaceController().ChangeWorkspace(WorkspaceEnum.WorldConfig);
         }
 
         private void OnAppIconPressed()

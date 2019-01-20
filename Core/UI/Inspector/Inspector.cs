@@ -16,15 +16,15 @@ namespace Talesmith.Core.UI.Inspector
             CallDeferred(nameof(DeferredInit));
         }
 
-        public void OpenPage(Page page)
+        public void OpenPage(Workspace workspace)
         {
             HidePages();
-            switch (page.PageEnum)
+            switch (workspace.WorkspaceEnum)
             {
-                case PageEnum.Atlas:
+                case WorkspaceEnum.Atlas:
                     GetAtlasPage().Show();
                     break;
-                case PageEnum.WorldConfig:
+                case WorkspaceEnum.WorldConfig:
                     
                     break;
             }
@@ -54,11 +54,11 @@ namespace Talesmith.Core.UI.Inspector
                     Tween.TransitionType.Cubic,
                     Tween.EaseType.Out);
 
-                PageController page = App.Self.GetPageController();
+                WorkspaceController workspace = App.Self.GetWorkspaceController();
                 GetTween().InterpolateProperty(
-                    page,
+                    workspace,
                     "margin_right",
-                    page.MarginRight,
+                    workspace.MarginRight,
                     0,
                     _showingSpeed,
                     Tween.TransitionType.Cubic,
@@ -78,11 +78,11 @@ namespace Talesmith.Core.UI.Inspector
                     Tween.TransitionType.Cubic,
                     Tween.EaseType.Out);
                 
-                PageController page = App.Self.GetPageController();
+                WorkspaceController workspace = App.Self.GetWorkspaceController();
                 GetTween().InterpolateProperty(
-                    page,
+                    workspace,
                     "margin_right",
-                    page.MarginRight,
+                    workspace.MarginRight,
                     -RectSize.x,
                     _showingSpeed,
                     Tween.TransitionType.Cubic,

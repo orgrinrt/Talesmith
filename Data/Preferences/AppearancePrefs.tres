@@ -1,14 +1,13 @@
-[gd_resource type="Resource" load_steps=3 format=2]
+[gd_resource type="Resource" load_steps=2 format=2]
 
-[ext_resource path="res://addons/ResourceTypes/Icons/AppPrefs.png" type="Texture" id=1]
-[ext_resource path="res://addons/ResourceTypes/app_prefs.gd" type="Script" id=2]
+[ext_resource path="res://Addons/Talesmith/ResourceTypes/appearance_prefs.gd" type="Script" id=1]
 
 [resource]
 
-script = ExtResource( 2 )
+script = ExtResource( 1 )
 __meta__ = {
-"_editor_icon": ExtResource( 1 )
+"_editor_icon": null
 }
-app_version = 0.1
-ui_animation_speed = 0.45
+ui_animation_speed = 0.5
+ui_animation_speed_alt = 0.45
 

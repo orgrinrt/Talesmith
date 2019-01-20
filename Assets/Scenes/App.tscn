@@ -364,7 +364,7 @@ margin_bottom = 40.0
 texture = ExtResource( 15 )
 stretch_mode = 6
 
-[node name="Wiki" type="Button" parent="Menus/MainMenu/Menu"]
+[node name="Studia" type="Button" parent="Menus/MainMenu/Menu"]
 editor/display_folded = true
 margin_top = 44.0
 margin_right = 40.0
@@ -374,7 +374,7 @@ focus_mode = 0
 toggle_mode = true
 enabled_focus_mode = 0
 
-[node name="Icon" type="TextureRect" parent="Menus/MainMenu/Menu/Wiki"]
+[node name="Icon" type="TextureRect" parent="Menus/MainMenu/Menu/Studia"]
 modulate = Color( 0.568627, 0.537255, 0.478431, 1 )
 texture = ExtResource( 16 )
 stretch_mode = 6
@@ -394,7 +394,7 @@ modulate = Color( 0.568627, 0.537255, 0.478431, 1 )
 texture = ExtResource( 17 )
 stretch_mode = 6
 
-[node name="Timelines" type="Button" parent="Menus/MainMenu/Menu"]
+[node name="Aetas" type="Button" parent="Menus/MainMenu/Menu"]
 editor/display_folded = true
 margin_top = 132.0
 margin_right = 40.0
@@ -404,7 +404,7 @@ focus_mode = 0
 toggle_mode = true
 enabled_focus_mode = 0
 
-[node name="Icon" type="TextureRect" parent="Menus/MainMenu/Menu/Timelines"]
+[node name="Icon" type="TextureRect" parent="Menus/MainMenu/Menu/Aetas"]
 modulate = Color( 0.568627, 0.537255, 0.478431, 1 )
 texture = ExtResource( 18 )
 stretch_mode = 6

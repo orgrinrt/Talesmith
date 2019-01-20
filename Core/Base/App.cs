@@ -8,11 +8,11 @@ namespace Talesmith.Core
 {
     public class App : Node
     {
-        [Signal] public delegate void MainPageChanged(Page page);
+        [Signal] public delegate void MainPageChanged(Workspace workspace);
         
         public static App Self;
         
-        public PageController PageController => GetPageController();
+        public WorkspaceController WorkspaceController => GetWorkspaceController();
         public Project Project => GetProject();
         public Preferences Preferences => GetPreferences();
         
@@ -30,9 +30,9 @@ namespace Talesmith.Core
             return top.GetChild(top.GetChildCount() - 1) as Project;
         }
 
-        public PageController GetPageController()
+        public WorkspaceController GetWorkspaceController()
         {
-            return GetProject().GetNode<PageController>("./UI/Pages");
+            return GetProject().GetNode<WorkspaceController>("./UI/Pages");
         }
 
         public Preferences GetPreferences()

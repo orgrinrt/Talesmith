@@ -7,6 +7,7 @@ public class Preferences : Node
 	[Signal] public delegate void UseBigIconsToggled(bool use);
 	[Signal] public delegate void AnimationSpeedChanged(float newValue);
 	
+	[Export()] public Resource ApplicationPreferences;
 	[Export()] public Resource ViewPreferences;
 	[Export()] public Resource AppearancePreferences;
 	
