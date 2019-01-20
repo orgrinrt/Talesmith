@@ -111,9 +111,9 @@ namespace Talesmith.Core.UI.Inspector
             return GetNode<InspectorPage>("./Atlas");
         }
 
-        private Dragger GetDragger()
+        private InspectorDragger GetDragger()
         {
-            return GetNode<Dragger>("./Dragger");
+            return GetNode<InspectorDragger>("./Dragger");
         }
 
         private Tween GetTween()

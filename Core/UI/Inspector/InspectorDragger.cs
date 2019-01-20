@@ -4,7 +4,7 @@ using Talesmith.Core.Systems;
 
 namespace Talesmith.Core.UI.Inspector
 {
-    public class Dragger : Control
+    public class InspectorDragger : Control
     {
         private bool _isHandling = false;
         private float _inspectorMaxSize = -600;
@@ -30,8 +30,7 @@ namespace Talesmith.Core.UI.Inspector
                     Iterator.Coroutine.Run(HandleDragging());
                     break;
                 }
-                if (GetGlobalMousePosition().x < RectGlobalPosition.x ||
-                    GetGlobalMousePosition().x > RectGlobalPosition.x + RectSize.x)
+                if (!IsWithinBounds())
                 {
                     OnMouseExit();
                     break;
@@ -71,11 +70,16 @@ namespace Talesmith.Core.UI.Inspector
             
             OnMouseExit();
             
-            if (GetGlobalMousePosition().x > RectGlobalPosition.x &&
-                GetGlobalMousePosition().x < RectGlobalPosition.x + RectSize.x)
+            if (IsWithinBounds())
             {
                 OnMouseEnter();
             }
+        }
+
+        private bool IsWithinBounds()
+        {
+            return GetGlobalMousePosition().x > RectGlobalPosition.x &&
+                   GetGlobalMousePosition().x < RectGlobalPosition.x + RectSize.x;
         }
 
         private void OnMouseEnter()

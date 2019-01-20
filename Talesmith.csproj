@@ -63,7 +63,9 @@
     <Compile Include="Core\LocalData\Project.cs" />
     <Compile Include="Core\Systems\Iterator.cs" />
     <Compile Include="Core\Systems\Preferences.cs" />
-    <Compile Include="Core\UI\Inspector\Dragger.cs" />
+    <Compile Include="Core\UI\Dock\Dock.cs" />
+    <Compile Include="Core\UI\Dock\DockDragger.cs" />
+    <Compile Include="Core\UI\Inspector\InspectorDragger.cs" />
     <Compile Include="Core\UI\Inspector\Inspector.cs" />
     <Compile Include="Core\UI\Inspector\InspectorPage.cs" />
     <Compile Include="Core\UI\Inspector\Pages\Atlas.cs" />

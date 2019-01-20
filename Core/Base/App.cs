@@ -32,7 +32,7 @@ namespace Talesmith.Core
 
         public WorkspaceController GetWorkspaceController()
         {
-            return GetProject().GetNode<WorkspaceController>("./UI/Pages");
+            return GetProject().GetNode<WorkspaceController>("./UI/Workspaces");
         }
 
         public Preferences GetPreferences()
@@ -43,6 +43,11 @@ namespace Talesmith.Core
         public Inspector GetInspector()
         {
             return GetNode<Inspector>(NodePaths.Inspector);
+        }
+
+        public Dock GetDock()
+        {
+            return GetNode<Dock>(NodePaths.Dock);
         }
     }
 }

@@ -1,25 +1,27 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Core/Base/App.cs" type="Script" id=1]
-[ext_resource path="res://Assets/Resources/Themes/Default.tres" type="Theme" id=2]
-[ext_resource path="res://Core/UI/Inspector/Inspector.cs" type="Script" id=3]
-[ext_resource path="res://Core/UI/Inspector/Pages/Atlas.cs" type="Script" id=4]
-[ext_resource path="res://Assets/Scenes/UI/Layers/LayerListItem.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Core/UI/Inspector/Dragger.cs" type="Script" id=6]
-[ext_resource path="res://Assets/Resources/Themes/PanelEmphasisColor.tres" type="Theme" id=7]
-[ext_resource path="res://Core/UI/TopBar/FileMenu.cs" type="Script" id=8]
-[ext_resource path="res://Core/UI/TopBar/EditMenu.cs" type="Script" id=9]
-[ext_resource path="res://Core/UI/TopBar/ViewMenu.cs" type="Script" id=10]
-[ext_resource path="res://Core/UI/TopBar/HelpMenu.cs" type="Script" id=11]
-[ext_resource path="res://Assets/Graphics/Icons/16x16/Bell.png" type="Texture" id=12]
-[ext_resource path="res://Assets/Graphics/Icons/16x16/Cloud.png" type="Texture" id=13]
-[ext_resource path="res://Core/UI/Menus/MainMenu.cs" type="Script" id=14]
-[ext_resource path="res://Assets/Graphics/Icons/40x40/Quill.png" type="Texture" id=15]
-[ext_resource path="res://Assets/Graphics/Icons/40x40/Wiki.png" type="Texture" id=16]
-[ext_resource path="res://Assets/Graphics/Icons/40x40/Atlas.png" type="Texture" id=17]
-[ext_resource path="res://Assets/Graphics/Icons/40x40/Timeline.png" type="Texture" id=18]
-[ext_resource path="res://Assets/Graphics/Icons/40x40/Settings.png" type="Texture" id=19]
-[ext_resource path="res://Assets/Graphics/Icons/AppIconTemp.png" type="Texture" id=20]
+[ext_resource path="res://Core/UI/Dock/Dock.cs" type="Script" id=2]
+[ext_resource path="res://Core/UI/Dock/DockDragger.cs" type="Script" id=3]
+[ext_resource path="res://Assets/Resources/Themes/Default.tres" type="Theme" id=4]
+[ext_resource path="res://Core/UI/Inspector/Inspector.cs" type="Script" id=5]
+[ext_resource path="res://Core/UI/Inspector/Pages/Atlas.cs" type="Script" id=6]
+[ext_resource path="res://Assets/Scenes/UI/Layers/LayerListItem.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Core/UI/Inspector/InspectorDragger.cs" type="Script" id=8]
+[ext_resource path="res://Assets/Resources/Themes/PanelEmphasisColor.tres" type="Theme" id=9]
+[ext_resource path="res://Core/UI/TopBar/FileMenu.cs" type="Script" id=10]
+[ext_resource path="res://Core/UI/TopBar/EditMenu.cs" type="Script" id=11]
+[ext_resource path="res://Core/UI/TopBar/ViewMenu.cs" type="Script" id=12]
+[ext_resource path="res://Core/UI/TopBar/HelpMenu.cs" type="Script" id=13]
+[ext_resource path="res://Assets/Graphics/Icons/16x16/Bell.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Graphics/Icons/16x16/Cloud.png" type="Texture" id=15]
+[ext_resource path="res://Core/UI/Menus/MainMenu.cs" type="Script" id=16]
+[ext_resource path="res://Assets/Graphics/Icons/40x40/Quill.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Graphics/Icons/40x40/Wiki.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Graphics/Icons/40x40/Atlas.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Graphics/Icons/40x40/Timeline.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Graphics/Icons/40x40/Settings.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Graphics/Icons/AppIconTemp.png" type="Texture" id=22]
 
 [sub_resource type="StyleBoxFlat" id=1]
 
@@ -86,8 +88,27 @@ margin_bottom = 530.098
 [node name="Top" type="CanvasLayer" parent="."]
 layer = 99
 
+[node name="Dock" type="Control" parent="Top"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -150.0
+margin_right = -225.0
+margin_bottom = -20.0
+script = ExtResource( 2 )
+
+[node name="Panel" type="Panel" parent="Top/Dock"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Dragger" type="Control" parent="Top/Dock"]
+anchor_right = 1.0
+margin_top = -3.0
+margin_bottom = 1.0
+mouse_default_cursor_shape = 9
+script = ExtResource( 3 )
+
 [node name="Inspector" type="Control" parent="Top"]
-editor/display_folded = true
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -95,8 +116,8 @@ margin_left = -225.0
 margin_top = 40.0
 margin_bottom = -20.0
 rect_min_size = Vector2( 225, 0 )
-theme = ExtResource( 2 )
-script = ExtResource( 3 )
+theme = ExtResource( 4 )
+script = ExtResource( 5 )
 
 [node name="Panel" type="Panel" parent="Top/Inspector"]
 anchor_right = 1.0
@@ -108,7 +129,7 @@ editor/display_folded = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 4 )
+script = ExtResource( 6 )
 
 [node name="TabContainer" type="TabContainer" parent="Top/Inspector/Atlas"]
 anchor_right = 1.0
@@ -132,7 +153,7 @@ margin_right = 213.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 
-[node name="LayerListItem" parent="Top/Inspector/Atlas/TabContainer/Layers/LayerList" instance=ExtResource( 5 )]
+[node name="LayerListItem" parent="Top/Inspector/Atlas/TabContainer/Layers/LayerList" instance=ExtResource( 7 )]
 anchor_right = 0.0
 margin_right = 213.0
 margin_bottom = 28.0
@@ -152,7 +173,7 @@ anchor_bottom = 1.0
 margin_left = -3.0
 margin_right = 1.0
 mouse_default_cursor_shape = 10
-script = ExtResource( 6 )
+script = ExtResource( 8 )
 
 [node name="Tween" type="Tween" parent="Top/Inspector"]
 
@@ -162,7 +183,7 @@ anchor_right = 1.0
 margin_left = 40.0
 margin_top = 20.0
 margin_bottom = 40.0
-theme = ExtResource( 2 )
+theme = ExtResource( 4 )
 
 [node name="Panel" type="Panel" parent="Top/PageBar"]
 anchor_right = 1.0
@@ -183,12 +204,12 @@ editor/display_folded = true
 anchor_right = 1.0
 margin_left = 40.0
 margin_bottom = 20.0
-theme = ExtResource( 2 )
+theme = ExtResource( 4 )
 
 [node name="Panel" type="Panel" parent="Top/Topbar"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 7 )
+theme = ExtResource( 9 )
 
 [node name="HBox" type="HBoxContainer" parent="Top/Topbar"]
 anchor_right = 1.0
@@ -198,21 +219,21 @@ anchor_bottom = 1.0
 margin_right = 35.0
 margin_bottom = 22.0
 text = "File"
-script = ExtResource( 8 )
+script = ExtResource( 10 )
 
 [node name="Edit" type="MenuButton" parent="Top/Topbar/HBox"]
 margin_left = 39.0
 margin_right = 75.0
 margin_bottom = 22.0
 text = "Edit"
-script = ExtResource( 9 )
+script = ExtResource( 11 )
 
 [node name="View" type="MenuButton" parent="Top/Topbar/HBox"]
 margin_left = 79.0
 margin_right = 121.0
 margin_bottom = 22.0
 text = "View"
-script = ExtResource( 10 )
+script = ExtResource( 12 )
 
 [node name="Help" type="MenuButton" parent="Top/Topbar/HBox"]
 margin_left = 125.0
@@ -220,7 +241,7 @@ margin_right = 167.0
 margin_bottom = 22.0
 text = "Help"
 items = [ "Search", null, 0, false, false, -1, 0, null, "", false, "Manual", null, 0, false, false, -1, 0, null, "", false, "Online Reference", null, 0, false, false, -1, 0, null, "", false, "", null, 0, false, false, -1, 0, null, "", true, "Website", null, 0, false, false, -1, 0, null, "", false, "Credits", null, 0, false, false, -1, 0, null, "", false, "About", null, 0, false, false, -1, 0, null, "", false ]
-script = ExtResource( 11 )
+script = ExtResource( 13 )
 
 [node name="Filler" type="Control" parent="Top/Topbar/HBox"]
 margin_left = 171.0
@@ -239,16 +260,17 @@ placeholder_alpha = 0.221
 caret_blink = true
 
 [node name="BottomBar" type="Control" parent="Top"]
+editor/display_folded = true
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -20.0
-theme = ExtResource( 2 )
+theme = ExtResource( 4 )
 
 [node name="Panel" type="Panel" parent="Top/BottomBar"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 7 )
+theme = ExtResource( 9 )
 
 [node name="Row" type="HBoxContainer" parent="Top/BottomBar"]
 anchor_right = 1.0
@@ -306,7 +328,7 @@ margin_left = 154.0
 margin_right = 174.0
 margin_bottom = 22.0
 rect_min_size = Vector2( 20, 0 )
-texture_normal = ExtResource( 12 )
+texture_normal = ExtResource( 14 )
 expand = true
 stretch_mode = 3
 
@@ -315,7 +337,7 @@ margin_left = 178.0
 margin_right = 198.0
 margin_bottom = 22.0
 rect_min_size = Vector2( 20, 0 )
-texture_normal = ExtResource( 13 )
+texture_normal = ExtResource( 15 )
 expand = true
 stretch_mode = 3
 
@@ -332,15 +354,15 @@ layer = 98
 margin_top = -175.0
 margin_right = 40.0
 margin_bottom = 40.0
-theme = ExtResource( 2 )
-script = ExtResource( 14 )
+theme = ExtResource( 4 )
+script = ExtResource( 16 )
 
 [node name="Tween" type="Tween" parent="Menus/MainMenu"]
 
 [node name="Panel" type="Panel" parent="Menus/MainMenu"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 7 )
+theme = ExtResource( 9 )
 
 [node name="Menu" type="VBoxContainer" parent="Menus/MainMenu"]
 margin_right = 40.0
@@ -361,7 +383,7 @@ align = 0
 modulate = Color( 0.568627, 0.537255, 0.478431, 1 )
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 15 )
+texture = ExtResource( 17 )
 stretch_mode = 6
 
 [node name="Studia" type="Button" parent="Menus/MainMenu/Menu"]
@@ -376,7 +398,7 @@ enabled_focus_mode = 0
 
 [node name="Icon" type="TextureRect" parent="Menus/MainMenu/Menu/Studia"]
 modulate = Color( 0.568627, 0.537255, 0.478431, 1 )
-texture = ExtResource( 16 )
+texture = ExtResource( 18 )
 stretch_mode = 6
 
 [node name="Atlas" type="Button" parent="Menus/MainMenu/Menu"]
@@ -391,7 +413,7 @@ enabled_focus_mode = 0
 
 [node name="Icon" type="TextureRect" parent="Menus/MainMenu/Menu/Atlas"]
 modulate = Color( 0.568627, 0.537255, 0.478431, 1 )
-texture = ExtResource( 17 )
+texture = ExtResource( 19 )
 stretch_mode = 6
 
 [node name="Aetas" type="Button" parent="Menus/MainMenu/Menu"]
@@ -406,7 +428,7 @@ enabled_focus_mode = 0
 
 [node name="Icon" type="TextureRect" parent="Menus/MainMenu/Menu/Aetas"]
 modulate = Color( 0.568627, 0.537255, 0.478431, 1 )
-texture = ExtResource( 18 )
+texture = ExtResource( 20 )
 stretch_mode = 6
 
 [node name="Config" type="Button" parent="Menus/MainMenu/Menu"]
@@ -421,14 +443,14 @@ enabled_focus_mode = 0
 
 [node name="Icon" type="TextureRect" parent="Menus/MainMenu/Menu/Config"]
 modulate = Color( 0.568627, 0.537255, 0.478431, 1 )
-texture = ExtResource( 19 )
+texture = ExtResource( 21 )
 stretch_mode = 6
 
 [node name="AppIcon" type="TextureButton" parent="Menus"]
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
-texture_normal = ExtResource( 20 )
+texture_normal = ExtResource( 22 )
 expand = true
 stretch_mode = 6
 

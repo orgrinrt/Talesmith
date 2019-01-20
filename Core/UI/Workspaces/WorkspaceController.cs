@@ -62,12 +62,12 @@ namespace Talesmith.Core.UI.Pages
 
         private AtlasWorkspace GetAtlasPage()
         {
-            return GetNode<AtlasWorkspace>("./AtlasPage");
+            return GetNode<AtlasWorkspace>("./Atlas");
         }
 
         private ConfigWorkspace GetConfigPage()
         {
-            return GetNode<ConfigWorkspace>("./ConfigPage");
+            return GetNode<ConfigWorkspace>("./Config");
         }
     }
 }
