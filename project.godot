@@ -19,7 +19,6 @@ config/name="Talesmith"
 run/main_scene="res://Assets/Scenes/Projects/EmptyProject.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="Talesmith"
-run/low_processor_mode=true
 config/icon="res://Assets/Graphics/Icons/AppIconTemp.png"
 
 [autoload]
