@@ -8,7 +8,6 @@ namespace Talesmith.Core.UI.Workspaces.Atlas
     {
         public override void _Ready()
         {
-            _workspaceEnum = WorkspaceEnum.Atlas;
             SetFocusMode(FocusModeEnum.All);
         }
         
@@ -53,12 +52,12 @@ namespace Talesmith.Core.UI.Workspaces.Atlas
         
         public override ICycleableItem GetNextItem()
         {
-            throw new NotImplementedException();
+            return App.Self.WorkspaceController.Aetas;
         }
 
         public override ICycleableItem GetPrevItem()
         {
-            throw new NotImplementedException();
+            return App.Self.WorkspaceController.Studia;
         }
     }
 }

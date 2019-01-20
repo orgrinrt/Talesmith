@@ -77,8 +77,8 @@
     <Compile Include="Core\UI\Workspaces\ICycleableItem.cs" />
     <Compile Include="Core\UI\Workspaces\Studia\StudiaWorkspace.cs" />
     <Compile Include="Core\UI\Workspaces\Workspace.cs" />
+    <Compile Include="Core\UI\Workspaces\WorkspaceChangeType.cs" />
     <Compile Include="Core\UI\Workspaces\WorkspaceController.cs" />
-    <Compile Include="Core\UI\Workspaces\WorkspaceEnum.cs" />
     <Compile Include="Core\UI\Workspaces\WorldConfig\ConfigWorkspace.cs" />
     <Compile Include="Core\UI\TopBar\EditMenu.cs" />
     <Compile Include="Core\UI\TopBar\FileMenu.cs" />

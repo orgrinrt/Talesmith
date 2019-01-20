@@ -5,9 +5,6 @@ namespace Talesmith.Core.UI.Workspaces
 {
     public class Workspace : Control, ICycleableItem
     {
-        internal WorkspaceEnum _workspaceEnum;
-        
-        public WorkspaceEnum WorkspaceEnum => _workspaceEnum;
         public ICycleableItem NextItem => GetNextItem();
         public ICycleableItem PrevItem => GetPrevItem();
         
@@ -18,18 +15,9 @@ namespace Talesmith.Core.UI.Workspaces
             AddToGroup(Groups.Pages);
         }
 
-        public override void _Input(InputEvent @event)
+        internal WorkspaceController GetWorkspaceController()
         {
-            base._Input(@event);
-
-            if (@event.IsActionPressed("cycle_workspaces_next"))
-            {
-                
-            }
-            else if (@event.IsActionPressed("cycle_workspaces_prev"))
-            {
-                
-            }
+            return GetNode<WorkspaceController>("..");
         }
 
         public virtual ICycleableItem GetNextItem()

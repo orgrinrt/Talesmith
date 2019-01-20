@@ -12,12 +12,12 @@ namespace Talesmith.Core.UI.Workspaces.Aetas
 
         public override ICycleableItem GetNextItem()
         {
-            throw new NotImplementedException();
+            return App.Self.WorkspaceController.Config;
         }
 
         public override ICycleableItem GetPrevItem()
         {
-            throw new NotImplementedException();
+            return App.Self.WorkspaceController.Atlas;
         }
     }
 }

@@ -12,12 +12,12 @@ namespace Talesmith.Core.UI.Workspaces.Home
     
         public override ICycleableItem GetNextItem()
         {
-            throw new NotImplementedException();
+            return App.Self.WorkspaceController.Studia;
         }
 
         public override ICycleableItem GetPrevItem()
         {
-            throw new NotImplementedException();
+            return App.Self.WorkspaceController.Config;
         }
     }
 }

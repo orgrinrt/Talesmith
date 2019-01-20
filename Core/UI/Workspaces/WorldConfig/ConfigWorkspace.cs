@@ -7,17 +7,17 @@ namespace Talesmith.Core.UI.Workspaces.WorldConfig
     
         public override void _Ready()
         {
-            _workspaceEnum = WorkspaceEnum.WorldConfig;
+            
         }
     
         public override ICycleableItem GetNextItem()
         {
-            throw new NotImplementedException();
+            return App.Self.WorkspaceController.Home;
         }
 
         public override ICycleableItem GetPrevItem()
         {
-            throw new NotImplementedException();
+            return App.Self.WorkspaceController.Aetas;
         }
     }
 }

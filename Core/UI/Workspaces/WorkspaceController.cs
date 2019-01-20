@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using Godot;
+using Talesmith.Core.UI.Workspaces.Aetas;
 using Talesmith.Core.UI.Workspaces.Atlas;
+using Talesmith.Core.UI.Workspaces.Home;
+using Talesmith.Core.UI.Workspaces.Studia;
 using Talesmith.Core.UI.Workspaces.WorldConfig;
 
 namespace Talesmith.Core.UI.Workspaces
@@ -9,30 +12,47 @@ namespace Talesmith.Core.UI.Workspaces
     {
         private Workspace _currWorkspace;
         public Workspace CurrWorkspace => _currWorkspace;
+
+        public HomeWorkspace Home => GetHomeWorkspace();
+        public StudiaWorkspace Studia => GetStudiaWorkspace();
+        public AtlasWorkspace Atlas => GetAtlasWorkspace();
+        public AetasWorkspace Aetas => GetAetasWorkspace();
+        public ConfigWorkspace Config => GetConfigWorkspace();
         
         public override void _Ready()
         {
             MarginRight = -App.Self.GetInspector().RectSize.x;
+            
+            App.Self.Connect(nameof(App.WorkspaceAboutToChangeTo), this, nameof(OnWorkspaceAboutToChange));
+            
+            ChangeWorkspace(Home);
+        }
+        
+        public override void _Input(InputEvent @event)
+        {
+            base._Input(@event);
+
+            if (@event.IsActionPressed("cycle_workspaces_prev"))
+            {
+                App.Self.EmitSignal(nameof(App.WorkspaceAboutToChangeTo), CurrWorkspace.PrevItem, WorkspaceChangeType.Cycle);
+            }
+            else if (@event.IsActionPressed("cycle_workspaces_next"))
+            {
+                App.Self.EmitSignal(nameof(App.WorkspaceAboutToChangeTo), CurrWorkspace.NextItem, WorkspaceChangeType.Cycle);
+            }
+        }
+        
+        public void OnWorkspaceAboutToChange(Workspace workspace, WorkspaceChangeType changeType)
+        {
+            ChangeWorkspace(workspace);
         }
 
-        public void ChangeWorkspace(WorkspaceEnum workspace)
+        public void ChangeWorkspace(Workspace workspace)
         {
             HideWorkspaces();
-
-            Workspace workspaceToOpen = new Workspace();
-            switch (workspace)
-            {
-                case WorkspaceEnum.Atlas:
-                    workspaceToOpen = GetAtlasPage();
-                    break;
-                case WorkspaceEnum.WorldConfig:
-                    workspaceToOpen = GetConfigPage();
-                    break;
-            }
-
-            workspaceToOpen.Show();
-            App.Self.EmitSignal(nameof(App.MainPageChanged), workspaceToOpen);
-            _currWorkspace = workspaceToOpen;
+            workspace.Show();
+            App.Self.EmitSignal(nameof(App.WorkspaceChanged), workspace);
+            _currWorkspace = workspace;
         }
 
         private void HideWorkspaces()
@@ -60,13 +80,28 @@ namespace Talesmith.Core.UI.Workspaces
 
             return result.ToArray();
         }
+        
+        private HomeWorkspace GetHomeWorkspace()
+        {
+            return GetNode<HomeWorkspace>("./Home");
+        }
+        
+        private StudiaWorkspace GetStudiaWorkspace()
+        {
+            return GetNode<StudiaWorkspace>("./Studia");
+        }
 
-        private AtlasWorkspace GetAtlasPage()
+        private AtlasWorkspace GetAtlasWorkspace()
         {
             return GetNode<AtlasWorkspace>("./Atlas");
         }
 
-        private ConfigWorkspace GetConfigPage()
+        private AetasWorkspace GetAetasWorkspace()
+        {
+            return GetNode<AetasWorkspace>("./Aetas");
+        }
+
+        private ConfigWorkspace GetConfigWorkspace()
         {
             return GetNode<ConfigWorkspace>("./Config");
         }

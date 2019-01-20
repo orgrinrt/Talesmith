@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using Godot;
 using Talesmith.Core.Systems;
 using Talesmith.Core.UI.Workspaces;
+using Talesmith.Core.UI.Workspaces.Atlas;
+using Talesmith.Core.UI.Workspaces.WorldConfig;
 using Environment = System.Environment;
 using Path = System.IO.Path;
 
@@ -17,16 +19,16 @@ namespace Talesmith.Core.UI.Inspector
             CallDeferred(nameof(DeferredInit));
         }
 
-        public void OpenPage(Workspace workspace)
+        public void OpenPage(Workspace workspace, WorkspaceChangeType changeType)
         {
             HidePages();
-            switch (workspace.WorkspaceEnum)
+            switch (workspace.GetType().ToString())
             {
-                case WorkspaceEnum.Atlas:
+                case nameof(AtlasWorkspace):
                     GetAtlasPage().Show();
                     break;
-                case WorkspaceEnum.WorldConfig:
-                    
+                case nameof(ConfigWorkspace):
+                    // TODO
                     break;
             }
         }
@@ -96,7 +98,7 @@ namespace Talesmith.Core.UI.Inspector
 
         private void DeferredInit()
         {
-            App.Self.Connect(nameof(App.MainPageChanged), this, nameof(OpenPage));
+            App.Self.Connect(nameof(App.WorkspaceAboutToChangeTo), this, nameof(OpenPage));
             App.Self.Preferences.Connect(nameof(Preferences.InspectorToggled), this, nameof(ToggleInspector));
             _showingSpeed = (float) App.Self.Preferences.AppearancePreferences.Get("ui_animation_speed");
             App.Self.Preferences.Connect(nameof(Preferences.AnimationSpeedChanged), this, nameof(OnAnimationSpeedChanged));

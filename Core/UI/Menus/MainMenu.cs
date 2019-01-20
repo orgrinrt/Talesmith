@@ -1,6 +1,11 @@
 using Godot;
 using Talesmith.Core.Systems;
 using Talesmith.Core.UI.Workspaces;
+using Talesmith.Core.UI.Workspaces.Aetas;
+using Talesmith.Core.UI.Workspaces.Atlas;
+using Talesmith.Core.UI.Workspaces.Home;
+using Talesmith.Core.UI.Workspaces.Studia;
+using Talesmith.Core.UI.Workspaces.WorldConfig;
 
 namespace Talesmith.Core.UI.Menus
 {
@@ -14,7 +19,10 @@ namespace Talesmith.Core.UI.Menus
         {
             GetAppIcon().Connect("button_up", this, nameof(OnAppIconPressed));
 
+            GetHomeButton().Connect("button_up", this, nameof(OnHomePressed));
+            GetStudiaButton().Connect("button_up", this, nameof(OnStudiaPressed));
             GetAtlasButton().Connect("button_up", this, nameof(OnAtlasPressed));
+            GetAetasButton().Connect("button_up", this, nameof(OnAetasPressed));
             GetConfigButton().Connect("button_up", this, nameof(OnConfigPressed));
             
             CallDeferred(nameof(DeferredInit));
@@ -30,18 +38,59 @@ namespace Talesmith.Core.UI.Menus
             }
         }
 
+        private void UpdatePressedButton(Workspace workspace, WorkspaceChangeType changeType)
+        {
+            if (workspace is HomeWorkspace)
+            {
+                UnpressAllMenuItems();
+                GetHomeButton().Pressed = changeType != WorkspaceChangeType.Click;
+            }
+            else if (workspace is StudiaWorkspace)
+            {
+                UnpressAllMenuItems();
+                GetStudiaButton().Pressed = changeType != WorkspaceChangeType.Click;
+            }
+            else if (workspace is AtlasWorkspace)
+            {
+                UnpressAllMenuItems();
+                GetAtlasButton().Pressed = changeType != WorkspaceChangeType.Click;
+            }
+            else if (workspace is AetasWorkspace)
+            {
+                UnpressAllMenuItems();
+                GetAetasButton().Pressed = changeType != WorkspaceChangeType.Click;
+            }
+            else if (workspace is ConfigWorkspace)
+            {
+                UnpressAllMenuItems();
+                GetConfigButton().Pressed = changeType != WorkspaceChangeType.Click;
+            }
+        }
+        
+        
+        private void OnHomePressed()
+        {
+            App.Self.EmitSignal(nameof(App.WorkspaceAboutToChangeTo), App.Self.WorkspaceController.Home, WorkspaceChangeType.Click);
+        }
+        
+        private void OnStudiaPressed()
+        {
+            App.Self.EmitSignal(nameof(App.WorkspaceAboutToChangeTo), App.Self.WorkspaceController.Studia, WorkspaceChangeType.Click);
+        }
+
         private void OnAtlasPressed()
         {
-            UnpressAllMenuItems();
-            GetAtlasButton().Pressed = false;
-            App.Self.GetWorkspaceController().ChangeWorkspace(WorkspaceEnum.Atlas);
+            App.Self.EmitSignal(nameof(App.WorkspaceAboutToChangeTo), App.Self.WorkspaceController.Atlas, WorkspaceChangeType.Click);
+        }
+        
+        private void OnAetasPressed()
+        {
+            App.Self.EmitSignal(nameof(App.WorkspaceAboutToChangeTo), App.Self.WorkspaceController.Aetas, WorkspaceChangeType.Click);
         }
 
         private void OnConfigPressed()
         {
-            UnpressAllMenuItems();
-            GetConfigButton().Pressed = false;
-            App.Self.GetWorkspaceController().ChangeWorkspace(WorkspaceEnum.WorldConfig);
+            App.Self.EmitSignal(nameof(App.WorkspaceAboutToChangeTo), App.Self.WorkspaceController.Config, WorkspaceChangeType.Click);
         }
 
         private void OnAppIconPressed()
@@ -91,6 +140,7 @@ namespace Talesmith.Core.UI.Menus
         {
             _showingSpeed = (float) App.Self.Preferences.AppearancePreferences.Get("ui_animation_speed");
             App.Self.Preferences.Connect(nameof(Preferences.AnimationSpeedChanged), this, nameof(OnAnimationSpeedChanged));
+            App.Self.Connect(nameof(App.WorkspaceAboutToChangeTo), this, nameof(UpdatePressedButton));
         }
 
         private void OnAnimationSpeedChanged(float newSpeed)
@@ -107,10 +157,25 @@ namespace Talesmith.Core.UI.Menus
         {
             return GetNode<Tween>("./Tween");
         }
+        
+        private Button GetHomeButton()
+        {
+            return GetNode<Button>("./Menu/Home");
+        }
+        
+        private Button GetStudiaButton()
+        {
+            return GetNode<Button>("./Menu/Studia");
+        }
 
         private Button GetAtlasButton()
         {
             return GetNode<Button>("./Menu/Atlas");
+        }
+        
+        private Button GetAetasButton()
+        {
+            return GetNode<Button>("./Menu/Aetas");
         }
 
         private Button GetConfigButton()
