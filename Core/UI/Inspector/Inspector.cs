@@ -1,8 +1,12 @@
 using System.Collections.Generic;
 using Godot;
 using Talesmith.Core.Systems;
+using Talesmith.Core.UI.Inspector.Pages;
 using Talesmith.Core.UI.Workspaces;
+using Talesmith.Core.UI.Workspaces.Aetas;
 using Talesmith.Core.UI.Workspaces.Atlas;
+using Talesmith.Core.UI.Workspaces.Home;
+using Talesmith.Core.UI.Workspaces.Studia;
 using Talesmith.Core.UI.Workspaces.WorldConfig;
 using Environment = System.Environment;
 using Path = System.IO.Path;
@@ -19,25 +23,35 @@ namespace Talesmith.Core.UI.Inspector
             CallDeferred(nameof(DeferredInit));
         }
 
-        public void OpenPage(Workspace workspace, WorkspaceChangeType changeType)
+        public void OpenInspectorTabContent(Workspace workspace, WorkspaceChangeType changeType)
         {
-            HidePages();
-            switch (workspace.GetType().ToString())
+            HideInspectorTabContents();
+
+            switch (workspace)
             {
-                case nameof(AtlasWorkspace):
-                    GetAtlasPage().Show();
+                case HomeWorkspace _:
+                    GetHomeContent().Show();
                     break;
-                case nameof(ConfigWorkspace):
-                    // TODO
+                case StudiaWorkspace _:
+                    GetStudiaContent().Show();
+                    break;
+                case AtlasWorkspace _:
+                    GetAtlasContent().Show();
+                    break;
+                case AetasWorkspace _:
+                    GetAetasContent().Show();
+                    break;
+                case ConfigWorkspace _:
+                    GetConfigContent().Show();
                     break;
             }
         }
 
-        private void HidePages()
+        private void HideInspectorTabContents()
         {
-            foreach (Node node in GetChildren())
+            foreach (Node node in GetInspectorContent().GetChildren())
             {
-                if (node is InspectorPage page)
+                if (node is InspectorContentPage page)
                 {
                     page.Hide();
                 }
@@ -98,7 +112,7 @@ namespace Talesmith.Core.UI.Inspector
 
         private void DeferredInit()
         {
-            App.Self.Connect(nameof(App.WorkspaceAboutToChangeTo), this, nameof(OpenPage));
+            App.Self.Connect(nameof(App.WorkspaceChangeInitiated), this, nameof(OpenInspectorTabContent));
             App.Self.Preferences.Connect(nameof(Preferences.InspectorToggled), this, nameof(ToggleInspector));
             _showingSpeed = (float) App.Self.Preferences.AppearancePreferences.Get("ui_animation_speed");
             App.Self.Preferences.Connect(nameof(Preferences.AnimationSpeedChanged), this, nameof(OnAnimationSpeedChanged));
@@ -108,15 +122,45 @@ namespace Talesmith.Core.UI.Inspector
         {
             _showingSpeed = newSpeed;
         }
-
-        private InspectorPage GetAtlasPage()
+        
+        private Home GetHomeContent()
         {
-            return GetNode<InspectorPage>("./Atlas");
+            return GetNode<Home>("./Tabs/Inspector/Home");
+        }
+        
+        private Studia GetStudiaContent()
+        {
+            return GetNode<Studia>("./Tabs/Inspector/Studia");
+        }
+
+        private Atlas GetAtlasContent()
+        {
+            return GetNode<Atlas>("./Tabs/Inspector/Atlas");
+        }
+        
+        private Aetas GetAetasContent()
+        {
+            return GetNode<Aetas>("./Tabs/Inspector/Aetas");
+        }
+        
+        private Config GetConfigContent()
+        {
+            return GetNode<Config>("./Tabs/Inspector/Config");
         }
 
         private InspectorDragger GetDragger()
         {
             return GetNode<InspectorDragger>("./Dragger");
+        }
+
+        private TabContainer GetTabContainer()
+        {
+            return GetNode<TabContainer>("./Tabs");
+        }
+
+        private ScrollContainer GetInspectorContent()
+        {
+            return GetTabContainer().GetNode<ScrollContainer>("./Inspector");
         }
 
         private Tween GetTween()

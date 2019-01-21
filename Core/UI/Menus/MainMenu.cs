@@ -40,57 +40,52 @@ namespace Talesmith.Core.UI.Menus
 
         private void UpdatePressedButton(Workspace workspace, WorkspaceChangeType changeType)
         {
-            if (workspace is HomeWorkspace)
+            UnpressAllMenuItems();
+
+            switch (workspace)
             {
-                UnpressAllMenuItems();
-                GetHomeButton().Pressed = changeType != WorkspaceChangeType.Click;
-            }
-            else if (workspace is StudiaWorkspace)
-            {
-                UnpressAllMenuItems();
-                GetStudiaButton().Pressed = changeType != WorkspaceChangeType.Click;
-            }
-            else if (workspace is AtlasWorkspace)
-            {
-                UnpressAllMenuItems();
-                GetAtlasButton().Pressed = changeType != WorkspaceChangeType.Click;
-            }
-            else if (workspace is AetasWorkspace)
-            {
-                UnpressAllMenuItems();
-                GetAetasButton().Pressed = changeType != WorkspaceChangeType.Click;
-            }
-            else if (workspace is ConfigWorkspace)
-            {
-                UnpressAllMenuItems();
-                GetConfigButton().Pressed = changeType != WorkspaceChangeType.Click;
+                case HomeWorkspace _:
+                    GetHomeButton().Pressed = changeType != WorkspaceChangeType.Click;
+                    break;
+                case StudiaWorkspace _:
+                    GetStudiaButton().Pressed = changeType != WorkspaceChangeType.Click;
+                    break;
+                case AtlasWorkspace _:
+                    GetAtlasButton().Pressed = changeType != WorkspaceChangeType.Click;
+                    break;
+                case AetasWorkspace _:
+                    GetAetasButton().Pressed = changeType != WorkspaceChangeType.Click;
+                    break;
+                case ConfigWorkspace _:
+                    GetConfigButton().Pressed = changeType != WorkspaceChangeType.Click;
+                    break;
             }
         }
         
         
         private void OnHomePressed()
         {
-            App.Self.EmitSignal(nameof(App.WorkspaceAboutToChangeTo), App.Self.WorkspaceController.Home, WorkspaceChangeType.Click);
+            App.Self.EmitSignal(nameof(App.WorkspaceChangeInitiated), App.Self.WorkspaceController.Home, WorkspaceChangeType.Click);
         }
         
         private void OnStudiaPressed()
         {
-            App.Self.EmitSignal(nameof(App.WorkspaceAboutToChangeTo), App.Self.WorkspaceController.Studia, WorkspaceChangeType.Click);
+            App.Self.EmitSignal(nameof(App.WorkspaceChangeInitiated), App.Self.WorkspaceController.Studia, WorkspaceChangeType.Click);
         }
 
         private void OnAtlasPressed()
         {
-            App.Self.EmitSignal(nameof(App.WorkspaceAboutToChangeTo), App.Self.WorkspaceController.Atlas, WorkspaceChangeType.Click);
+            App.Self.EmitSignal(nameof(App.WorkspaceChangeInitiated), App.Self.WorkspaceController.Atlas, WorkspaceChangeType.Click);
         }
         
         private void OnAetasPressed()
         {
-            App.Self.EmitSignal(nameof(App.WorkspaceAboutToChangeTo), App.Self.WorkspaceController.Aetas, WorkspaceChangeType.Click);
+            App.Self.EmitSignal(nameof(App.WorkspaceChangeInitiated), App.Self.WorkspaceController.Aetas, WorkspaceChangeType.Click);
         }
 
         private void OnConfigPressed()
         {
-            App.Self.EmitSignal(nameof(App.WorkspaceAboutToChangeTo), App.Self.WorkspaceController.Config, WorkspaceChangeType.Click);
+            App.Self.EmitSignal(nameof(App.WorkspaceChangeInitiated), App.Self.WorkspaceController.Config, WorkspaceChangeType.Click);
         }
 
         private void OnAppIconPressed()
@@ -140,7 +135,7 @@ namespace Talesmith.Core.UI.Menus
         {
             _showingSpeed = (float) App.Self.Preferences.AppearancePreferences.Get("ui_animation_speed");
             App.Self.Preferences.Connect(nameof(Preferences.AnimationSpeedChanged), this, nameof(OnAnimationSpeedChanged));
-            App.Self.Connect(nameof(App.WorkspaceAboutToChangeTo), this, nameof(UpdatePressedButton));
+            App.Self.Connect(nameof(App.WorkspaceChangeInitiated), this, nameof(UpdatePressedButton));
         }
 
         private void OnAnimationSpeedChanged(float newSpeed)

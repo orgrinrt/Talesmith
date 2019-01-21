@@ -1,6 +1,6 @@
 ﻿namespace Talesmith.Core.UI.Inspector.Pages
 {
-    public class Atlas : InspectorPage
+    public class Atlas : InspectorContentPage
     {
         
     }

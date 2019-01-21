@@ -23,7 +23,7 @@ namespace Talesmith.Core.UI.Workspaces
         {
             MarginRight = -App.Self.GetInspector().RectSize.x;
             
-            App.Self.Connect(nameof(App.WorkspaceAboutToChangeTo), this, nameof(OnWorkspaceAboutToChange));
+            App.Self.Connect(nameof(App.WorkspaceChangeInitiated), this, nameof(OnWorkspaceAboutToChange));
             
             ChangeWorkspace(Home);
         }
@@ -34,11 +34,11 @@ namespace Talesmith.Core.UI.Workspaces
 
             if (@event.IsActionPressed("cycle_workspaces_prev"))
             {
-                App.Self.EmitSignal(nameof(App.WorkspaceAboutToChangeTo), CurrWorkspace.PrevItem, WorkspaceChangeType.Cycle);
+                App.Self.EmitSignal(nameof(App.WorkspaceChangeInitiated), CurrWorkspace.PrevItem, WorkspaceChangeType.Cycle);
             }
             else if (@event.IsActionPressed("cycle_workspaces_next"))
             {
-                App.Self.EmitSignal(nameof(App.WorkspaceAboutToChangeTo), CurrWorkspace.NextItem, WorkspaceChangeType.Cycle);
+                App.Self.EmitSignal(nameof(App.WorkspaceChangeInitiated), CurrWorkspace.NextItem, WorkspaceChangeType.Cycle);
             }
         }
         

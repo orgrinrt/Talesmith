@@ -2,7 +2,7 @@
 
 namespace Talesmith.Core.UI.Inspector
 {
-    public class InspectorPage : Control
+    public class InspectorContentPage : Control
     {
         
     }

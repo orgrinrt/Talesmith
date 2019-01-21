@@ -10,7 +10,7 @@ namespace Talesmith.Core
 {
     public class App : Node
     {
-        [Signal] public delegate void WorkspaceAboutToChangeTo(Workspace workspace, WorkspaceChangeType changeType);
+        [Signal] public delegate void WorkspaceChangeInitiated(Workspace workspace, WorkspaceChangeType changeType);
         [Signal] public delegate void WorkspaceChanged(Workspace workspace);
         
         public static App Self;

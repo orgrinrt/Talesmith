@@ -65,10 +65,14 @@
     <Compile Include="Core\Systems\Preferences.cs" />
     <Compile Include="Core\UI\Dock\Dock.cs" />
     <Compile Include="Core\UI\Dock\DockDragger.cs" />
+    <Compile Include="Core\UI\Inspector\InspectorContentPages\Aetas.cs" />
+    <Compile Include="Core\UI\Inspector\InspectorContentPages\Atlas.cs" />
+    <Compile Include="Core\UI\Inspector\InspectorContentPages\Config.cs" />
+    <Compile Include="Core\UI\Inspector\InspectorContentPages\Home.cs" />
+    <Compile Include="Core\UI\Inspector\InspectorContentPages\Studia.cs" />
     <Compile Include="Core\UI\Inspector\InspectorDragger.cs" />
     <Compile Include="Core\UI\Inspector\Inspector.cs" />
-    <Compile Include="Core\UI\Inspector\InspectorPage.cs" />
-    <Compile Include="Core\UI\Inspector\Pages\Atlas.cs" />
+    <Compile Include="Core\UI\Inspector\InspectorContentPage.cs" />
     <Compile Include="Core\UI\Menus\MainMenu.cs" />
     <Compile Include="Core\UI\Workspaces\Aetas\AetasWorkspace.cs" />
     <Compile Include="Core\UI\Workspaces\Atlas\AtlasWorkspace.cs" />
