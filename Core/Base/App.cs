@@ -18,6 +18,10 @@ namespace Talesmith.Core
         public WorkspaceController WorkspaceController => GetWorkspaceController();
         public Project Project => GetProject();
         public Preferences Preferences => GetPreferences();
+
+        public Inspector Inspector => GetInspector();
+        public Binder Binder => GetBinder();
+        public Dock Dock => GetDock();
         
         public override void _Ready()
         {
@@ -46,6 +50,11 @@ namespace Talesmith.Core
         public Inspector GetInspector()
         {
             return GetNode<Inspector>(NodePaths.Inspector);
+        }
+
+        public Binder GetBinder()
+        {
+            return GetNode<Binder>(NodePaths.Binder);
         }
 
         public Dock GetDock()

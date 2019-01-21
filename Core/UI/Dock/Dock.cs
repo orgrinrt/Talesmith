@@ -8,6 +8,14 @@ namespace Talesmith.Core.UI.Dock
         public override void _Ready()
         {
             this.Wire();
-        }   
+
+            CallDeferred(nameof(DeferredInit));
+        }
+
+        private void DeferredInit()
+        {
+            MarginLeft = -App.Self.GetInspector().RectSize.x;
+            MarginRight = App.Self.GetBinder().RectSize.x;
+        }
     }
 }

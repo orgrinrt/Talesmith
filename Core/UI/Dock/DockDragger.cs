@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using GDMechanic.Wiring;
 using Godot;
 using Talesmith.Core.Systems;
+using Talesmith.Core.UI.Workspaces;
 
 namespace Talesmith.Core.UI.Dock
 {
@@ -44,7 +45,7 @@ namespace Talesmith.Core.UI.Dock
         {
             _isHandling = true;
             Dock dock = GetDock();
-            Control pageParent = App.Self.GetWorkspaceController();
+            WorkspaceController workspace = App.Self.GetWorkspaceController();
             while (true)
             {
                 float dist = (RectGlobalPosition.y - GetGlobalMousePosition().y);
@@ -59,7 +60,7 @@ namespace Talesmith.Core.UI.Dock
                     dock.MarginTop = _inspectorMaxSize;
                 }
 
-                pageParent.MarginBottom = dock.MarginTop;
+                workspace.MarginBottom = dock.MarginTop;
             
                 if (!Input.IsMouseButtonPressed(1) || _isHandling == false)
                 {
@@ -80,7 +81,7 @@ namespace Talesmith.Core.UI.Dock
 
         private bool IsWithinBounds()
         {
-            return GetGlobalMousePosition().y > RectGlobalPosition.y &&
+            return GetGlobalMousePosition().y > RectGlobalPosition.y -2 &&
                    GetGlobalMousePosition().y < RectGlobalPosition.y + RectSize.y;
         }
 
