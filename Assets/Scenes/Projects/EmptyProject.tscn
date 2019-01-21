@@ -38,7 +38,6 @@ layer = 2
 [node name="Workspaces" type="Control" parent="UI"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 40.0
 mouse_filter = 2
 script = ExtResource( 4 )
 
@@ -110,7 +109,6 @@ script = ExtResource( 10 )
 
 [node name="Config" type="Control" parent="UI/Workspaces"]
 editor/display_folded = true
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 7 )
@@ -122,26 +120,20 @@ anchor_bottom = 1.0
 theme = ExtResource( 12 )
 
 [node name="Content" type="HBoxContainer" parent="UI/Workspaces/Config"]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 50.0
-margin_top = 50.0
-margin_right = -25.0
-margin_bottom = -50.0
 
 [node name="SidePanel" type="ScrollContainer" parent="UI/Workspaces/Config/Content"]
 margin_right = 230.0
-margin_bottom = 460.0
+margin_bottom = 600.0
 rect_min_size = Vector2( 230, 0 )
-rect_clip_content = false
 size_flags_horizontal = 3
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
 [node name="Menus" type="VBoxContainer" parent="UI/Workspaces/Config/Content/SidePanel"]
 margin_right = 230.0
-margin_bottom = 460.0
+margin_bottom = 600.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 15
@@ -240,8 +232,8 @@ text = "Language"
 
 [node name="Content" type="Container" parent="UI/Workspaces/Config/Content"]
 margin_left = 234.0
-margin_right = 949.0
-margin_bottom = 460.0
+margin_right = 1024.0
+margin_bottom = 600.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0

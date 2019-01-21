@@ -63,6 +63,7 @@
     <Compile Include="Core\LocalData\Project.cs" />
     <Compile Include="Core\Systems\Iterator.cs" />
     <Compile Include="Core\Systems\Preferences.cs" />
+    <Compile Include="Core\UI\Binder\Binder.cs" />
     <Compile Include="Core\UI\Dock\Dock.cs" />
     <Compile Include="Core\UI\Dock\DockDragger.cs" />
     <Compile Include="Core\UI\Inspector\InspectorContentPages\Aetas.cs" />
