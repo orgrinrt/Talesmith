@@ -8,6 +8,7 @@ using Talesmith.Core.UI.Workspaces.Atlas;
 using Talesmith.Core.UI.Workspaces.Home;
 using Talesmith.Core.UI.Workspaces.Studia;
 using Talesmith.Core.UI.Workspaces.WorldConfig;
+using Talesmith.Core.Utils;
 using Environment = System.Environment;
 using Path = System.IO.Path;
 
@@ -37,6 +38,13 @@ namespace Talesmith.Core.UI.Inspector
                     break;
                 case AtlasWorkspace _:
                     GetAtlasContent().Show();
+                    foreach (Node node in GetDisabledTabs().GetChildren())
+                    {
+                        if (node.Name == "Layers")
+                        {
+                            node.ReParent(GetTabContainer());
+                        }
+                    }
                     break;
                 case AetasWorkspace _:
                     GetAetasContent().Show();
@@ -54,6 +62,14 @@ namespace Talesmith.Core.UI.Inspector
                 if (node is InspectorContentPage page)
                 {
                     page.Hide();
+                }
+            }
+
+            foreach (Node node in GetTabContainer().GetChildren())
+            {
+                if (node.Name != "Inspector")
+                {
+                    node.ReParent(GetDisabledTabs());
                 }
             }
         }
@@ -161,6 +177,11 @@ namespace Talesmith.Core.UI.Inspector
         private ScrollContainer GetInspectorContent()
         {
             return GetTabContainer().GetNode<ScrollContainer>("./Inspector");
+        }
+
+        private Control GetDisabledTabs()
+        {
+            return GetNode<Control>("./DisabledTabs");
         }
 
         private Tween GetTween()

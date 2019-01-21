@@ -27,7 +27,6 @@
 [ext_resource path="res://Assets/Graphics/Icons/40x40/Settings.png" type="Texture" id=25]
 [ext_resource path="res://Assets/Graphics/Icons/AppIconTemp.png" type="Texture" id=26]
 
-
 [sub_resource type="StyleBoxFlat" id=1]
 
 content_margin_left = 6.0
@@ -140,6 +139,8 @@ tab_align = 0
 drag_to_rearrange_enabled = true
 
 [node name="Inspector" type="ScrollContainer" parent="Top/Inspector/Tabs"]
+editor/display_folded = true
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 6.0
@@ -195,6 +196,7 @@ text = "This is Config"
 
 [node name="Layers" type="ScrollContainer" parent="Top/Inspector/Tabs"]
 editor/display_folded = true
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 6.0
@@ -214,8 +216,10 @@ margin_right = 213.0
 margin_bottom = 28.0
 
 [node name="DisabledTabs" type="Control" parent="Top/Inspector"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 
 [node name="Dragger" type="Control" parent="Top/Inspector"]
 anchor_bottom = 1.0
