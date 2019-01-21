@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Godot;
 using Talesmith.Core.Systems;
-using Talesmith.Core.UI.Inspector.Pages;
+using Talesmith.Core.UI.Binder.BinderContentPages;
 using Talesmith.Core.UI.Workspaces;
 using Talesmith.Core.UI.Workspaces.Aetas;
 using Talesmith.Core.UI.Workspaces.Atlas;
@@ -139,29 +139,29 @@ namespace Talesmith.Core.UI.Inspector
             _showingSpeed = newSpeed;
         }
         
-        private Home GetHomeContent()
+        private InspectorContentPages.Home GetHomeContent()
         {
-            return GetNode<Home>("./Tabs/Inspector/Home");
+            return GetNode<InspectorContentPages.Home>("./Tabs/Inspector/Home");
         }
         
-        private Studia GetStudiaContent()
+        private InspectorContentPages.Studia GetStudiaContent()
         {
-            return GetNode<Studia>("./Tabs/Inspector/Studia");
+            return GetNode<InspectorContentPages.Studia>("./Tabs/Inspector/Studia");
         }
 
-        private Atlas GetAtlasContent()
+        private InspectorContentPages.Atlas GetAtlasContent()
         {
-            return GetNode<Atlas>("./Tabs/Inspector/Atlas");
+            return GetNode<InspectorContentPages.Atlas>("./Tabs/Inspector/Atlas");
         }
         
-        private Aetas GetAetasContent()
+        private InspectorContentPages.Aetas GetAetasContent()
         {
-            return GetNode<Aetas>("./Tabs/Inspector/Aetas");
+            return GetNode<InspectorContentPages.Aetas>("./Tabs/Inspector/Aetas");
         }
         
-        private Config GetConfigContent()
+        private InspectorContentPages.Config GetConfigContent()
         {
-            return GetNode<Config>("./Tabs/Inspector/Config");
+            return GetNode<InspectorContentPages.Config>("./Tabs/Inspector/Config");
         }
 
         private InspectorDragger GetDragger()

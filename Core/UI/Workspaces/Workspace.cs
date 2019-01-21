@@ -12,7 +12,8 @@ namespace Talesmith.Core.UI.Workspaces
         {
             base._Ready();
             
-            AddToGroup(Groups.Pages);
+            SetFocusMode(FocusModeEnum.All);
+            AddToGroup(Groups.Workspaces);
         }
 
         internal WorkspaceController GetWorkspaceController()

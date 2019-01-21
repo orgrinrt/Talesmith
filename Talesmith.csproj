@@ -64,6 +64,12 @@
     <Compile Include="Core\Systems\Iterator.cs" />
     <Compile Include="Core\Systems\Preferences.cs" />
     <Compile Include="Core\UI\Binder\Binder.cs" />
+    <Compile Include="Core\UI\Binder\BinderContentPage.cs" />
+    <Compile Include="Core\UI\Binder\BinderContentPages\Aetas.cs" />
+    <Compile Include="Core\UI\Binder\BinderContentPages\Atlas.cs" />
+    <Compile Include="Core\UI\Binder\BinderContentPages\Config.cs" />
+    <Compile Include="Core\UI\Binder\BinderContentPages\Home.cs" />
+    <Compile Include="Core\UI\Binder\BinderContentPages\Studia.cs" />
     <Compile Include="Core\UI\Dock\Dock.cs" />
     <Compile Include="Core\UI\Dock\DockDragger.cs" />
     <Compile Include="Core\UI\Inspector\InspectorContentPages\Aetas.cs" />
@@ -115,6 +121,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\Base\Resources" />
+    <Folder Include="Core\UI\Binder\BinderContentPages" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Addons\ResourceTypes\appearance_prefs.gd" />

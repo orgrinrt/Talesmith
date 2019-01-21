@@ -1,8 +1,9 @@
 using GDMechanic.Wiring;
+using Godot;
 
-namespace Talesmith.Core.UI.Inspector.InspectorContentPages
+namespace Talesmith.Core.UI.Binder.BinderContentPages
 {
-    public class Home : InspectorContentPage
+    public class Config : BinderContentPage
     {
         public override void _Ready()
         {

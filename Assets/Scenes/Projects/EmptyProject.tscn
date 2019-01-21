@@ -4,14 +4,14 @@
 [ext_resource path="res://Assets/Scenes/Cameras/FreeCam.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Graphics/Maps/vilirin_test1.png" type="Texture" id=3]
 [ext_resource path="res://Core/UI/Workspaces/WorkspaceController.cs" type="Script" id=4]
-[ext_resource path="res://Core/UI/Workspaces/Home/HomeWorkspace.cs" type="Script" id=5]
-[ext_resource path="res://Core/UI/Workspaces/Studia/StudiaWorkspace.cs" type="Script" id=6]
-[ext_resource path="res://Assets/Resources/Themes/Default.tres" type="Theme" id=7]
-[ext_resource path="res://Core/UI/Workspaces/Atlas/AtlasWorkspace.cs" type="Script" id=8]
-[ext_resource path="res://Core/UI/Workspaces/Atlas/QuickSettings/PanSpeedField.cs" type="Script" id=9]
-[ext_resource path="res://Core/UI/Workspaces/Aetas/AetasWorkspace.cs" type="Script" id=10]
-[ext_resource path="res://Core/UI/Workspaces/WorldConfig/ConfigWorkspace.cs" type="Script" id=11]
-[ext_resource path="res://Assets/Resources/Themes/PanelEmphasisColor.tres" type="Theme" id=12]
+[ext_resource path="res://Assets/Resources/Themes/PanelEmphasisColor.tres" type="Theme" id=5]
+[ext_resource path="res://Core/UI/Workspaces/Home/HomeWorkspace.cs" type="Script" id=6]
+[ext_resource path="res://Core/UI/Workspaces/Studia/StudiaWorkspace.cs" type="Script" id=7]
+[ext_resource path="res://Assets/Resources/Themes/Default.tres" type="Theme" id=8]
+[ext_resource path="res://Core/UI/Workspaces/Atlas/AtlasWorkspace.cs" type="Script" id=9]
+[ext_resource path="res://Core/UI/Workspaces/Atlas/QuickSettings/PanSpeedField.cs" type="Script" id=10]
+[ext_resource path="res://Core/UI/Workspaces/Aetas/AetasWorkspace.cs" type="Script" id=11]
+[ext_resource path="res://Core/UI/Workspaces/WorldConfig/ConfigWorkspace.cs" type="Script" id=12]
 
 [node name="Project" type="Node"]
 script = ExtResource( 1 )
@@ -41,39 +41,44 @@ anchor_bottom = 1.0
 mouse_filter = 2
 script = ExtResource( 4 )
 
+[node name="Panel" type="Panel" parent="UI/Workspaces"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 5 )
+
 [node name="Home" type="Control" parent="UI/Workspaces"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 5 )
+script = ExtResource( 6 )
 
 [node name="Studia" type="Control" parent="UI/Workspaces"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 
 [node name="Atlas" type="Control" parent="UI/Workspaces"]
 editor/display_folded = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 7 )
-script = ExtResource( 8 )
+theme = ExtResource( 8 )
+script = ExtResource( 9 )
 
 [node name="SubBar" type="HBoxContainer" parent="UI/Workspaces/Atlas"]
 anchor_right = 1.0
 margin_left = 42.0
 margin_right = -225.0
 margin_bottom = 64.0
-theme = ExtResource( 7 )
+theme = ExtResource( 8 )
 
 [node name="PanSpeed" type="HBoxContainer" parent="UI/Workspaces/Atlas/SubBar"]
 editor/display_folded = true
 margin_right = 174.0
 margin_bottom = 22.0
 size_flags_vertical = 0
-script = ExtResource( 9 )
+script = ExtResource( 10 )
 
 [node name="Label" type="Label" parent="UI/Workspaces/Atlas/SubBar/PanSpeed"]
 margin_right = 70.0
@@ -86,7 +91,7 @@ margin_right = 174.0
 margin_bottom = 22.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_vertical = 3
-theme = ExtResource( 7 )
+theme = ExtResource( 8 )
 max_value = 50.0
 step = 5.0
 value = 20.0
@@ -105,140 +110,42 @@ size_flags_vertical = 3
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 10 )
-
-[node name="Config" type="Control" parent="UI/Workspaces"]
-editor/display_folded = true
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme = ExtResource( 7 )
 script = ExtResource( 11 )
 
-[node name="Panel" type="Panel" parent="UI/Workspaces/Config"]
+[node name="Config" type="Control" parent="UI/Workspaces"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 12 )
+margin_left = 25.0
+margin_top = 25.0
+margin_right = -25.0
+margin_bottom = -25.0
+theme = ExtResource( 8 )
+script = ExtResource( 12 )
 
 [node name="Content" type="HBoxContainer" parent="UI/Workspaces/Config"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="SidePanel" type="ScrollContainer" parent="UI/Workspaces/Config/Content"]
-margin_right = 230.0
-margin_bottom = 600.0
-rect_min_size = Vector2( 230, 0 )
-size_flags_horizontal = 3
-size_flags_vertical = 3
-scroll_horizontal_enabled = false
-
-[node name="Menus" type="VBoxContainer" parent="UI/Workspaces/Config/Content/SidePanel"]
-margin_right = 230.0
-margin_bottom = 600.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/separation = 15
-
-[node name="Project" type="VBoxContainer" parent="UI/Workspaces/Config/Content/SidePanel/Menus"]
-margin_right = 230.0
-margin_bottom = 157.0
-custom_constants/separation = 5
-
-[node name="CategoryTitle" type="Label" parent="UI/Workspaces/Config/Content/SidePanel/Menus/Project"]
-margin_right = 230.0
-margin_bottom = 22.0
-text = "Project"
-
-[node name="World" type="Button" parent="UI/Workspaces/Config/Content/SidePanel/Menus/Project"]
-margin_top = 27.0
-margin_right = 230.0
-margin_bottom = 49.0
-toggle_mode = true
-pressed = true
-text = "World"
-
-[node name="Data" type="Button" parent="UI/Workspaces/Config/Content/SidePanel/Menus/Project"]
-margin_top = 54.0
-margin_right = 230.0
-margin_bottom = 76.0
-toggle_mode = true
-text = "Data"
-
-[node name="Wiki" type="Button" parent="UI/Workspaces/Config/Content/SidePanel/Menus/Project"]
-margin_top = 81.0
-margin_right = 230.0
-margin_bottom = 103.0
-toggle_mode = true
-text = "Wiki"
-
-[node name="Atlas" type="Button" parent="UI/Workspaces/Config/Content/SidePanel/Menus/Project"]
-margin_top = 108.0
-margin_right = 230.0
-margin_bottom = 130.0
-toggle_mode = true
-text = "Atlas"
-
-[node name="Timelines" type="Button" parent="UI/Workspaces/Config/Content/SidePanel/Menus/Project"]
-margin_top = 135.0
-margin_right = 230.0
-margin_bottom = 157.0
-toggle_mode = true
-text = "Timelines"
-
-[node name="App" type="VBoxContainer" parent="UI/Workspaces/Config/Content/SidePanel/Menus"]
-margin_top = 172.0
-margin_right = 230.0
-margin_bottom = 329.0
-custom_constants/separation = 5
-
-[node name="CategoryTitle" type="Label" parent="UI/Workspaces/Config/Content/SidePanel/Menus/App"]
-margin_right = 230.0
-margin_bottom = 22.0
-text = "Application"
-
-[node name="General" type="Button" parent="UI/Workspaces/Config/Content/SidePanel/Menus/App"]
-margin_top = 27.0
-margin_right = 230.0
-margin_bottom = 49.0
-toggle_mode = true
-text = "General"
-
-[node name="Home" type="Button" parent="UI/Workspaces/Config/Content/SidePanel/Menus/App"]
-margin_top = 54.0
-margin_right = 230.0
-margin_bottom = 76.0
-toggle_mode = true
-text = "Home"
-
-[node name="SavingSyncing" type="Button" parent="UI/Workspaces/Config/Content/SidePanel/Menus/App"]
-margin_top = 81.0
-margin_right = 230.0
-margin_bottom = 103.0
-toggle_mode = true
-text = "Saving & Syncing"
-
-[node name="Appearance" type="Button" parent="UI/Workspaces/Config/Content/SidePanel/Menus/App"]
-margin_top = 108.0
-margin_right = 230.0
-margin_bottom = 130.0
-toggle_mode = true
-text = "Appearance"
-
-[node name="Language" type="Button" parent="UI/Workspaces/Config/Content/SidePanel/Menus/App"]
-margin_top = 135.0
-margin_right = 230.0
-margin_bottom = 157.0
-toggle_mode = true
-text = "Language"
-
-[node name="Content" type="Container" parent="UI/Workspaces/Config/Content"]
-margin_left = 234.0
-margin_right = 1024.0
-margin_bottom = 600.0
+[node name="Left" type="Container" parent="UI/Workspaces/Config/Content"]
+margin_right = 485.0
+margin_bottom = 550.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 
-[node name="Panel" type="Panel" parent="UI/Workspaces/Config/Content/Content"]
+[node name="Panel" type="Panel" parent="UI/Workspaces/Config/Content/Left"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Right" type="Container" parent="UI/Workspaces/Config/Content"]
+margin_left = 489.0
+margin_right = 974.0
+margin_bottom = 550.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 10.0
+
+[node name="Panel" type="Panel" parent="UI/Workspaces/Config/Content/Right"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 

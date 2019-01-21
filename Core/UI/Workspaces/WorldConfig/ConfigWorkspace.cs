@@ -7,7 +7,7 @@ namespace Talesmith.Core.UI.Workspaces.WorldConfig
     
         public override void _Ready()
         {
-            
+            base._Ready();
         }
     
         public override ICycleableItem GetNextItem()

@@ -113,5 +113,10 @@ namespace Talesmith.Core.UI.Workspaces
         {
             return GetNode<ConfigWorkspace>("./Config");
         }
+
+        public Panel GetBackgroundPanel()
+        {
+            return GetNode<Panel>("./Panel");
+        }
     }
 }

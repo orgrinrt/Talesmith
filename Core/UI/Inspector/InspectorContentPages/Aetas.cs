@@ -1,12 +1,12 @@
-using Godot;
 using GDMechanic.Wiring;
-using GDMechanic.Wiring.Attributes;
-using Talesmith.Core.UI.Inspector;
 
-public class Aetas : InspectorContentPage
+namespace Talesmith.Core.UI.Inspector.InspectorContentPages
 {
-	public override void _Ready()
+    public class Aetas : InspectorContentPage
     {
-        this.Wire();
-    }   
+        public override void _Ready()
+        {
+            this.Wire();
+        }   
+    }
 }

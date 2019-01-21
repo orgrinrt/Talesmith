@@ -7,6 +7,7 @@ namespace Talesmith.Core.UI.Workspaces.Aetas
     {
         public override void _Ready()
         {
+            base._Ready();
             this.Wire();
         }
 

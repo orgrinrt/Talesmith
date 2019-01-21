@@ -5,6 +5,9 @@ namespace Talesmith.Core.Systems
 	public class Preferences : Node
 	{
 		[Signal] public delegate void InspectorToggled(bool visible);
+		[Signal] public delegate void BinderToggled(bool visible);
+		[Signal] public delegate void DockToggled(bool visible);
+		
 		[Signal] public delegate void UseBigIconsToggled(bool use);
 		[Signal] public delegate void AnimationSpeedChanged(float newValue);
 	

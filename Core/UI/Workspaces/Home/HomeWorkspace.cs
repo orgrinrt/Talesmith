@@ -7,6 +7,7 @@ namespace Talesmith.Core.UI.Workspaces.Home
     {
         public override void _Ready()
         {
+            base._Ready();
             this.Wire();
         }
     

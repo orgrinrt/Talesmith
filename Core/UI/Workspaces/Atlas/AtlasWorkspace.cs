@@ -8,7 +8,7 @@ namespace Talesmith.Core.UI.Workspaces.Atlas
     {
         public override void _Ready()
         {
-            SetFocusMode(FocusModeEnum.All);
+            base._Ready();
         }
         
         // NOTE: We might want to only process FreeCamera input whenever mouse is over this page
@@ -24,10 +24,12 @@ namespace Talesmith.Core.UI.Workspaces.Atlas
                     if (Visible)
                     {
                         GetAtlas2D().Show();
+                        GetWorkspaceController().GetBackgroundPanel().Hide();
                     }
                     else
                     {
                         GetAtlas2D().Hide();
+                        GetWorkspaceController().GetBackgroundPanel().Show();
                     }
                     break;
                 case NotificationMouseEnter:
