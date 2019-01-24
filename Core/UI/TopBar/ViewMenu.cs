@@ -20,7 +20,7 @@ namespace Talesmith.Core.UI.TopBar
             InputEventKey key2 = (InputEventKey)actionlist2[0];
             GetPopup().SetItemAccelerator(1, key2.GetScancodeWithModifiers());
 
-            GetPopup().Connect("index_pressed", this, nameof(OnItemPressed)); // returns the INDEX of the item pressed
+            GetPopup().Connect("index_pressed", this, nameof(OnItemPressed));
         
             CallDeferred(nameof(SetValues));
         }
@@ -36,16 +36,16 @@ namespace Talesmith.Core.UI.TopBar
                 switch (index)
                 {
                     case 0:
-                        App.Self.Preferences.EmitSignal(nameof(Preferences.InspectorToggled), isChecked);
-                        App.Self.Preferences.ViewPreferences.Set("show_inspector", isChecked);
+                        App.Self.Preferences.ViewPreferences.Set("show_inspector", !isChecked);
+                        App.Self.Preferences.EmitSignal(nameof(Preferences.InspectorToggled), !isChecked);
                         break;
                     case 1:
-                        App.Self.Preferences.EmitSignal(nameof(Preferences.BinderToggled), isChecked);
-                        App.Self.Preferences.ViewPreferences.Set("show_binder", isChecked);
+                        App.Self.Preferences.ViewPreferences.Set("show_binder", !isChecked);
+                        App.Self.Preferences.EmitSignal(nameof(Preferences.BinderToggled), !isChecked);
                         break;
                     case 2:
-                        App.Self.Preferences.EmitSignal(nameof(Preferences.UseBigIconsToggled), isChecked);
-                        App.Self.Preferences.ViewPreferences.Set("use_big_icons", isChecked);
+                        App.Self.Preferences.ViewPreferences.Set("use_big_icons", !isChecked);
+                        App.Self.Preferences.EmitSignal(nameof(Preferences.UseBigIconsToggled), !isChecked);
                         break;
                 }
             }

@@ -24,21 +24,19 @@ namespace Talesmith.Core.Systems
 		{
 	    	LoadTheme(GetCurrentThemeSet());
 
-			Connect(nameof(InspectorToggled), this, nameof(SavePreferences));
-			Connect(nameof(BinderToggled), this, nameof(SavePreferences));
-			Connect(nameof(DockToggled), this, nameof(SavePreferences));
-
+			Connect(nameof(InspectorToggled), this, nameof(SaveViewPreferences));
+			Connect(nameof(BinderToggled), this, nameof(SaveViewPreferences));
+			Connect(nameof(DockToggled), this, nameof(SaveViewPreferences));
 			Connect(nameof(UseBigIconsToggled), this, nameof(SavePreferences));
+			
 			Connect(nameof(AnimationSpeedChanged), this, nameof(SavePreferences));
 			Connect(nameof(ThemeSetChanged), this, nameof(SavePreferences));
 		}
 
-		public void SavePreferences(bool visible)
+		public void SaveViewPreferences(bool visible)
 		{
 			GD.Print("SAVED");
-			ResourceSaver.Save(ApplicationPreferences.ResourcePath, ApplicationPreferences);
 			ResourceSaver.Save(ViewPreferences.ResourcePath, ViewPreferences);
-			ResourceSaver.Save(AppearancePreferences.ResourcePath, AppearancePreferences);
 		}
 		
 		public void SavePreferences(float value)
