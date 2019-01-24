@@ -24,12 +24,10 @@ namespace Talesmith.Core.UI.Workspaces.Atlas
                     if (Visible)
                     {
                         GetAtlas2D().Show();
-                        GetWorkspaceController().GetBackgroundPanel().Hide();
                     }
                     else
                     {
                         GetAtlas2D().Hide();
-                        GetWorkspaceController().GetBackgroundPanel().Show();
                     }
                     break;
                 case NotificationMouseEnter:

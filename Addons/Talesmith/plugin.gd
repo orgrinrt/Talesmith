@@ -9,20 +9,26 @@ func _enter_tree():
 	add_custom_type(
 	"ApplicationPrefs", 
 	"Resource", 
-	preload("ResourceTypes/app_prefs.gd"), 
-	preload("Icons/AppPrefs.png"));
+	preload("ResourceTypes/PreferenceTypes/app_prefs.gd"), 
+	preload("Icons/Application.png"));
 	
 	add_custom_type(
 	"AppearancePrefs", 
 	"Resource", 
-	preload("ResourceTypes/appearance_prefs.gd"), 
+	preload("ResourceTypes/PreferenceTypes/appearance_prefs.gd"), 
 	preload("Icons/AppPrefs.png"));
 	
 	add_custom_type(
 	"ViewPrefs", 
 	"Resource", 
-	preload("ResourceTypes/view_prefs.gd"), 
+	preload("ResourceTypes/PreferenceTypes/view_prefs.gd"), 
 	preload("Icons/ViewPrefs.png"));
+	
+	add_custom_type(
+	"ThemeSet", 
+	"Resource", 
+	preload("ResourceTypes/theme_set.gd"), 
+	preload("Icons/ThemeSet.png"));
 	
 	dock = preload("Dock/Dock.tscn").instance();
 	add_control_to_dock(EditorPlugin.DOCK_SLOT_RIGHT_UR, dock);
@@ -34,9 +40,12 @@ func _enter_tree():
 	info_label.hide();
 
 func _exit_tree():
+	#Preferences
 	remove_custom_type("ApplicationPrefs");
 	remove_custom_type("AppearancePrefs");
 	remove_custom_type("ViewPrefs");
+	#Resources
+	remove_custom_type("ThemeSet");
 	
 	remove_control_from_docks(dock);
 	dock.free();

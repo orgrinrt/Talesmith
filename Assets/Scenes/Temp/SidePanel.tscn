@@ -1,0 +1,109 @@
+[gd_scene format=2]
+
+[node name="SidePanel" type="ScrollContainer"]
+margin_right = 230.0
+margin_bottom = 550.0
+rect_min_size = Vector2( 230, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="Menus" type="VBoxContainer" parent="."]
+margin_right = 230.0
+margin_bottom = 550.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 15
+
+[node name="Project" type="VBoxContainer" parent="Menus"]
+margin_right = 230.0
+margin_bottom = 157.0
+custom_constants/separation = 5
+
+[node name="CategoryTitle" type="Label" parent="Menus/Project"]
+margin_right = 230.0
+margin_bottom = 22.0
+text = "Project"
+
+[node name="World" type="Button" parent="Menus/Project"]
+margin_top = 27.0
+margin_right = 230.0
+margin_bottom = 49.0
+toggle_mode = true
+pressed = true
+text = "World"
+
+[node name="Data" type="Button" parent="Menus/Project"]
+margin_top = 54.0
+margin_right = 230.0
+margin_bottom = 76.0
+toggle_mode = true
+text = "Data"
+
+[node name="Wiki" type="Button" parent="Menus/Project"]
+margin_top = 81.0
+margin_right = 230.0
+margin_bottom = 103.0
+toggle_mode = true
+text = "Wiki"
+
+[node name="Atlas" type="Button" parent="Menus/Project"]
+margin_top = 108.0
+margin_right = 230.0
+margin_bottom = 130.0
+toggle_mode = true
+text = "Atlas"
+
+[node name="Timelines" type="Button" parent="Menus/Project"]
+margin_top = 135.0
+margin_right = 230.0
+margin_bottom = 157.0
+toggle_mode = true
+text = "Timelines"
+
+[node name="App" type="VBoxContainer" parent="Menus"]
+margin_top = 172.0
+margin_right = 230.0
+margin_bottom = 329.0
+custom_constants/separation = 5
+
+[node name="CategoryTitle" type="Label" parent="Menus/App"]
+margin_right = 230.0
+margin_bottom = 22.0
+text = "Application"
+
+[node name="General" type="Button" parent="Menus/App"]
+margin_top = 27.0
+margin_right = 230.0
+margin_bottom = 49.0
+toggle_mode = true
+text = "General"
+
+[node name="Home" type="Button" parent="Menus/App"]
+margin_top = 54.0
+margin_right = 230.0
+margin_bottom = 76.0
+toggle_mode = true
+text = "Home"
+
+[node name="SavingSyncing" type="Button" parent="Menus/App"]
+margin_top = 81.0
+margin_right = 230.0
+margin_bottom = 103.0
+toggle_mode = true
+text = "Saving & Syncing"
+
+[node name="Appearance" type="Button" parent="Menus/App"]
+margin_top = 108.0
+margin_right = 230.0
+margin_bottom = 130.0
+toggle_mode = true
+text = "Appearance"
+
+[node name="Language" type="Button" parent="Menus/App"]
+margin_top = 135.0
+margin_right = 230.0
+margin_bottom = 157.0
+toggle_mode = true
+text = "Language"
+

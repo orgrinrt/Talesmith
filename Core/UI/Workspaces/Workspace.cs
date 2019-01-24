@@ -14,6 +14,12 @@ namespace Talesmith.Core.UI.Workspaces
             
             SetFocusMode(FocusModeEnum.All);
             AddToGroup(Groups.Workspaces);
+
+            int margin = (int)App.Self.Preferences.AppearancePreferences.Get("ui_base_margin");
+            MarginRight = -margin;
+            MarginBottom = -margin;;
+            MarginLeft = margin;
+            MarginTop = margin;
         }
 
         internal WorkspaceController GetWorkspaceController()

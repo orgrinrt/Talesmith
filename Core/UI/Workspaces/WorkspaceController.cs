@@ -18,22 +18,17 @@ namespace Talesmith.Core.UI.Workspaces
         public AtlasWorkspace Atlas => GetAtlasWorkspace();
         public AetasWorkspace Aetas => GetAetasWorkspace();
         public ConfigWorkspace Config => GetConfigWorkspace();
-
-        public int ExtraMarginLeft = 25;
-        public int ExtraMarginRight = -25;
-        public int ExtraMarginBottom = -25;
-        public int ExtraMarginTop = 25;
         
         public override void _Ready()
         {
             MarginRight = -App.Self.Inspector.RectSize.x;
-            MarginBottom = -App.Self.Dock.RectSize.y;
+            MarginBottom = App.Self.Dock.MarginTop;;
             MarginLeft = App.Self.Binder.RectSize.x;
             MarginTop = 40;
             
             App.Self.Connect(nameof(App.WorkspaceChangeInitiated), this, nameof(OnWorkspaceAboutToChange));
-            
-            ChangeWorkspace(Home);
+
+            CallDeferred(nameof(DeferredInit));
         }
         
         public override void _Input(InputEvent @event)
@@ -88,6 +83,16 @@ namespace Talesmith.Core.UI.Workspaces
 
             return result.ToArray();
         }
+
+        private void DeferredInit()
+        {
+            CallDeferred(nameof(DeferredDeferredInit)); // :-D
+        }
+
+        private void DeferredDeferredInit() // :-D
+        {
+            App.Self.EmitSignal(nameof(App.WorkspaceChangeInitiated), GetHomeWorkspace(), WorkspaceChangeType.Cycle);
+        }
         
         private HomeWorkspace GetHomeWorkspace()
         {
@@ -112,11 +117,6 @@ namespace Talesmith.Core.UI.Workspaces
         private ConfigWorkspace GetConfigWorkspace()
         {
             return GetNode<ConfigWorkspace>("./Config");
-        }
-
-        public Panel GetBackgroundPanel()
-        {
-            return GetNode<Panel>("./Panel");
         }
     }
 }

@@ -27,9 +27,13 @@ Preferences="*res://Assets/Scenes/Systems/Preferences.tscn"
 Iterator="*res://Assets/Scenes/Systems/Iterator.tscn"
 App="*res://Assets/Scenes/App.tscn"
 
+[display]
+
+window/stretch/aspect="expand"
+
 [editor_plugins]
 
-enabled=PoolStringArray( "ResourceTypes", "Talesmith" )
+enabled=PoolStringArray( "Talesmith" )
 
 [input]
 

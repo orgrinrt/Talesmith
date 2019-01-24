@@ -120,23 +120,25 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Addons" />
     <Folder Include="Core\Base\Resources" />
     <Folder Include="Core\UI\Binder\BinderContentPages" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Addons\ResourceTypes\appearance_prefs.gd" />
-    <Content Include="Addons\ResourceTypes\app_prefs.gd" />
-    <Content Include="Addons\ResourceTypes\Dock\Dock.tscn" />
-    <Content Include="Addons\ResourceTypes\Icons\AppPrefs.png" />
-    <Content Include="Addons\ResourceTypes\Icons\AppPrefs.png.import" />
-    <Content Include="Addons\ResourceTypes\Icons\ViewPrefs.png" />
-    <Content Include="Addons\ResourceTypes\Icons\ViewPrefs.png.import" />
-    <Content Include="Addons\ResourceTypes\plugin.cfg" />
-    <Content Include="Addons\ResourceTypes\resource_types.gd" />
-    <Content Include="Addons\ResourceTypes\view_prefs.gd" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <Content Include="Addons\Talesmith\Dock\Dock.tscn" />
+    <Content Include="Addons\Talesmith\Icons\AppPrefs.png" />
+    <Content Include="Addons\Talesmith\Icons\AppPrefs.png.import" />
+    <Content Include="Addons\Talesmith\Icons\ViewPrefs.png" />
+    <Content Include="Addons\Talesmith\Icons\ViewPrefs.png.import" />
+    <Content Include="Addons\Talesmith\plugin.cfg" />
+    <Content Include="Addons\Talesmith\plugin.gd" />
+    <Content Include="Addons\Talesmith\ResourceTypes\PreferenceTypes\appearance_prefs.gd" />
+    <Content Include="Addons\Talesmith\ResourceTypes\PreferenceTypes\app_prefs.gd" />
+    <Content Include="Addons\Talesmith\ResourceTypes\PreferenceTypes\view_prefs.gd" />
+    <Content Include="Addons\Talesmith\ResourceTypes\theme_set.gd" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
