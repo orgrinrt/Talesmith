@@ -31,6 +31,11 @@ namespace Talesmith.Core
                 Self = this;
             }
         }
+
+        public void LoadTheme(Resource newThemeSet)
+        {
+            Preferences.LoadTheme(newThemeSet);
+        }
         
         public Project GetProject()
         {

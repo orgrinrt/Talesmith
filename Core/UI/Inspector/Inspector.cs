@@ -76,6 +76,8 @@ namespace Talesmith.Core.UI.Inspector
 
         public void ToggleInspector(bool visible)
         {
+            int margin = (int) App.Self.Preferences.AppearancePreferences.Get("ui_base_margin");
+            
             if (_showing)
             {
                 GetTween().InterpolateProperty(
@@ -93,6 +95,16 @@ namespace Talesmith.Core.UI.Inspector
                     "margin_right",
                     workspace.MarginRight,
                     0,
+                    _showingSpeed,
+                    Tween.TransitionType.Cubic,
+                    Tween.EaseType.Out);
+                
+                Dock.Dock dock = App.Self.Dock;
+                GetTween().InterpolateProperty(
+                    dock,
+                    "margin_right",
+                    dock.MarginRight,
+                    0 - margin,
                     _showingSpeed,
                     Tween.TransitionType.Cubic,
                     Tween.EaseType.Out);
@@ -121,6 +133,16 @@ namespace Talesmith.Core.UI.Inspector
                     Tween.TransitionType.Cubic,
                     Tween.EaseType.Out);
                 
+                Dock.Dock dock = App.Self.Dock;
+                GetTween().InterpolateProperty(
+                    dock,
+                    "margin_right",
+                    dock.MarginRight,
+                    -RectSize.x - margin,
+                    _showingSpeed,
+                    Tween.TransitionType.Cubic,
+                    Tween.EaseType.Out);
+                
                 GetTween().Start();
                 _showing = true;
             }
@@ -131,7 +153,11 @@ namespace Talesmith.Core.UI.Inspector
             App.Self.Connect(nameof(App.WorkspaceChangeInitiated), this, nameof(OpenInspectorTabContent));
             App.Self.Preferences.Connect(nameof(Preferences.InspectorToggled), this, nameof(ToggleInspector));
             _showingSpeed = (float) App.Self.Preferences.AppearancePreferences.Get("ui_animation_speed");
+            _showing = !(bool) App.Self.Preferences.ViewPreferences.Get("show_inspector");
+            
             App.Self.Preferences.Connect(nameof(Preferences.AnimationSpeedChanged), this, nameof(OnAnimationSpeedChanged));
+            
+            ToggleInspector(_showing);
         }
 
         private void OnAnimationSpeedChanged(float newSpeed)

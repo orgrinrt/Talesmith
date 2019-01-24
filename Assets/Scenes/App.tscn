@@ -122,7 +122,6 @@ mouse_default_cursor_shape = 9
 script = ExtResource( 5 )
 
 [node name="Binder" type="Control" parent="Top"]
-editor/display_folded = true
 anchor_bottom = 1.0
 margin_top = 40.0
 margin_right = 225.0
@@ -344,6 +343,8 @@ margin_right = 173.0
 margin_bottom = 157.0
 toggle_mode = true
 text = "Language"
+
+[node name="Tween" type="Tween" parent="Top/Binder"]
 
 [node name="Inspector" type="Control" parent="Top"]
 anchor_left = 1.0

@@ -80,6 +80,7 @@
     <Compile Include="Core\UI\Inspector\InspectorDragger.cs" />
     <Compile Include="Core\UI\Inspector\Inspector.cs" />
     <Compile Include="Core\UI\Inspector\InspectorContentPage.cs" />
+    <Compile Include="Core\UI\IThemeable.cs" />
     <Compile Include="Core\UI\Menus\MainMenu.cs" />
     <Compile Include="Core\UI\Workspaces\Aetas\AetasWorkspace.cs" />
     <Compile Include="Core\UI\Workspaces\Atlas\AtlasWorkspace.cs" />

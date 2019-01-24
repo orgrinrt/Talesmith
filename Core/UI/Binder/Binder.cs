@@ -14,6 +14,9 @@ namespace Talesmith.Core.UI.Binder
 {
     public class Binder : Control
     {
+        private bool _showing = true;
+        private float _showingSpeed;
+        
         public override void _Ready()
         {
             this.Wire();
@@ -56,20 +59,104 @@ namespace Talesmith.Core.UI.Binder
             }
         }
 
-        private void ToggleBinder()
+        private void ToggleBinder(bool visible)
         {
-        
+            int margin = (int) App.Self.Preferences.AppearancePreferences.Get("ui_base_margin");
+            
+            if (_showing)
+            {
+                GetTween().InterpolateProperty(
+                    this,
+                    "rect_position",
+                    RectGlobalPosition,
+                    new Vector2(-RectSize.x - 2, RectGlobalPosition.y),
+                    _showingSpeed,
+                    Tween.TransitionType.Cubic,
+                    Tween.EaseType.Out);
+
+                WorkspaceController workspace = App.Self.GetWorkspaceController();
+                GetTween().InterpolateProperty(
+                    workspace,
+                    "margin_left",
+                    workspace.MarginLeft,
+                    0,
+                    _showingSpeed,
+                    Tween.TransitionType.Cubic,
+                    Tween.EaseType.Out);
+                
+                Dock.Dock dock = App.Self.Dock;
+                GetTween().InterpolateProperty(
+                    dock,
+                    "margin_left",
+                    dock.MarginLeft,
+                    margin,
+                    _showingSpeed,
+                    Tween.TransitionType.Cubic,
+                    Tween.EaseType.Out);
+                
+                GetTween().Start();
+                _showing = false;
+            }
+            else
+            {
+                GetTween().InterpolateProperty(
+                    this,
+                    "rect_position",
+                    RectGlobalPosition,
+                    new Vector2(0, RectGlobalPosition.y),
+                    _showingSpeed,
+                    Tween.TransitionType.Cubic,
+                    Tween.EaseType.Out);
+                
+                WorkspaceController workspace = App.Self.GetWorkspaceController();
+                GetTween().InterpolateProperty(
+                    workspace,
+                    "margin_left",
+                    workspace.MarginLeft,
+                    RectSize.x,
+                    _showingSpeed,
+                    Tween.TransitionType.Cubic,
+                    Tween.EaseType.Out);
+                
+                Dock.Dock dock = App.Self.Dock;
+                GetTween().InterpolateProperty(
+                    dock,
+                    "margin_left",
+                    dock.MarginLeft,
+                    RectSize.x + margin,
+                    _showingSpeed,
+                    Tween.TransitionType.Cubic,
+                    Tween.EaseType.Out);
+                
+                GetTween().Start();
+                _showing = true;
+            }
         }
     
         private void DeferredInit()
         {
             App.Self.Connect(nameof(App.WorkspaceChangeInitiated), this, nameof(OpenBinderContentTab));
             App.Self.Preferences.Connect(nameof(Preferences.BinderToggled), this, nameof(ToggleBinder));
+            _showingSpeed = (float) App.Self.Preferences.AppearancePreferences.Get("ui_animation_speed");
+            _showing = !(bool) App.Self.Preferences.ViewPreferences.Get("show_binder");
+            App.Self.Preferences.Connect(nameof(Preferences.AnimationSpeedChanged), this, nameof(OnAnimationSpeedChanged));
+            
+            ToggleBinder(_showing);
+        }
+        
+        private void OnAnimationSpeedChanged(float newSpeed)
+        {
+            _showingSpeed = newSpeed;
         }
 
         private Control GetContentContainer()
         {
             return GetNode<Control>("./Content");
+        }
+
+        private Tween GetTween()
+        {
+            return GetNode<Tween>("./Tween");
         }
         
         private Home GetHomeContent()

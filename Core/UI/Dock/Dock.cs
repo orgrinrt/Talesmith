@@ -14,8 +14,9 @@ namespace Talesmith.Core.UI.Dock
 
         private void DeferredInit()
         {
-            MarginLeft = -App.Self.GetInspector().RectSize.x - (int)App.Self.Preferences.AppearancePreferences.Get("ui_base_margin");
-            MarginRight = App.Self.GetBinder().RectSize.x + (int)App.Self.Preferences.AppearancePreferences.Get("ui_base_margin");
+            int margin = (int) App.Self.Preferences.AppearancePreferences.Get("ui_base_margin");
+            MarginLeft = -App.Self.GetInspector().RectSize.x - margin;
+            MarginRight = App.Self.GetBinder().RectSize.x + margin;
         }
     }
 }

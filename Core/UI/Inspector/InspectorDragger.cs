@@ -46,6 +46,8 @@ namespace Talesmith.Core.UI.Inspector
             Inspector inspector = GetInspector();
             WorkspaceController workspace = App.Self.GetWorkspaceController();
             Dock.Dock dock = App.Self.GetDock();
+            int margin = (int) App.Self.Preferences.AppearancePreferences.Get("ui_base_margin");
+            
             while (true)
             {
                 float dist = (RectGlobalPosition.x - GetGlobalMousePosition().x);
@@ -60,7 +62,7 @@ namespace Talesmith.Core.UI.Inspector
                 }
 
                 workspace.MarginRight = inspector.MarginLeft;
-                dock.MarginRight = inspector.MarginLeft;
+                dock.MarginRight = inspector.MarginLeft - margin;
                 
                 if (!Input.IsMouseButtonPressed(1) || _isHandling == false)
                 {
