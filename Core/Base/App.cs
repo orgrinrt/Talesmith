@@ -16,7 +16,7 @@ namespace Talesmith.Core
         
         public static App Self;
         
-        public WorkspaceController WorkspaceController => GetWorkspaceController();
+        public WorkspaceController Workspaces => GetWorkspaceController();
         public Project Project => GetProject();
         public Preferences Preferences => GetPreferences();
 

@@ -9,6 +9,8 @@ namespace Talesmith.Core.UI.Workspaces.Atlas
         public override void _Ready()
         {
             base._Ready();
+            
+            GetAtlasViewport().Size = RectSize;
         }
         
         // NOTE: We might want to only process FreeCamera input whenever mouse is over this page
@@ -23,11 +25,11 @@ namespace Talesmith.Core.UI.Workspaces.Atlas
                 case NotificationVisibilityChanged:
                     if (Visible)
                     {
-                        GetAtlas2D().Show();
+                        GetAtlasViewportContainer().Show();
                     }
                     else
                     {
-                        GetAtlas2D().Hide();
+                        GetAtlasViewportContainer().Hide();
                     }
                     break;
                 case NotificationMouseEnter:
@@ -37,27 +39,35 @@ namespace Talesmith.Core.UI.Workspaces.Atlas
                 case NotificationMouseExit:
                     GetFreeCamera().SetPanningLocked(true);
                     break;
+                case NotificationResized:
+                    GetAtlasViewport().Size = RectSize;
+                    break;
             }
         }
 
         public FreeCamera GetFreeCamera()
         {
-            return GetNode<FreeCamera>("../../../Atlas2D/FreeCam");
+            return GetAtlasViewport().GetNode<FreeCamera>("./FreeCam");
         }
         
-        private Node2D GetAtlas2D()
+        private ViewportContainer GetAtlasViewportContainer()
         {
-            return GetNode<Node2D>("../../../Atlas2D");
+            return GetNode<ViewportContainer>("./Atlas2D");
+        }
+
+        private Viewport GetAtlasViewport()
+        {
+            return GetAtlasViewportContainer().GetNode<Viewport>("./Viewport");
         }
         
         public override ICycleableItem GetNextItem()
         {
-            return App.Self.WorkspaceController.Aetas;
+            return App.Self.Workspaces.Aetas;
         }
 
         public override ICycleableItem GetPrevItem()
         {
-            return App.Self.WorkspaceController.Studia;
+            return App.Self.Workspaces.Studia;
         }
     }
 }

@@ -65,27 +65,27 @@ namespace Talesmith.Core.UI.Menus
         
         private void OnHomePressed()
         {
-            App.Self.EmitSignal(nameof(App.WorkspaceChangeInitiated), App.Self.WorkspaceController.Home, WorkspaceChangeType.Click);
+            App.Self.EmitSignal(nameof(App.WorkspaceChangeInitiated), App.Self.Workspaces.Home, WorkspaceChangeType.Click);
         }
         
         private void OnStudiaPressed()
         {
-            App.Self.EmitSignal(nameof(App.WorkspaceChangeInitiated), App.Self.WorkspaceController.Studia, WorkspaceChangeType.Click);
+            App.Self.EmitSignal(nameof(App.WorkspaceChangeInitiated), App.Self.Workspaces.Studia, WorkspaceChangeType.Click);
         }
 
         private void OnAtlasPressed()
         {
-            App.Self.EmitSignal(nameof(App.WorkspaceChangeInitiated), App.Self.WorkspaceController.Atlas, WorkspaceChangeType.Click);
+            App.Self.EmitSignal(nameof(App.WorkspaceChangeInitiated), App.Self.Workspaces.Atlas, WorkspaceChangeType.Click);
         }
         
         private void OnAetasPressed()
         {
-            App.Self.EmitSignal(nameof(App.WorkspaceChangeInitiated), App.Self.WorkspaceController.Aetas, WorkspaceChangeType.Click);
+            App.Self.EmitSignal(nameof(App.WorkspaceChangeInitiated), App.Self.Workspaces.Aetas, WorkspaceChangeType.Click);
         }
 
         private void OnConfigPressed()
         {
-            App.Self.EmitSignal(nameof(App.WorkspaceChangeInitiated), App.Self.WorkspaceController.Config, WorkspaceChangeType.Click);
+            App.Self.EmitSignal(nameof(App.WorkspaceChangeInitiated), App.Self.Workspaces.Config, WorkspaceChangeType.Click);
         }
 
         private void OnAppIconPressed()

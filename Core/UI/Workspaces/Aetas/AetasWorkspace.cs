@@ -13,12 +13,12 @@ namespace Talesmith.Core.UI.Workspaces.Aetas
 
         public override ICycleableItem GetNextItem()
         {
-            return App.Self.WorkspaceController.Config;
+            return App.Self.Workspaces.Config;
         }
 
         public override ICycleableItem GetPrevItem()
         {
-            return App.Self.WorkspaceController.Atlas;
+            return App.Self.Workspaces.Atlas;
         }
     }
 }

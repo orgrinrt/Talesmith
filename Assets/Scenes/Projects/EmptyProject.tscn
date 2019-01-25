@@ -1,35 +1,19 @@
 [gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Core/LocalData/Project.cs" type="Script" id=1]
-[ext_resource path="res://Assets/Scenes/Cameras/FreeCam.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/Graphics/Maps/vilirin_test1.png" type="Texture" id=3]
-[ext_resource path="res://Core/UI/Workspaces/WorkspaceController.cs" type="Script" id=4]
-[ext_resource path="res://Core/UI/Workspaces/Home/HomeWorkspace.cs" type="Script" id=5]
-[ext_resource path="res://Core/UI/Workspaces/Studia/StudiaWorkspace.cs" type="Script" id=6]
-[ext_resource path="res://Assets/Resources/Themes/Pagan/Default.tres" type="Theme" id=7]
-[ext_resource path="res://Core/UI/Workspaces/Atlas/AtlasWorkspace.cs" type="Script" id=8]
+[ext_resource path="res://Core/UI/Workspaces/WorkspaceController.cs" type="Script" id=2]
+[ext_resource path="res://Core/UI/Workspaces/Home/HomeWorkspace.cs" type="Script" id=3]
+[ext_resource path="res://Core/UI/Workspaces/Studia/StudiaWorkspace.cs" type="Script" id=4]
+[ext_resource path="res://Assets/Resources/Themes/Pagan/Default.tres" type="Theme" id=5]
+[ext_resource path="res://Core/UI/Workspaces/Atlas/AtlasWorkspace.cs" type="Script" id=6]
+[ext_resource path="res://Assets/Scenes/Cameras/FreeCam.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/Graphics/Maps/vilirin_test1.png" type="Texture" id=8]
 [ext_resource path="res://Core/UI/Workspaces/Atlas/QuickSettings/PanSpeedField.cs" type="Script" id=9]
 [ext_resource path="res://Core/UI/Workspaces/Aetas/AetasWorkspace.cs" type="Script" id=10]
 [ext_resource path="res://Core/UI/Workspaces/WorldConfig/ConfigWorkspace.cs" type="Script" id=11]
 
 [node name="Project" type="Node"]
 script = ExtResource( 1 )
-
-[node name="Atlas2D" type="Node2D" parent="."]
-visible = false
-
-[node name="FreeCam" parent="Atlas2D" instance=ExtResource( 2 )]
-position = Vector2( 498.693, 299.995 )
-current = true
-smoothing_enabled = true
-editor_draw_limits = true
-
-[node name="Map" type="Sprite" parent="Atlas2D"]
-texture = ExtResource( 3 )
-
-[node name="Layers" type="Node2D" parent="Atlas2D"]
-
-[node name="Default" type="Node2D" parent="Atlas2D/Layers"]
 
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 2
@@ -38,34 +22,57 @@ layer = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-script = ExtResource( 4 )
+script = ExtResource( 2 )
 
 [node name="Home" type="Control" parent="UI/Workspaces"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 5 )
+script = ExtResource( 3 )
 
 [node name="Studia" type="Control" parent="UI/Workspaces"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 6 )
+script = ExtResource( 4 )
 
 [node name="Atlas" type="Control" parent="UI/Workspaces"]
-editor/display_folded = true
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 7 )
-script = ExtResource( 8 )
+theme = ExtResource( 5 )
+script = ExtResource( 6 )
+
+[node name="Atlas2D" type="ViewportContainer" parent="UI/Workspaces/Atlas"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_clip_content = true
+mouse_filter = 2
+
+[node name="Viewport" type="Viewport" parent="UI/Workspaces/Atlas/Atlas2D"]
+size = Vector2( 500, 500 )
+transparent_bg = true
+disable_3d = true
+usage = 0
+
+[node name="FreeCam" parent="UI/Workspaces/Atlas/Atlas2D/Viewport" instance=ExtResource( 7 )]
+position = Vector2( 498.693, 299.995 )
+current = true
+smoothing_enabled = true
+editor_draw_limits = true
+
+[node name="Map" type="Sprite" parent="UI/Workspaces/Atlas/Atlas2D/Viewport"]
+texture = ExtResource( 8 )
+
+[node name="Layers" type="Node2D" parent="UI/Workspaces/Atlas/Atlas2D/Viewport"]
+
+[node name="Default" type="Node2D" parent="UI/Workspaces/Atlas/Atlas2D/Viewport/Layers"]
 
 [node name="SubBar" type="HBoxContainer" parent="UI/Workspaces/Atlas"]
+editor/display_folded = true
 anchor_right = 1.0
-margin_left = 42.0
 margin_right = -225.0
 margin_bottom = 64.0
-theme = ExtResource( 7 )
+theme = ExtResource( 5 )
 
 [node name="PanSpeed" type="HBoxContainer" parent="UI/Workspaces/Atlas/SubBar"]
 editor/display_folded = true
@@ -85,7 +92,7 @@ margin_right = 174.0
 margin_bottom = 22.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_vertical = 3
-theme = ExtResource( 7 )
+theme = ExtResource( 5 )
 max_value = 50.0
 step = 5.0
 value = 20.0
@@ -95,7 +102,7 @@ ticks_on_borders = true
 
 [node name="Filler" type="Control" parent="UI/Workspaces/Atlas/SubBar"]
 margin_left = 178.0
-margin_right = 757.0
+margin_right = 799.0
 margin_bottom = 64.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -107,9 +114,11 @@ anchor_bottom = 1.0
 script = ExtResource( 10 )
 
 [node name="Config" type="Control" parent="UI/Workspaces"]
+editor/display_folded = true
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 7 )
+theme = ExtResource( 5 )
 script = ExtResource( 11 )
 
 [node name="Content" type="HBoxContainer" parent="UI/Workspaces/Config"]
