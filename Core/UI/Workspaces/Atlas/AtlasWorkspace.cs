@@ -12,9 +12,6 @@ namespace Talesmith.Core.UI.Workspaces.Atlas
             
             GetAtlasViewport().Size = RectSize;
         }
-        
-        // NOTE: We might want to only process FreeCamera input whenever mouse is over this page
-        // One way to do this would be to have flag on this page whenever mouse is over and check that whenever processing input in Freecam
 
         public override void _Notification(int what)
         {

@@ -33,7 +33,7 @@ namespace Talesmith.Core.Viewports.Cameras
         {
             base._PhysicsProcess(delta);
             
-            if (!IsPanningBlocked)
+            if (!IsPanningBlocked) // ONE THING TO NOTE: We might want to think a way to make zoomed-in panning speed bigger than zoomed-out 
             {
                 if (Input.IsActionPressed("cam_pan_right"))
                 {
