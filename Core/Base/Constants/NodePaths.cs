@@ -6,5 +6,6 @@
         public const string Inspector = "/root/App/Top/Inspector";
         public const string Binder = "/root/App/Top/Binder";
         public const string Dock = "/root/App/Top/Dock";
+        public const string BottomBar = "/root/App/Top/BottomBar";
     }
 }

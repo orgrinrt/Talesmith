@@ -60,7 +60,7 @@ namespace Talesmith.Core.UI.Workspaces
 
         private void HideWorkspaces()
         {
-            foreach (Node node in GetChildren())
+            foreach (Node node in GetMainWorkspace().GetChildren())
             {
                 if (node is Workspace page)
                 {
@@ -73,7 +73,7 @@ namespace Talesmith.Core.UI.Workspaces
         {
             List<Workspace> result = new List<Workspace>();
             
-            foreach (Node node in GetChildren())
+            foreach (Node node in GetMainWorkspace().GetChildren())
             {
                 if (node is Workspace page)
                 {
@@ -93,30 +93,35 @@ namespace Talesmith.Core.UI.Workspaces
         {
             App.Self.EmitSignal(nameof(App.WorkspaceChangeInitiated), GetHomeWorkspace(), WorkspaceChangeType.Cycle);
         }
+
+        private Control GetMainWorkspace()
+        {
+            return GetNode<Control>("./Main");
+        }
         
         private HomeWorkspace GetHomeWorkspace()
         {
-            return GetNode<HomeWorkspace>("./Home");
+            return GetMainWorkspace().GetNode<HomeWorkspace>("./Home");
         }
         
         private StudiaWorkspace GetStudiaWorkspace()
         {
-            return GetNode<StudiaWorkspace>("./Studia");
+            return GetMainWorkspace().GetNode<StudiaWorkspace>("./Studia");
         }
 
         private AtlasWorkspace GetAtlasWorkspace()
         {
-            return GetNode<AtlasWorkspace>("./Atlas");
+            return GetMainWorkspace().GetNode<AtlasWorkspace>("./Atlas");
         }
 
         private AetasWorkspace GetAetasWorkspace()
         {
-            return GetNode<AetasWorkspace>("./Aetas");
+            return GetMainWorkspace().GetNode<AetasWorkspace>("./Aetas");
         }
 
         private ConfigWorkspace GetConfigWorkspace()
         {
-            return GetNode<ConfigWorkspace>("./Config");
+            return GetMainWorkspace().GetNode<ConfigWorkspace>("./Config");
         }
     }
 }

@@ -11,6 +11,6 @@ __meta__ = {
 }
 show_inspector = true
 show_binder = true
-show_dock = true
+show_dock = false
 use_big_icons = false
 

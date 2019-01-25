@@ -27,7 +27,7 @@ namespace Talesmith.Core.UI.Dock
                     this,
                     "rect_position",
                     RectGlobalPosition,
-                    new Vector2(RectGlobalPosition.x, GetTree().GetRoot().GetViewport().Size.y + 2),
+                    new Vector2(RectGlobalPosition.x, GetTree().GetRoot().GetViewport().Size.y - App.Self.GetBottomBar().RectSize.y),
                     _showingSpeed,
                     Tween.TransitionType.Cubic,
                     Tween.EaseType.Out);
@@ -37,7 +37,7 @@ namespace Talesmith.Core.UI.Dock
                     workspace,
                     "margin_bottom",
                     workspace.MarginBottom,
-                    0,
+                    -App.Self.GetBottomBar().RectSize.y,
                     _showingSpeed,
                     Tween.TransitionType.Cubic,
                     Tween.EaseType.Out);
