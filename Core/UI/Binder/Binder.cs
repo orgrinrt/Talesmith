@@ -15,6 +15,8 @@ namespace Talesmith.Core.UI.Binder
     {
         private bool _showing = true;
         private float _showingSpeed;
+
+        public bool Showing => _showing;
         
         public override void _Ready()
         {
@@ -86,11 +88,11 @@ namespace Talesmith.Core.UI.Binder
                     dock,
                     "margin_left",
                     dock.MarginLeft,
-                    margin,
+                    -App.Self.HalfScreen + margin,
                     _showingSpeed,
                     Tween.TransitionType.Cubic,
                     Tween.EaseType.Out);
-                
+
                 GetTween().Start();
                 _showing = false;
             }
@@ -120,7 +122,7 @@ namespace Talesmith.Core.UI.Binder
                     dock,
                     "margin_left",
                     dock.MarginLeft,
-                    RectSize.x + margin,
+                    -App.Self.HalfScreen + RectSize.x + margin,
                     _showingSpeed,
                     Tween.TransitionType.Cubic,
                     Tween.EaseType.Out);

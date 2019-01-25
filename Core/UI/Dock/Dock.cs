@@ -8,23 +8,24 @@ namespace Talesmith.Core.UI.Dock
     {
         private bool _showing = true;
         private float _showingSpeed = 0.5f;
+
+        public float MarginTopToRevertTo;
         
         public override void _Ready()
         {
             CallDeferred(nameof(DeferredInit));
+            MarginTopToRevertTo = MarginTop;
         }
         
         private void ToggleDock(bool visible)
         {
-            int margin = (int) App.Self.Preferences.AppearancePreferences.Get("ui_base_margin");
-            
             if (_showing)
             {
                 GetTween().InterpolateProperty(
                     this,
-                    "rect_position",
-                    RectGlobalPosition,
-                    new Vector2(RectGlobalPosition.x, GetTree().GetRoot().GetViewport().Size.y - App.Self.GetBottomBar().RectSize.y),
+                    "margin_top",
+                    MarginTop,
+                    0,
                     _showingSpeed,
                     Tween.TransitionType.Cubic,
                     Tween.EaseType.Out);
@@ -46,9 +47,9 @@ namespace Talesmith.Core.UI.Dock
             {
                 GetTween().InterpolateProperty(
                     this,
-                    "rect_position",
-                    RectGlobalPosition,
-                    new Vector2(RectGlobalPosition.x, GetTree().GetRoot().GetViewport().Size.y - RectSize.y),
+                    "margin_top",
+                    MarginTop,
+                    MarginTopToRevertTo,
                     _showingSpeed,
                     Tween.TransitionType.Cubic,
                     Tween.EaseType.Out);
@@ -71,8 +72,9 @@ namespace Talesmith.Core.UI.Dock
         private void DeferredInit()
         {
             int margin = (int) App.Self.Preferences.AppearancePreferences.Get("ui_base_margin");
-            MarginLeft = -App.Self.GetInspector().RectSize.x - margin;
-            MarginRight = App.Self.GetBinder().RectSize.x + margin;
+            
+            MarginLeft = (-App.Self.HalfScreen + App.Self.Binder.RectSize.x) + margin;
+            MarginRight = App.Self.HalfScreen - App.Self.Inspector.RectSize.x - margin;
             _showingSpeed = (float) App.Self.Preferences.AppearancePreferences.Get("ui_animation_speed");
             _showing = !(bool) App.Self.Preferences.ViewPreferences.Get("show_dock");
             

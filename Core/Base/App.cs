@@ -23,6 +23,8 @@ namespace Talesmith.Core
         public Inspector Inspector => GetInspector();
         public Binder Binder => GetBinder();
         public Dock Dock => GetDock();
+
+        public int HalfScreen => GetHalfScreen();
         
         public override void _Ready()
         {
@@ -71,6 +73,12 @@ namespace Talesmith.Core
         public Control GetBottomBar()
         {
             return GetNode<Control>(NodePaths.BottomBar);
+        }
+
+        public int GetHalfScreen()
+        {
+            return (int)GetTree().GetRoot().GetViewport().Size.x / 2;
+            ;
         }
     }
 }

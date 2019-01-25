@@ -104,7 +104,7 @@ namespace Talesmith.Core.UI.Inspector
                     dock,
                     "margin_right",
                     dock.MarginRight,
-                    0 - margin,
+                    App.Self.HalfScreen - margin,
                     _showingSpeed,
                     Tween.TransitionType.Cubic,
                     Tween.EaseType.Out);
@@ -138,7 +138,7 @@ namespace Talesmith.Core.UI.Inspector
                     dock,
                     "margin_right",
                     dock.MarginRight,
-                    -RectSize.x - margin,
+                    App.Self.HalfScreen - RectSize.x - margin,
                     _showingSpeed,
                     Tween.TransitionType.Cubic,
                     Tween.EaseType.Out);

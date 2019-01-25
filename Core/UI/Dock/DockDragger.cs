@@ -48,6 +48,7 @@ namespace Talesmith.Core.UI.Dock
                 float dist = (RectGlobalPosition.y - GetGlobalMousePosition().y);
             
                 dock.MarginTop = dock.MarginTop - dist;
+                
                 if (dock.MarginTop > _inspectorMinSize)
                 {
                     dock.MarginTop = _inspectorMinSize;
@@ -57,6 +58,7 @@ namespace Talesmith.Core.UI.Dock
                     dock.MarginTop = _inspectorMaxSize;
                 }
 
+                dock.MarginTopToRevertTo = dock.MarginTop;
                 workspace.MarginBottom = dock.MarginTop;
             
                 if (!Input.IsMouseButtonPressed(1) || _isHandling == false)
