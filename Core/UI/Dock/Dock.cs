@@ -1,4 +1,3 @@
-using GDMechanic.Wiring;
 using Godot;
 using Talesmith.Core.Systems;
 using Talesmith.Core.UI.Workspaces;
@@ -12,8 +11,6 @@ namespace Talesmith.Core.UI.Dock
         
         public override void _Ready()
         {
-            this.Wire();
-
             CallDeferred(nameof(DeferredInit));
         }
         

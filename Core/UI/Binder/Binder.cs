@@ -1,4 +1,3 @@
-using GDMechanic.Wiring;
 using Godot;
 using Talesmith.Core.Systems;
 using Talesmith.Core.UI.Binder.BinderContentPages;
@@ -19,8 +18,6 @@ namespace Talesmith.Core.UI.Binder
         
         public override void _Ready()
         {
-            this.Wire();
-        
             CallDeferred(nameof(DeferredInit));
         }
 

@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using GDMechanic.Wiring;
 using Godot;
 using Talesmith.Core.Systems;
 using Talesmith.Core.UI.Workspaces;
@@ -14,8 +13,6 @@ namespace Talesmith.Core.UI.Dock
     
         public override void _Ready()
         {
-            this.Wire();
-        
             Connect("mouse_entered", this, nameof(OnMouseEnter));
             Connect("mouse_exited", this, nameof(OnMouseExit));
             CallDeferred(nameof(DeferredInit));

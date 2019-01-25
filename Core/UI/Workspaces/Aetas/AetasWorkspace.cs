@@ -1,5 +1,4 @@
 using System;
-using GDMechanic.Wiring;
 
 namespace Talesmith.Core.UI.Workspaces.Aetas
 {
@@ -8,7 +7,6 @@ namespace Talesmith.Core.UI.Workspaces.Aetas
         public override void _Ready()
         {
             base._Ready();
-            this.Wire();
         }
 
         public override ICycleableItem GetNextItem()
