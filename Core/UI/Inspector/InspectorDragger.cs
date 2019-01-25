@@ -62,7 +62,7 @@ namespace Talesmith.Core.UI.Inspector
                 }
 
                 workspace.MarginRight = inspector.MarginLeft;
-                dock.MarginRight = inspector.MarginLeft - margin;
+                dock.MarginRight = App.Self.HalfScreen - inspector.RectSize.x - margin;
                 
                 if (!Input.IsMouseButtonPressed(1) || _isHandling == false)
                 {
