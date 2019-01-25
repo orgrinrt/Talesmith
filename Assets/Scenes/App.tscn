@@ -121,6 +121,8 @@ margin_bottom = 1.0
 mouse_default_cursor_shape = 9
 script = ExtResource( 5 )
 
+[node name="Tween" type="Tween" parent="Top/Dock"]
+
 [node name="Binder" type="Control" parent="Top"]
 anchor_bottom = 1.0
 margin_top = 40.0

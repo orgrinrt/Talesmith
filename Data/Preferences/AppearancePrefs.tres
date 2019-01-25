@@ -13,5 +13,5 @@ __meta__ = {
 current_theme_set = ExtResource( 2 )
 ui_animation_speed = 0.5
 ui_animation_speed_alt = 0.35
-ui_base_margin = 25
+ui_base_margin = 5
 
