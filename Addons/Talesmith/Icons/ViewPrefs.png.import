@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ViewPrefs.png-5b0520e5c5672803cdb0bacd35939f71.stex"
+path="res://.import/ViewPrefs.png-aaac5b4b64525a89533d928dd9aa7ae0.stex"
 
 [deps]
 
-source_file="res://Addons/Talesmith/Icons/ViewPrefs.png"
-dest_files=[ "res://.import/ViewPrefs.png-5b0520e5c5672803cdb0bacd35939f71.stex" ]
+source_file="res://addons/Talesmith/Icons/ViewPrefs.png"
+dest_files=[ "res://.import/ViewPrefs.png-aaac5b4b64525a89533d928dd9aa7ae0.stex" ]
 
 [params]
 
