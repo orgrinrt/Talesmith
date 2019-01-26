@@ -101,10 +101,10 @@ namespace Talesmith.Core.UI.Inspector
                 
                 Dock.Dock dock = App.Self.Dock;
                 GetTween().InterpolateProperty(
-                    dock,
+                    dock.ContentControl,
                     "margin_right",
                     dock.MarginRight,
-                    App.Self.HalfScreen - margin,
+                    -margin,
                     _showingSpeed,
                     Tween.TransitionType.Cubic,
                     Tween.EaseType.Out);
@@ -135,10 +135,10 @@ namespace Talesmith.Core.UI.Inspector
                 
                 Dock.Dock dock = App.Self.Dock;
                 GetTween().InterpolateProperty(
-                    dock,
+                    dock.ContentControl,
                     "margin_right",
                     dock.MarginRight,
-                    App.Self.HalfScreen - RectSize.x - margin,
+                    -RectSize.x - margin,
                     _showingSpeed,
                     Tween.TransitionType.Cubic,
                     Tween.EaseType.Out);

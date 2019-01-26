@@ -9,8 +9,8 @@ script = ExtResource( 2 )
 __meta__ = {
 "_editor_icon": ExtResource( 1 )
 }
-show_inspector = false
-show_binder = false
-show_dock = false
+show_inspector = true
+show_binder = true
+show_dock = true
 use_big_icons = false
 

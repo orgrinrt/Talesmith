@@ -61,7 +61,7 @@ mouse_filter = 2
 stretch = true
 
 [node name="Viewport" type="Viewport" parent="UI/Workspace/Main/Atlas/Atlas2D"]
-size = Vector2( 1024, 600 )
+size = Vector2( 1920, 1027 )
 transparent_bg = true
 handle_input_locally = false
 hdr = false

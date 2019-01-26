@@ -85,10 +85,10 @@ namespace Talesmith.Core.UI.Binder
                 
                 Dock.Dock dock = App.Self.Dock;
                 GetTween().InterpolateProperty(
-                    dock,
+                    dock.ContentControl,
                     "margin_left",
                     dock.MarginLeft,
-                    -App.Self.HalfScreen + margin,
+                    margin,
                     _showingSpeed,
                     Tween.TransitionType.Cubic,
                     Tween.EaseType.Out);
@@ -119,10 +119,10 @@ namespace Talesmith.Core.UI.Binder
                 
                 Dock.Dock dock = App.Self.Dock;
                 GetTween().InterpolateProperty(
-                    dock,
+                    dock.ContentControl,
                     "margin_left",
                     dock.MarginLeft,
-                    -App.Self.HalfScreen + RectSize.x + margin,
+                    RectSize.x + margin,
                     _showingSpeed,
                     Tween.TransitionType.Cubic,
                     Tween.EaseType.Out);

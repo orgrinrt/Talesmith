@@ -100,18 +100,21 @@ margin_bottom = 530.098
 layer = 99
 
 [node name="Dock" type="Control" parent="Top"]
-anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -275.0
 margin_top = -150.0
-margin_right = 275.0
 margin_bottom = -20.0
 theme = ExtResource( 2 )
 script = ExtResource( 3 )
 
-[node name="Panel" type="Panel" parent="Top/Dock"]
+[node name="Content" type="Control" parent="Top/Dock"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 230.0
+margin_right = -230.0
+
+[node name="Panel" type="Panel" parent="Top/Dock/Content"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 4 )
